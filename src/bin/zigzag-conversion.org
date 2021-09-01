@@ -1,0 +1,24 @@
+* Solution
+
+  #+BEGIN_SRC text
+    PAYPALISHIRING 3
+
+    P A H N
+    APLSIIG
+    Y I R
+
+    PAHNAPLSIIGYIR
+
+    PAYPALISHIRING 3
+
+    P I N
+    ALSIG
+    YAHR
+    P I
+
+    PINALSIGYAHRPI
+  #+END_SRC
+
+  考虑 ~r>=2~ 的情况，设目标行数为 ~r~ ，则每个周期元素的个数为， ~t = 2r-2~ 。设字符，在原来字符串的索引为 ~i~ ，则它所在的周期为 ~tt=i/t~ ，它在周期内的序号为 ~ii = i%t~ ，
+  那它的坐标为 ~x = if ii < r { ii } else { r - (ii - r) - 2 }~ ， ~y = if ii < r { tt * 2 } else { tt * 2 + 1}~
+
