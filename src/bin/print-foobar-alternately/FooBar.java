@@ -32,8 +32,7 @@ public class FooBar {
 
     public void foo(Runnable printFoo) throws InterruptedException {
         for (int i = 0; i < n; i++) {
-            while (!b.compareAndSet(0, -1)) {
-            }
+            while (!b.compareAndSet(0, -1));
             // printFoo.run() outputs "foo". Do not change or remove this line.
             printFoo.run();
             b.set(1);
@@ -42,8 +41,7 @@ public class FooBar {
 
     public void bar(Runnable printBar) throws InterruptedException {
         for (int i = 0; i < n; i++) {
-            while (!b.compareAndSet(1, -1)) {
-            }
+            while (!b.compareAndSet(1, -1));
             // printBar.run() outputs "bar". Do not change or remove this line.
             printBar.run();
             b.set(0);
