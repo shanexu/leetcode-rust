@@ -1,0 +1,132 @@
+* 作一些题设
+  哲学家的编号，从 P0 开始，顺时针，P1，P2，P3，P4，...
+  叉子的编号，从 F0 开始，假设 F0 号叉子，在 P0 号哲学家的左手边，按顺时针编号。
+  例如，哲学家有 3 人，则哲学家编号为 P0，P1，P2。叉子也有三把，编号为 F0，F1，F2。
+  P0 号哲学家左右两边的叉子分别为：F0，F2;
+  P1 号哲学家左右两边的叉子分别为：F1，F0;
+  P2 号哲学家左右两边的叉子分别为：F2，F1。
+  示意图如下所示。
+
+  #+name: 3philosophers
+  #+BEGIN_SRC dot :file images/the-dining-philosophers/3.png :cmdline -Kcirco -Tpng
+    digraph g1 {
+      node [shape = doublecircle]; P0 P1 P2;
+      node [shape = circle];
+      P0 -> F0 [arrowhead=none];
+      F0 -> P1 [arrowhead=none];
+      P1 -> F1 [arrowhead=none];
+      F1 -> P2 [arrowhead=none];
+      P2 -> F2 [arrowhead=none];
+      F2 -> P0 [arrowhead=none];
+    }
+  #+END_SRC
+
+  #+RESULTS: 3philosophers
+  [[file:images/the-dining-philosophers/3.png]]
+  
+* 问题分析
+** 假设只有一个哲学家
+   那么，这个问题不需要什么同步算法。
+
+** 假设有两个哲学家
+   #+BEGIN_SRC dot :file images/the-dining-philosophers/2.png :cmdline -Kcirco -Tpng
+     digraph g1 {
+       node [shape = doublecircle]; P0 P1;
+       node [shape = circle];
+       P0 -> F0 [arrowhead=none];
+       F0 -> P1 [arrowhead=none];
+       P1 -> F1 [arrowhead=none];
+       F1 -> P0 [arrowhead=none];
+     }
+   #+END_SRC
+
+   #+RESULTS:
+   [[file:images/the-dining-philosophers/2.png]]
+ 
+   P0 和 P1 只需同时	acquire F0。
+  
+** 假设有三个哲学家
+
+   先从 P0 和 P1 需要同时 acquire F0：
+   假设 P0 先于 P1 抢到 F0，那么 P0 必须抢到 F2 才能完成吃饭，这与 P2 产生竞争；
+   假设 P1 先于 P0 抢到 F0，那么 P1 必须抢到 F1 才能完成吃饭，这与 P2 产生竞争。
+   为了第一时间吃上饭，P2 被迫和 P0，P1 抢 F0，抢到 F0 之后，继续抢 F1 和 F2；抢到后就可以释放 F0，让 P0 和 P1 竞争了。
+
+   伪代码如下：
+
+   #+BEGIN_SRC python
+     if philosopher == 0:
+         f0.acquire()
+         pickLeftFork()
+         f2.acquire()
+         pickRightFork()
+         eat()
+         putLeftFork()
+         f0.release()
+         putRightFork()
+         f1.release()
+     elif philosopher == 1:
+         f0.acquire()
+         pickRightFork()
+         f1.acquire()
+         pickLeftFork()
+         eat()
+         putRightFork()
+         f0.release()
+         putLeftFork()
+         f1.release()
+     elif philosopher == 2:
+         f0.acquire()
+         f2.acquire()
+         pickLeftFork()
+         f1.acquire()
+         pickRightFork()
+         s0.release()
+         eat()
+         f2.release()
+         putLeftFork()
+         f1.release()
+         putRightFork()
+
+   #+END_SRC
+
+** 假设有四个哲学家
+   #+BEGIN_SRC dot :file images/the-dining-philosophers/4.png :cmdline -Kcirco -Tpng
+     digraph g1 {
+       node [shape = doublecircle]; P0 P1 P2 P3;
+       node [shape = circle];
+       P0 -> F0 [arrowhead=none];
+       F0 -> P1 [arrowhead=none];
+       P1 -> F1 [arrowhead=none];
+       F1 -> P2 [arrowhead=none];
+       P2 -> F2 [arrowhead=none];
+       F2 -> P3 [arrowhead=none];
+       P3 -> F3 [arrowhead=none];
+       F3 -> P0 [arrowhead=none];
+     }
+   #+END_SRC
+
+   #+RESULTS:
+   [[file:images/the-dining-philosophers/4.png]]
+
+** 假设有五个哲学家
+
+   #+BEGIN_SRC dot :file images/the-dining-philosophers/5.png :cmdline -Kcirco -Tpng
+     digraph g1 {
+       node [shape = doublecircle]; P0 P1 P2 P3 P4;
+       node [shape = circle];
+       P0 -> F0 [arrowhead=none];
+       F0 -> P1 [arrowhead=none];
+       P1 -> F1 [arrowhead=none];
+       F1 -> P2 [arrowhead=none];
+       P2 -> F2 [arrowhead=none];
+       F2 -> P3 [arrowhead=none];
+       P3 -> F3 [arrowhead=none];
+       F3 -> P4 [arrowhead=none];
+       P4 -> F4 [arrowhead=none];
+       F4 -> P0 [arrowhead=none];
+     }
+   #+END_SRC
+
+   #+RESULTS:
+   [[file:images/the-dining-philosophers/5.png]]
