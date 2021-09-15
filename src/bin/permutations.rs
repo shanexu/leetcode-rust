@@ -15,8 +15,8 @@ impl Solution {
 
 fn size(n: usize) -> usize {
     let mut p = 1;
-    for i in 1..n+1 {
-        p = p*i;
+    for i in 1..n + 1 {
+        p = p * i;
     }
     p
 }
