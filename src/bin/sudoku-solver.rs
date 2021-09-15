@@ -67,10 +67,6 @@ fn char_to_mask(c: char) -> u16 {
     MASKS[(c as u8 - b'0' - 1) as usize]
 }
 
-fn char_to_value(c: char) -> u16 {
-    VALUES[(c as u8 - b'0' - 1) as usize]
-}
-
 fn solve(
     x: usize,
     y: usize,

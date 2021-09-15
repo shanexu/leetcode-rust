@@ -1,4 +1,6 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::search_insert(vec![1, 3, 7], 2));
+}
 
 struct Solution;
 
