@@ -24,7 +24,7 @@
 char*
 re2post(char *re)
 {
-	int nalt, natom;
+  int nalt, natom;
 	static char buf[8000];
 	char *dst;
 	struct {
@@ -128,7 +128,7 @@ State*
 state(int c, State *out, State *out1)
 {
 	State *s;
-	
+
 	nstate++;
 	s = malloc(sizeof *s);
 	s->lastlist = 0;
@@ -176,7 +176,7 @@ Ptrlist*
 list1(State **outp)
 {
 	Ptrlist *l;
-	
+
 	l = (Ptrlist*)outp;
 	l->next = NULL;
 	return l;
@@ -187,7 +187,7 @@ void
 patch(Ptrlist *l, State *s)
 {
 	Ptrlist *next;
-	
+
 	for(; l; l=next){
 		next = l->next;
 		l->s = s;
@@ -199,7 +199,7 @@ Ptrlist*
 append(Ptrlist *l1, Ptrlist *l2)
 {
 	Ptrlist *oldl1;
-	
+
 	oldl1 = l1;
 	while(l1->next)
 		l1 = l1->next;
@@ -217,7 +217,7 @@ post2nfa(char *postfix)
 	char *p;
 	Frag stack[1000], *stackp, e1, e2, e;
 	State *s;
-	
+
 	// fprintf(stderr, "postfix: %s\n", postfix);
 
 	if(postfix == NULL)
@@ -369,23 +369,23 @@ main(int argc, char **argv)
 	char *post;
 	State *start;
 
-	if(argc < 3){
-		fprintf(stderr, "usage: nfa regexp string...\n");
-		return 1;
+  if (argc < 3) {
+    fprintf(stderr, "usage: nfa regexp string...\n");
+    return 1;
 	}
-	
+
 	post = re2post(argv[1]);
-	if(post == NULL){
+	if(post == NULL) {
 		fprintf(stderr, "bad regexp %s\n", argv[1]);
 		return 1;
 	}
 
 	start = post2nfa(post);
-	if(start == NULL){
+	if(start == NULL) {
 		fprintf(stderr, "error in post2nfa %s\n", post);
 		return 1;
 	}
-	
+
 	l1.s = malloc(nstate*sizeof l1.s[0]);
 	l2.s = malloc(nstate*sizeof l2.s[0]);
 	for(i=2; i<argc; i++)
@@ -403,11 +403,11 @@ main(int argc, char **argv)
  * sublicense, and/or sell copies of the Software, and to
  * permit persons to whom the Software is furnished to do so,
  * subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall
  * be included in all copies or substantial portions of the
  * Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
  * KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
  * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
