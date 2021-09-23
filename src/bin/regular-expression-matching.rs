@@ -92,7 +92,7 @@ impl Nfa {
         nlist.clear();
         self.listid += 1;
         for &idx in clist.iter() {
-            let s = &self.states[idx];
+            let s = self.states[idx].clone();
             if s.c == c || s.c == '.' {
                 if s.out.is_some() {
                     self.addstate(nlist, s.out.unwrap());
@@ -105,14 +105,12 @@ impl Nfa {
         if self.states[id].lastlist == self.listid {
             return;
         }
-        let s = &mut self.states[id];
-        s.lastlist = self.listid;
+        self.states[id].lastlist = self.listid;
+        let s = &self.states[id].clone();
         if s.c == SPLIT {
-            let s = &self.states[id];
             if s.out.is_some() {
                 self.addstate(l, s.out.unwrap());
             }
-            let s = &self.states[id];
             if s.out1.is_some() {
                 self.addstate(l, s.out1.unwrap());
             }
@@ -122,7 +120,7 @@ impl Nfa {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 struct State {
     c: char,
     out: Option<usize>,
