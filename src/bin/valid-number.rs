@@ -25,102 +25,78 @@ fn main() {
     }
 }
 
-fn is_number(s: String) -> bool {
-    let integer = vec![SIGN, '?', DIGITAL, '+', '.'];
-    let decimal = vec![
-        SIGN, '?', DIGITAL, '+', DOT, '.', DIGITAL, '*', '.', DOT, DIGITAL, '+', '.', '|', '.',
-    ];
-    let number = vec![
-        decimal.clone(),
-        integer.clone(),
-        vec!['|'],
-        vec![EXP],
-        integer.clone(),
-        vec!['.'],
-        vec!['?'],
-        vec!['.'],
-    ]
-    .concat();
-    is_match(s, number.into_iter().collect())
-}
+// fn post2nfa(str: String) -> Nfa {
+//     let mut stack: Vec<Frag> = vec![];
+//     let mut nfa = Nfa {
+//         states: vec![],
+//         start: 0,
+//         listid: 0,
+//     };
+//     for p in str.chars() {
+//         match p {
+//             '.' => {
+//                 let e2 = stack.pop().unwrap();
+//                 let mut e1 = stack.pop().unwrap();
+//                 nfa.patch(&mut e1.out, e2.start);
+//                 stack.push(Frag {
+//                     start: e1.start,
+//                     out: e2.out,
+//                 });
+//             }
+//             '|' => {
+//                 let mut e2 = stack.pop().unwrap();
+//                 let mut e1 = stack.pop().unwrap();
+//                 (&mut e1.out).append(&mut e2.out);
+//                 let s = nfa.state(SPLIT, Some(e1.start), Some(e2.start));
+//                 stack.push(Frag {
+//                     start: s,
+//                     out: e1.out,
+//                 });
+//             }
+//             '?' => {
+//                 let mut e = stack.pop().unwrap();
+//                 let s = nfa.state(SPLIT, Some(e.start), None);
+//                 e.out.push((s, StateOut::Out1));
+//                 stack.push(Frag {
+//                     start: s,
+//                     out: e.out,
+//                 });
+//             }
+//             '*' => {
+//                 let mut e = stack.pop().unwrap();
+//                 let id = nfa.state(SPLIT, Some(e.start), None);
+//                 nfa.patch(&mut e.out, id);
+//                 stack.push(Frag {
+//                     start: id,
+//                     out: vec![(id, StateOut::Out1)],
+//                 });
+//             }
+//             '+' => {
+//                 let mut e = stack.pop().unwrap();
+//                 let id = nfa.state(SPLIT, Some(e.start), None);
+//                 nfa.patch(&mut e.out, id);
+//                 stack.push(Frag {
+//                     start: e.start,
+//                     out: vec![(id, StateOut::Out1)],
+//                 });
+//             }
+//             _ => {
+//                 let id = nfa.state(p, None, None);
+//                 stack.push(Frag {
+//                     start: id,
+//                     out: vec![(id, StateOut::Out)],
+//                 })
+//             }
+//         }
+//     }
 
-fn is_match(s: String, p: String) -> bool {
-    let mut nfa = post2nfa(p);
-    nfa.matches(s)
-}
-
-fn post2nfa(str: String) -> Nfa {
-    let mut stack: Vec<Frag> = vec![];
-    let mut nfa = Nfa {
-        states: vec![],
-        start: 0,
-        listid: 0,
-    };
-    for p in str.chars() {
-        match p {
-            '.' => {
-                let e2 = stack.pop().unwrap();
-                let mut e1 = stack.pop().unwrap();
-                nfa.patch(&mut e1.out, e2.start);
-                stack.push(Frag {
-                    start: e1.start,
-                    out: e2.out,
-                });
-            }
-            '|' => {
-                let mut e2 = stack.pop().unwrap();
-                let mut e1 = stack.pop().unwrap();
-                (&mut e1.out).append(&mut e2.out);
-                let s = nfa.state(SPLIT, Some(e1.start), Some(e2.start));
-                stack.push(Frag {
-                    start: s,
-                    out: e1.out,
-                });
-            }
-            '?' => {
-                let mut e = stack.pop().unwrap();
-                let s = nfa.state(SPLIT, Some(e.start), None);
-                e.out.push((s, StateOut::Out1));
-                stack.push(Frag {
-                    start: s,
-                    out: e.out,
-                });
-            }
-            '*' => {
-                let mut e = stack.pop().unwrap();
-                let id = nfa.state(SPLIT, Some(e.start), None);
-                nfa.patch(&mut e.out, id);
-                stack.push(Frag {
-                    start: id,
-                    out: vec![(id, StateOut::Out1)],
-                });
-            }
-            '+' => {
-                let mut e = stack.pop().unwrap();
-                let id = nfa.state(SPLIT, Some(e.start), None);
-                nfa.patch(&mut e.out, id);
-                stack.push(Frag {
-                    start: e.start,
-                    out: vec![(id, StateOut::Out1)],
-                });
-            }
-            _ => {
-                let id = nfa.state(p, None, None);
-                stack.push(Frag {
-                    start: id,
-                    out: vec![(id, StateOut::Out)],
-                })
-            }
-        }
-    }
-
-    let mut e = stack.pop().unwrap();
-    let id = nfa.state(MATCH, None, None);
-    nfa.patch(&mut e.out, id);
-    nfa.start = e.start;
-    println!("{:?}", nfa);
-    nfa
-}
+//     let mut e = stack.pop().unwrap();
+//     let id = nfa.state(MATCH, None, None);
+//     nfa.patch(&mut e.out, id);
+//     nfa.start = e.start;
+//     println!("{:?}", nfa);
+//     nfa
+// }
 
 struct Solution;
 
@@ -281,17 +257,6 @@ const SIGN: char = '\u{0103}';
 const EXP: char = '\u{0104}';
 const DOT: char = '\u{0105}';
 
-#[derive(Debug)]
-enum Matcher {
-    Match,
-    Split,
-    Digital,
-    Sign,
-    Exp,
-    Dot,
-    Char(char),
-}
-
 impl Solution {}
 
 #[derive(Debug)]
@@ -304,28 +269,6 @@ struct Nfa {
 use std::mem::swap;
 
 impl Nfa {
-    fn patch(&mut self, l: &mut Ptrlist, s: usize) {
-        for (id, out) in l.iter() {
-            let st: &mut State = self.states.get_mut(*id).unwrap();
-            match out {
-                StateOut::Out => st.out = Some(s),
-                StateOut::Out1 => st.out1 = Some(s),
-            }
-        }
-    }
-
-    fn state(&mut self, c: char, out: Option<usize>, out1: Option<usize>) -> usize {
-        let id = self.states.len();
-        let s = State {
-            c,
-            out,
-            out1,
-            lastlist: 0,
-        };
-        self.states.push(s);
-        id
-    }
-
     fn matches(&mut self, str: String) -> bool {
         let mut clist = vec![];
         let mut nlist = vec![];
@@ -396,17 +339,4 @@ struct State {
     out: Option<usize>,
     out1: Option<usize>,
     lastlist: usize,
-}
-
-#[derive(Debug)]
-enum StateOut {
-    Out,
-    Out1,
-}
-
-type Ptrlist = Vec<(usize, StateOut)>;
-
-struct Frag {
-    start: usize,
-    out: Ptrlist,
 }
