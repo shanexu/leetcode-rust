@@ -7,32 +7,31 @@ fn main() {
 struct Solution;
 
 impl Solution {
-    pub fn can_reach(arr: Vec<i32>, start: i32) -> bool {
+    pub fn can_reach(arr: Vec<i32>, s: i32) -> bool {
         let mut arr = arr;
-        can_reach(&mut arr, start)
-    }
-}
-
-fn can_reach(arr: &mut Vec<i32>, start: i32) -> bool {
-    let v = arr[start as usize];
-    if v == 0 {
-        return true;
-    }
-    if v < 0 {
-        return false;
-    }
-    arr[start as usize] = -v;
-    let forward = start + v;
-    if (forward as usize) < arr.len() {
-        if can_reach(arr, forward) {
-            return true;
+        let mut start = vec![s];
+        loop {
+            match start.pop()  {
+                None => return false,
+                Some(s) => {
+                    let v = arr[s as usize];
+                    if v == 0 {
+                        return true;
+                    }
+                    if v < 0 {
+                        continue;
+                    }
+                    arr[s as usize] = -v;
+                    let forward = s + v;
+                    if (forward as usize) < arr.len() {
+                        start.push(forward);
+                    }
+                    let backward = s - v;
+                    if backward >= 0 {
+                        start.push(backward);
+                    }
+                }
+            }
         }
     }
-    let backward = start - v;
-    if backward >= 0 {
-        if can_reach(arr, backward) {
-            return true;
-        }
-    }
-    return false;
 }
