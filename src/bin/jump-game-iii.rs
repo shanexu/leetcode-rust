@@ -25,19 +25,13 @@ fn can_reach(arr: &mut Vec<i32>, start: i32) -> bool {
     let forward = start + v;
     if (forward as usize) < arr.len() {
         if can_reach(arr, forward) {
-            arr[forward as usize] = -arr[forward as usize];
             return true;
-        } else {
-            arr[forward as usize] = -arr[forward as usize];
         }
     }
     let backward = start - v;
     if backward >= 0 {
         if can_reach(arr, backward) {
-            arr[backward as usize] = -arr[backward as usize];
             return true;
-        } else {
-            arr[backward as usize] = -arr[backward as usize];
         }
     }
     return false;
