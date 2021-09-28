@@ -3,7 +3,7 @@ fn main() {
     assert_eq!(Solution::jump(vec![2, 3, 0, 1, 4]), 2);
     println!(
         "{}",
-        Solution::jump_slow(vec![
+        Solution::jump(vec![
             8, 4, 8, 2, 5, 6, 5, 3, 5, 3, 3, 1, 6, 5, 8, 7, 4, 6, 8, 2, 3, 1, 2, 7, 5, 1, 2, 1, 8,
             1, 3, 3, 7, 8, 8, 4, 2, 6, 5, 1, 7, 5, 6, 8, 2, 7, 5, 6, 7, 2, 2, 5, 7, 4, 4, 6, 8, 7,
             2, 4, 8, 5, 2, 3, 6, 3, 5, 1, 6, 8, 3, 1, 7, 7, 1, 8, 2, 3, 5, 8, 6, 5, 3, 4, 1, 8, 7,
@@ -64,7 +64,7 @@ fn main() {
             6, 3, 7, 8, 6, 1, 7, 1, 5, 1, 1, 6, 3, 3, 3, 7, 4, 1, 3, 1, 5, 1, 5, 4, 3, 4, 4, 6, 2,
             3, 8, 0, 0, 0, 0, 0, 0, 0,
         ])
-    )
+    );
 }
 
 struct Solution;
@@ -105,8 +105,7 @@ impl Solution {
         }
     }
 
-    // 0 1 2 3 4
-    pub fn jump(nums: Vec<i32>) -> i32 {
+    pub fn jump_2(nums: Vec<i32>) -> i32 {
         let n = nums.len();
         let mut rs = vec![-1; n];
         rs[0] = 0;
@@ -127,5 +126,29 @@ impl Solution {
             }
         }
         rs[n - 1]
+    }
+
+    pub fn jump(nums: Vec<i32>) -> i32 {
+        let n = nums.len();
+        if n <= 1 {
+            return 0;
+        }
+        let mut m = nums[0];
+        let mut s = nums[0];
+        let mut j = 1;
+        for i in 1..n {
+            if i == n - 1 {
+                return j;
+            }
+            if m < i as i32 + nums[i] {
+                m = i as i32 + nums[i];
+            }
+            s -= 1;
+            if s == 0 {
+                j += 1;
+                s = m - i as i32;
+            }
+        }
+        return -1;
     }
 }
