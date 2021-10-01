@@ -15,11 +15,10 @@ fn main() {
 struct Solution;
 
 use std::collections::HashMap;
+use std::collections::HashSet;
+use std::mem::swap;
 
 impl Solution {
-    /*
-    这个算法有问题的，没有考虑，穿梭带来的回溯
-    */
     pub fn min_jumps(arr: Vec<i32>) -> i32 {
         let mut map: HashMap<i32, Vec<usize>> = HashMap::new();
         for i in 0..arr.len() {
@@ -31,38 +30,38 @@ impl Solution {
             }
         }
         let n = arr.len();
-        let mut rs = vec![-1; n];
-        rs[0] = 0;
-        for i in 0..n {
-            if rs[i] == -1 {
-                continue;
-            }
-            if i + 1 < n {
-                rs[i + 1] = min(rs[i + 1], rs[i] + 1);
-            }
-            if i > 0 {
-                rs[i - 1] = min(rs[i - 1], rs[i] + 1);
-            }
-            let v = arr[i];
-            for &u in map.get(&v).unwrap().iter() {
-                if u == i {
-                    continue;
+        let mut a_list = vec![0];
+        let mut b_list = vec![0];
+        let mut jump = 0;
+        let mut visited: HashSet<usize> = HashSet::new();
+        visited.insert(0);
+        loop {
+            for &i in a_list.iter() {
+                let v = arr[i];
+                for &j in map.get(&v).unwrap().iter() {
+                    if j != i && !visited.contains(&j) {
+                        visited.insert(j);
+                        b_list.push(j);
+                    }
                 }
-                rs[u] = min(rs[u], rs[i] + 1);
+                if let Some(x) = map.get_mut(&v) {
+                    x.clear();
+                }
+                if i == n - 1 {
+                    return jump;
+                }
+                if i >= 1 && !visited.contains(&(i - 1)) {
+                    visited.insert(i - 1);
+                    b_list.push(i - 1);
+                }
+                if i < n - 1 && !visited.contains(&(i + 1)) {
+                    visited.insert(i + 1);
+                    b_list.push(i + 1);
+                }
             }
-            println!("{} {:?}", i, rs);
+            a_list.clear();
+            swap(&mut a_list, &mut b_list);
+            jump += 1;
         }
-        rs[n - 1]
-    }
-}
-
-fn min(a: i32, b: i32) -> i32 {
-    if a == -1 {
-        return b;
-    }
-    if a < b {
-        return a;
-    } else {
-        return b;
     }
 }
