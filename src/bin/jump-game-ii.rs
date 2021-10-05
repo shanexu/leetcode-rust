@@ -74,6 +74,7 @@ impl Solution {
     f(0, t) = if可以直接从0跳到t { 1 } or { min((f(0,1)+f(1,t)), (f(0,2)+f(2,t))...) }
     O(n^3)
     */
+    #[allow(dead_code)]
     pub fn jump_slow(nums: Vec<i32>) -> i32 {
         let n = nums.len();
         let mut res = vec![n - 1; n * n];
@@ -105,6 +106,7 @@ impl Solution {
         }
     }
 
+    #[allow(dead_code)]
     pub fn jump_2(nums: Vec<i32>) -> i32 {
         let n = nums.len();
         let mut rs = vec![-1; n];
