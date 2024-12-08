@@ -27,6 +27,7 @@ impl Solution {
     }
 }
 
+// 其实这个算法就是一个穷举的暴力算法
 fn solve(results: &mut Vec<Vec<usize>>, candidates: &mut Vec<Vec<usize>>, n: usize) {
     if candidates.len() == 0 {
         return;

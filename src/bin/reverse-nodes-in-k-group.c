@@ -1,18 +1,6 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     struct ListNode *next;
- * };
- */
-
 #include <stdio.h>
 #include <stdlib.h>
-
-struct ListNode {
-  int val;
-  struct ListNode *next;
-};
+#include "list_node.h"
 
 struct ListNode *reverseList(struct ListNode *head) {
   struct ListNode *node = head, *prev_node = NULL, *tmp_node = NULL;
@@ -71,38 +59,8 @@ struct ListNode *reverseKGroup(struct ListNode *head, int k) {
   return new_head;
 }
 
-void print_list(struct ListNode *head) {
-  struct ListNode *node = head;
-  while (node != NULL) {
-    printf("%d\n", node->val);
-    node = node->next;
-  }
+int main() {
+  struct ListNode *list = create_list(3);
+  struct ListNode *new_list = reverseKGroup(list, 4);
+  print_list(new_list);
 }
-
-struct ListNode *create_list(int n) {
-  struct ListNode *head = NULL;
-  struct ListNode *current = NULL;
-
-  for (int i = 0; i < n; i++) {
-    struct ListNode *newNode =
-        (struct ListNode *)malloc(sizeof(struct ListNode));
-    newNode->val = i;
-    newNode->next = NULL;
-
-    if (head == NULL) {
-      head = newNode;
-      current = newNode;
-    } else {
-      current->next = newNode;
-      current = newNode;
-    }
-  }
-
-  return head;
-}
-
-  int main() {
-    struct ListNode *list = create_list(3);
-    struct ListNode *new_list = reverseKGroup(list, 4);
-    print_list(new_list);
-  }
