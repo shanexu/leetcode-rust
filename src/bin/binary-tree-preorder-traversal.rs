@@ -41,3 +41,26 @@ impl Solution {
         values
     }
 }
+
+struct Solution2;
+
+impl Solution2 {
+    fn preorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+        let mut values = Vec::new();
+        let mut stack = Vec::new();
+
+        if let Some(node) = root {
+            stack.push(node);
+        }
+        while let Some(node) = stack.pop() {
+            values.push(node.borrow().val);
+            if let Some(right) = node.borrow().right.clone() {
+                stack.push(right);
+            }
+            if let Some(left) = node.borrow().left.clone() {
+                stack.push(left);
+            }
+        }
+        values
+    }
+}
