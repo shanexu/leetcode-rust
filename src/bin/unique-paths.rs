@@ -1,17 +1,44 @@
 use leetcode_rust::utils::measure_time;
 
 fn main() {
-    println!("Solution: {:?}", measure_time(||Solution::unique_paths(4, 3)));
-    println!("Solution2: {:?}", measure_time(||Solution2::unique_paths(4, 3)));
-    println!("Solution3: {:?}", measure_time(||Solution3::unique_paths(4, 3)));
+    println!(
+        "Solution: {:?}",
+        measure_time(|| Solution::unique_paths(4, 3))
+    );
+    println!(
+        "Solution2: {:?}",
+        measure_time(|| Solution2::unique_paths(4, 3))
+    );
+    println!(
+        "Solution3: {:?}",
+        measure_time(|| Solution3::unique_paths(4, 3))
+    );
 
-    println!("Solution: {:?}", measure_time(||Solution::unique_paths(51, 9)));
-    println!("Solution2: {:?}", measure_time(||Solution2::unique_paths(51, 9)));
-    println!("Solution3: {:?}", measure_time(||Solution3::unique_paths(51, 9)));
+    println!(
+        "Solution: {:?}",
+        measure_time(|| Solution::unique_paths(51, 9))
+    );
+    println!(
+        "Solution2: {:?}",
+        measure_time(|| Solution2::unique_paths(51, 9))
+    );
+    println!(
+        "Solution3: {:?}",
+        measure_time(|| Solution3::unique_paths(51, 9))
+    );
 
-    println!("Solution: {:?}", measure_time(||Solution::unique_paths(16, 16)));
-    println!("Solution2: {:?}", measure_time(||Solution2::unique_paths(16, 16)));
-    println!("Solution3: {:?}", measure_time(||Solution3::unique_paths(16, 16)));
+    println!(
+        "Solution: {:?}",
+        measure_time(|| Solution::unique_paths(16, 16))
+    );
+    println!(
+        "Solution2: {:?}",
+        measure_time(|| Solution2::unique_paths(16, 16))
+    );
+    println!(
+        "Solution3: {:?}",
+        measure_time(|| Solution3::unique_paths(16, 16))
+    );
 }
 
 /// 直接通过数学排列组合求解，注意溢出问题
@@ -59,13 +86,12 @@ impl Solution3 {
         }
         let m = m as usize;
         let n = n as usize;
-        let mut memo: Vec<Vec<i32>> = vec![vec![1;n];m];
-        for i in (0..m-1).rev() {
-            for j in (0..n-1).rev() {
-                memo[i][j] = memo[i+1][j] + memo[i][j+1];
+        let mut memo: Vec<Vec<i32>> = vec![vec![1; n]; m];
+        for i in (0..m - 1).rev() {
+            for j in (0..n - 1).rev() {
+                memo[i][j] = memo[i + 1][j] + memo[i][j + 1];
             }
         }
         memo[0][0]
     }
 }
-
