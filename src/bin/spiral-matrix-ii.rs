@@ -1,5 +1,5 @@
 fn main() {
-    print_matrix(Solution::generate_matrix(20));
+    print_matrix(Solution::generate_matrix(4));
 }
 
 struct Solution {}
@@ -33,15 +33,13 @@ impl Solution {
     }
 }
 
+/// ```
+/// | 0, -1 | x | dx | = | -dy |
+/// | 1,  0 |   | dy |   |  dx |
+///
 #[inline]
 fn dxy(dx: i32, dy: i32) -> (i32, i32) {
-    match (dx, dy) {
-        (1, 0) => (0, 1),
-        (0, 1) => (-1, 0),
-        (-1, 0) => (0, -1),
-        (0, -1) => (1, 0),
-        _ => (0, 0),
-    }
+    (-dy, dx)
 }
 
 fn print_matrix(matrix: Vec<Vec<i32>>) {
