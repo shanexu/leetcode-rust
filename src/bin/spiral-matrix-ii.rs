@@ -17,11 +17,11 @@ impl Solution {
             let ni = i + dx;
             let nj = j + dy;
             if ni == -1 || nj == -1 || ni == n || nj == n {
-                (dx, dy) = dxy(dx, dy);
+                (dx, dy) = (-dy, dx);
                 i = i + dx;
                 j = j + dy;
             } else if matrix[nj as usize][ni as usize] != 0 {
-                (dx, dy) = dxy(dx, dy);
+                (dx, dy) = (-dy, dx);
                 i = i + dx;
                 j = j + dy;
             } else {
