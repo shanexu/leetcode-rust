@@ -1,7 +1,7 @@
 fn main() {
     println!(
         "{}",
-        Solution::continuous_subarrays(vec![65, 66, 67, 66, 66, 65, 64, 65, 65, 64])
+        Solution2::continuous_subarrays(vec![65, 66, 67, 66, 66, 65, 64, 65, 65, 64])
     );
 }
 
@@ -102,6 +102,32 @@ impl Solution {
             }
         }
         count += (j - i) * (j - i + 1) / 2;
+        count as i64
+    }
+}
+
+/// 参考 <https://algo.monster/liteproblems/2762>
+struct Solution2;
+use std::collections::BTreeMap;
+impl Solution2 {
+    pub fn continuous_subarrays(nums: Vec<i32>) -> i64 {
+        let mut map: BTreeMap<i32, usize> = BTreeMap::new();
+        let mut count: usize = 0;
+        let mut win_start = 0;
+        let mut win_end = 0;
+        while win_end < nums.len() {
+            *map.entry(nums[win_end]).or_insert(0) += 1;
+            while *map.last_key_value().unwrap().0 - *map.first_key_value().unwrap().0 > 2 {
+                let v = map.get_mut(&nums[win_start]).unwrap();
+                *v -= 1;
+                if *v == 0 {
+                    map.remove(&nums[win_start]);
+                }
+                win_start += 1;
+            }
+            count += win_end - win_start + 1;
+            win_end += 1;
+        }
         count as i64
     }
 }
