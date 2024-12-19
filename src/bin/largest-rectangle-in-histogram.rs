@@ -41,7 +41,7 @@ impl Solution {
                 } else {
                     (i - stack.last().unwrap() - 1) as i32
                 };
-                res = max(res, heights[idx as usize] * width)
+                res = max(res, heights[idx] * width)
             }
             stack.push(i);
         }
@@ -53,7 +53,7 @@ impl Solution {
             } else {
                 (heights.len() - stack.last().unwrap() - 1) as i32
             };
-            res = max(res, heights[idx as usize] * width);
+            res = max(res, heights[idx] * width);
         }
 
         res
