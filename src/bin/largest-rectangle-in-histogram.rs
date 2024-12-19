@@ -34,6 +34,7 @@ impl Solution {
         let mut stack: Vec<usize> = vec![];
         let mut res = 0;
         for i in 0..heights.len() {
+            // 这里 <= 和 < 都可以
             while !stack.is_empty() && heights[i] <= heights[*stack.last().unwrap()] {
                 let idx = stack.pop().unwrap();
                 let width = if stack.is_empty() {
