@@ -1,6 +1,7 @@
 fn main() {
     // println!("{}", Solution::find_unsorted_subarray(vec![2,6,4,8,10,9,15]));
-    println!("{}", Solution::find_unsorted_subarray(vec![2, 3, 3]));
+    // println!("{}", Solution::find_unsorted_subarray(vec![2, 3, 3]));
+    println!("{}", Solution2::find_unsorted_subarray(vec![1, 3, 2]));
 }
 
 struct Solution;
@@ -46,5 +47,50 @@ impl Solution {
             m = std::cmp::max(m, nums[i]);
         }
         r - l
+    }
+}
+
+struct Solution2;
+
+impl Solution2 {
+    pub fn find_unsorted_subarray(nums: Vec<i32>) -> i32 {
+        let n = nums.len();
+        let mut s = 0;
+        let mut e = n - 1;
+        let mut max = i32::MIN;
+        let mut min = i32::MAX;
+
+        while s < n - 1 && nums[s] <= nums[s + 1] {
+            s += 1;
+        }
+
+        if s == n - 1 {
+            return 0;
+        }
+
+        while e > 0 && nums[e] >= nums[e - 1] {
+            e -= 1;
+        }
+
+        for i in s..=e {
+            min = std::cmp::min(min, nums[i]);
+            max = std::cmp::max(max, nums[i]);
+        }
+
+        for i in 0..s {
+            if nums[i] > min {
+                s = i;
+                break;
+            }
+        }
+
+        for i in (e + 1..n).rev() {
+            if nums[i] < max {
+                e = i;
+                break;
+            }
+        }
+
+        (e - s + 1) as i32
     }
 }
