@@ -41,6 +41,7 @@ impl Solution {
         let s2 = helper(&heights);
         let mut m = i64::MIN;
         for i in 0..n {
+            // 这里注意要去掉重复计算的peek的高度
             let s = s1[i] + s2[n - i - 1] - heights[n - i - 1] as i64;
             m = std::cmp::max(m, s);
         }
