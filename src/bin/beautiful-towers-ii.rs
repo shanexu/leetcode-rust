@@ -1,17 +1,8 @@
 fn main() {
-    // println!("{}", Solution::maximum_sum_of_heights(vec![2, 4, 6, 4, 1]));
-    println!("{}", Solution::maximum_sum_of_heights(vec![5, 3, 4, 1, 1]));
-    println!(
-        "{}",
-        Solution::maximum_sum_of_heights(vec![6, 5, 3, 9, 2, 7])
-    );
-    println!(
-        "{}",
-        Solution::maximum_sum_of_heights(vec![3, 2, 5, 5, 2, 3])
-    );
+
 }
 
-/// 这个用了类似 largest-rectangle-in-histogram 的方法来线性求和
+/// 完全和 beautiful-towers-i 一样的代码
 struct Solution;
 
 impl Solution {
