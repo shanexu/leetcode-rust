@@ -34,12 +34,8 @@ impl Solution {
         let d1 = bfs(bfs(0, &g1).0, &g1).1;
         let d2 = bfs(bfs(0, &g2).0, &g2).1;
         let mut m = div2(d1) + div2(d2) + 1;
-        if d1 > m {
-            m = d1;
-        }
-        if d2 > m {
-            m = d2;
-        }
+        m = std::cmp::max(m, d1);
+        m = std::cmp::max(m, d2);
         m as i32
     }
 }
