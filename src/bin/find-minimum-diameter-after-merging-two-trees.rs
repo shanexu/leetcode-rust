@@ -74,8 +74,7 @@ fn bfs(u: usize, graph: &Vec<Vec<usize>>) -> (usize, usize) {
     }
     (idx, max_dis as usize)
 }
-
 #[inline]
 fn div2(x: usize) -> usize {
-    (x >> 1) + (x & 1)
+    (x + 1) >> 1
 }
