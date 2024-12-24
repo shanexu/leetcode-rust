@@ -1,4 +1,6 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::mct_from_leaf_values(vec![4, 2, 3, 1]));
+}
 
 struct Solution;
 
