@@ -15,9 +15,9 @@ impl Solution {
             let mut steps: usize = 0;
             while !stack.is_empty() && v > nums[stack[stack.len() - 1].0] {
                 let (_, t) = stack.pop().unwrap();
-                steps = (steps + 1).max(t);
+                steps = std::cmp::max(steps + 1, t);
             }
-            ans = ans.max(steps);
+            ans = std::cmp::max(ans, steps);
             stack.push((i, steps))
         }
         ans as i32
