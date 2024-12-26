@@ -19,8 +19,7 @@ impl Solution {
         for c in properties.iter() {
             if c[1] < max_defense {
                 count += 1;
-            }
-            {
+            } else {
                 max_defense = c[1];
             }
         }
