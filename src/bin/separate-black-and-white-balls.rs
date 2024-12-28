@@ -17,13 +17,9 @@ impl Solution {
             }
         }
         for i in (0..j).rev() {
-            if bs[i] == b'0' {
-                continue;
-            }
             if bs[i] == b'1' {
                 j -= 1;
                 count += j - i;
-                continue;
             }
         }
         count as i64
