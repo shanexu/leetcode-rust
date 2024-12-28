@@ -20,24 +20,24 @@ impl Solution {
         let mut size = nums.len();
         while size > 1 {
             let k = size >> 1;
+            let k_is_odd = k & 1 == 1;
             let mid = left + k;
-            if nums[mid - 1] < nums[mid] && nums[mid] < nums[mid + 1] {
-                return nums[mid];
-            }
-            if k & 1 == 1 {
-                if nums[mid - 1] == nums[mid] {
+            if nums[mid - 1] == nums[mid] {
+                if k_is_odd {
                     left = mid + 1;
                     size = k;
                 } else {
-                    size = k;
-                }
-            } else {
-                if nums[mid - 1] == nums[mid] {
                     size = k - 1;
+                }
+            } else if nums[mid] == nums[mid + 1] {
+                if k_is_odd {
+                    size = k;
                 } else {
                     left = mid + 2;
                     size = k - 1;
                 }
+            } else {
+                return nums[mid];
             }
         }
         nums[left]
