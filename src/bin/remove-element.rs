@@ -2,7 +2,7 @@ fn main() {
     let mut nums = vec![1, 3, 3];
     let n = Solution::remove_element(&mut nums, 3);
     println!("n={}", n);
-    printvec(&nums, n);
+    println!("{:?}", nums);
 }
 
 struct Solution {}
@@ -23,12 +23,5 @@ impl Solution {
             }
         }
         idx as i32
-    }
-}
-
-//
-fn printvec(nums: &Vec<i32>, n: i32) {
-    for i in 0..(n as usize) {
-        println!("{}", nums[i])
     }
 }
