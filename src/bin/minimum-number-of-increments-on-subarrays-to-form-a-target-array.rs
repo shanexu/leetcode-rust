@@ -10,8 +10,8 @@ struct Solution;
 impl Solution {
     pub fn min_number_operations(target: Vec<i32>) -> i32 {
         let mut ans = target[0];
-        for x in target.windows(2) {
-            ans += 0.max(x[1] - x[0]);
+        for w in target.windows(2) {
+            ans += 0.max(w[1] - w[0]);
         }
         ans
     }
