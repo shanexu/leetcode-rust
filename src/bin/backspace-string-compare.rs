@@ -13,8 +13,8 @@ impl Solution {
         let t = t.as_bytes();
         let mut s_i = s.len();
         let mut t_i = t.len();
-        let mut s_b: u8 = 0;
-        let mut t_b: u8 = 0;
+        let mut s_b;
+        let mut t_b;
         loop {
             (s_i, s_b) = prev(s_i, s);
             (t_i, t_b) = prev(t_i, t);
