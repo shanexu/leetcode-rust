@@ -3,12 +3,14 @@ fn main() {
         "{}",
         Solution::repeat_limited_string("cczazcc".to_string(), 3)
     );
-    println!("{}", Solution::repeat_limited_string("aababab".to_string(), 2));
+    println!(
+        "{}",
+        Solution::repeat_limited_string("aababab".to_string(), 2)
+    );
 }
 
 struct Solution;
 
-use std::cmp::Ordering;
 impl Solution {
     pub fn repeat_limited_string(s: String, repeat_limit: i32) -> String {
         let s = s.as_bytes();
@@ -17,75 +19,40 @@ impl Solution {
         for &b in s {
             freq[(b - b'a') as usize] += 1;
         }
-        let mut tree = std::collections::BTreeSet::new();
+        let mut freq_stack = vec![];
         for (i, &c) in freq.iter().enumerate() {
             if c > 0 {
-                let t = Triple::new(b'a' + i as u8, c, rl);
-                tree.insert(t);
+                freq_stack.push(i);
             }
         }
         let mut ans: Vec<u8> = vec![];
-        let mut prev: Option<Triple> = None;
-        while !tree.is_empty() && tree.last().unwrap().remain_repeat != 0 {
-            let mut last = tree.pop_last().unwrap();
-            ans.push(last.letter);
-            last.remain_repeat -= 1;
-            last.count -= 1;
-            if let Some(mut p) = prev {
-                if last.letter != p.letter {
-                    tree.remove(&p);
-                    p.remain_repeat = rl;
-                    tree.insert(p);
-                }
+        while !freq_stack.is_empty() {
+            let idx = freq_stack.pop().unwrap();
+            let max_c = idx as u8 + b'a';
+            let mut rr = rl;
+            while rr > 0 && freq[idx] > 0 {
+                ans.push(max_c);
+                rr -= 1;
+                freq[idx] -= 1;
             }
-            if last.count > 0 {
-                prev = Some(last);
-                tree.insert(last);
-            } else {
-                prev = None;
+            if freq[idx] == 0 {
+                continue
+            }
+            if rr == 0 {
+                if !freq_stack.is_empty() {
+                    let next_idx = *freq_stack.last().unwrap();
+                    let next_max_c = next_idx as u8 + b'a';
+                    ans.push(next_max_c);
+                    freq[next_idx] -= 1;
+                    if freq[next_idx] == 0 {
+                        freq_stack.pop();
+                    }
+                    freq_stack.push(idx);
+                } else {
+                    break;
+                }
             }
         }
         String::from_utf8(ans).unwrap()
-    }
-}
-
-#[derive(Debug, Clone, Copy, Eq, PartialEq, Hash)]
-struct Triple {
-    letter: u8,
-    count: usize,
-    remain_repeat: usize,
-}
-
-impl Triple {
-    fn new(letter: u8, count: usize, remain_repeat: usize) -> Self {
-        Triple {
-            letter,
-            count,
-            remain_repeat,
-        }
-    }
-}
-
-impl PartialOrd<Self> for Triple {
-    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-        if self.remain_repeat == 0 && other.remain_repeat != 0 {
-            return Some(Ordering::Less);
-        }
-        if self.remain_repeat != 0 && other.remain_repeat == 0 {
-            return Some(Ordering::Greater);
-        }
-        Some(self.letter.cmp(&other.letter))
-    }
-}
-
-impl Ord for Triple {
-    fn cmp(&self, other: &Self) -> Ordering {
-        if self.remain_repeat == 0 && other.remain_repeat != 0 {
-            return Ordering::Less;
-        }
-        if self.remain_repeat != 0 && other.remain_repeat == 0 {
-            return Ordering::Greater;
-        }
-        self.letter.cmp(&other.letter)
     }
 }
