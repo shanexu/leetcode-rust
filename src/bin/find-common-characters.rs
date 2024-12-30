@@ -23,8 +23,8 @@ impl Solution {
         }
         let mut ans: Vec<String> = vec![];
         for i in 0..n {
-            let mut min = 1001;
-            for j in 0..m {
+            let mut min = freqs[0][i];
+            for j in 1..m {
                 min = min.min(freqs[j][i])
             }
             for _ in 0..min {
