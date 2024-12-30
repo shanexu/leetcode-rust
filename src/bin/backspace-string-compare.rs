@@ -8,23 +8,46 @@ fn main() {
 struct Solution;
 
 impl Solution {
-    pub fn backspace_compare(mut s: String, mut t: String) -> bool {
-        fn process(s: &mut [u8]) -> &[u8] {
-            let mut i: usize = 0;
-            for j in 0..s.len() {
-                if s[j] == b'#' {
-                    if i != 0 {
-                        i -= 1;
-                    }
-                } else {
-                    s[i] = s[j];
-                    i += 1;
-                }
+    pub fn backspace_compare(s: String, t: String) -> bool {
+        let s = s.as_bytes();
+        let t = t.as_bytes();
+        let mut s_i = s.len();
+        let mut t_i = t.len();
+        let mut s_b: u8 = 0;
+        let mut t_b: u8 = 0;
+        loop {
+            (s_i, s_b) = prev(s_i, s);
+            (t_i, t_b) = prev(t_i, t);
+            if s_b != t_b {
+                return false;
             }
-            &s[0..i]
+            if s_b == t_b && s_b == 0 {
+                break;
+            }
         }
-        let s = unsafe { s.as_bytes_mut() };
-        let t = unsafe { t.as_bytes_mut() };
-        process(s) == process(t)
+        true
     }
+}
+
+#[inline]
+fn prev(mut i: usize, s: &[u8]) -> (usize, u8) {
+    let mut sharp_count = 0;
+    while i > 0 {
+        i -= 1;
+        let b = s[i];
+        if sharp_count > 0 {
+            if b == b'#' {
+                sharp_count += 1;
+            } else {
+                sharp_count -= 1;
+            }
+        } else {
+            if b == b'#' {
+                sharp_count += 1;
+            } else {
+                return (i, b);
+            }
+        }
+    }
+    (0, 0)
 }
