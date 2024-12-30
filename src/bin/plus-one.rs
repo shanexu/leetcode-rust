@@ -1,7 +1,7 @@
 fn main() {
     println!("{:?}", Solution::plus_one(vec![1, 2, 3]));
     println!("{:?}", Solution::plus_one(vec![9]));
-    println!("{:?}", Solution::plus_one(vec![9,9]));
+    println!("{:?}", Solution::plus_one(vec![9, 9]));
 }
 
 struct Solution;

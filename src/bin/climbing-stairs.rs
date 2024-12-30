@@ -41,9 +41,9 @@ impl Solution {
         let mut n = n;
         while n > 0 {
             let t = b;
-            b = a+b;
+            b = a + b;
             a = t;
-            n = n-1;
+            n = n - 1;
         }
         a
     }

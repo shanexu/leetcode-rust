@@ -10,7 +10,7 @@ impl Solution {
         let mut s = 0;
         for (i, &v) in nums.iter().enumerate() {
             if n % (i + 1) == 0 {
-                s += v*v;
+                s += v * v;
             }
         }
         s

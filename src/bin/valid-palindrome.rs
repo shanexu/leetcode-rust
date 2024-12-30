@@ -1,12 +1,6 @@
 fn main() {
-    println!(
-        "{}",
-        Solution::is_palindrome(String::from("a.a"))
-    );
-    println!(
-        "{}",
-        Solution::is_palindrome(String::from("aAc  "))
-    );
+    println!("{}", Solution::is_palindrome(String::from("a.a")));
+    println!("{}", Solution::is_palindrome(String::from("aAc  ")));
     println!(
         "{}",
         Solution::is_palindrome(String::from("A man, a plan, a canal: Panama"))

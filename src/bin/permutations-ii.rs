@@ -17,8 +17,8 @@ impl Solution {
 
 fn factorial(n: usize) -> usize {
     let mut p = 1;
-    for i in 1..n+1 {
-        p = p*i;
+    for i in 1..n + 1 {
+        p = p * i;
     }
     p
 }
@@ -30,7 +30,7 @@ fn size(nums: &Vec<i32>) -> usize {
     for i in 0..nums.len() {
         let x = nums[i];
         if x == p {
-            c+=1;
+            c += 1;
         } else {
             n = n / factorial(c);
             c = 1;

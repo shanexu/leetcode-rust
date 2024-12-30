@@ -1,14 +1,11 @@
 use leetcode_rust::tree_node::TreeNode;
 
-fn main() {
-
-}
-
+fn main() {}
 
 struct Solution;
 
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 
 impl Solution {
     pub fn is_symmetric(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
@@ -22,7 +19,8 @@ impl Solution {
                     if p.val != q.val {
                         false
                     } else {
-                        helper(p.left.clone(), q.right.clone()) && helper(p.right.clone(), q.left.clone())
+                        helper(p.left.clone(), q.right.clone())
+                            && helper(p.right.clone(), q.left.clone())
                     }
                 }
             }

@@ -11,7 +11,7 @@ struct Solution;
 //   pub left: Option<Rc<RefCell<TreeNode>>>,
 //   pub right: Option<Rc<RefCell<TreeNode>>>,
 // }
-// 
+//
 // impl TreeNode {
 //   #[inline]
 //   pub fn new(val: i32) -> Self {
@@ -22,8 +22,8 @@ struct Solution;
 //     }
 //   }
 // }
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 impl Solution {
     pub fn min_depth(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         fn helper(node: Rc<RefCell<TreeNode>>) -> i32 {

@@ -43,7 +43,7 @@ impl Solution {
                     } else {
                         current_length += 1;
                     }
-                },
+                }
             };
             if current_length > max_length {
                 max_length = current_length;

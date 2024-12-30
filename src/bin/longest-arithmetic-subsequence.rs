@@ -1,6 +1,9 @@
 fn main() {
     println!("{}", Solution::longest_arith_seq_length(vec![1, 2, 3]));
-    println!("{}", Solution::longest_arith_seq_length(vec![1, 7, 10, 15, 27, 29]));
+    println!(
+        "{}",
+        Solution::longest_arith_seq_length(vec![1, 7, 10, 15, 27, 29])
+    );
 }
 
 struct Solution;
@@ -29,7 +32,7 @@ fn solve(index: usize, diff: i32, nums: &Vec<i32>, memo: &mut HashMap<(usize, i3
         return 0;
     }
 
-    if let Some(v)  = memo.get(&(index, diff)) {
+    if let Some(v) = memo.get(&(index, diff)) {
         return *v;
     }
 

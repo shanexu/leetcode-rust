@@ -10,7 +10,7 @@ impl Solution {
         let bs = s.as_bytes();
         let mut j = bs.len();
         while j > 0 && bs[j - 1] == b'1' {
-            j-=1;
+            j -= 1;
         }
         for i in (0..j).rev() {
             if bs[i] == b'1' {

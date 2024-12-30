@@ -16,6 +16,6 @@ impl Solution {
         while let Some(x) = stack.pop() {
             map.insert(x, -1);
         }
-        nums1.iter().map(|x| *map.get(x).unwrap() ).collect()
+        nums1.iter().map(|x| *map.get(x).unwrap()).collect()
     }
 }

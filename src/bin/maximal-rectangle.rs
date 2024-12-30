@@ -1,6 +1,4 @@
-fn main() {
-
-}
+fn main() {}
 
 struct Solution;
 
@@ -14,11 +12,7 @@ impl Solution {
         for i in 0..row_num {
             let row = &matrix[i];
             for j in 0..column_num {
-                heights[j] = if row[j] == '1' {
-                    heights[j] + 1
-                } else {
-                    0
-                };
+                heights[j] = if row[j] == '1' { heights[j] + 1 } else { 0 };
             }
             max = std::cmp::max(max, largest_rectangle_area(&heights, &mut stack));
         }

@@ -1,6 +1,6 @@
 fn main() {
     ListNode::print_list(Solution::remove_nth_from_end(
-        ListNode::new_list(&[1,2,3,4]),
+        ListNode::new_list(&[1, 2, 3, 4]),
         2,
     ));
 }

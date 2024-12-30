@@ -51,7 +51,7 @@ impl Solution {
         for i in (0..m).rev() {
             result = result.max(ans[i][0]);
             if result == max {
-                return max
+                return max;
             }
         }
         result

@@ -22,8 +22,8 @@ struct Solution;
 //     }
 //   }
 // }
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 impl Solution {
     pub fn prune_tree(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
         fn helper(root: Rc<RefCell<TreeNode>>) -> Option<Rc<RefCell<TreeNode>>> {
@@ -48,4 +48,3 @@ impl Solution {
         }
     }
 }
-

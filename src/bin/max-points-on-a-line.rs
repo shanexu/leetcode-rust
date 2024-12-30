@@ -34,9 +34,9 @@ fn fraction(mut numerator: i32, mut denominator: i32) -> (i32, i32) {
     let gcd = gcd(numerator, denominator);
     numerator /= gcd;
     denominator /= gcd;
-    if  denominator < 0 {
-        numerator*=-1;
-        denominator*=-1;
+    if denominator < 0 {
+        numerator *= -1;
+        denominator *= -1;
     }
     (numerator, denominator)
 }

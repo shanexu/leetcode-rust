@@ -1,6 +1,6 @@
 fn main() {
     for i in 0..24 {
-        println!("{}", Solution::get_permutation(4, i+1));
+        println!("{}", Solution::get_permutation(4, i + 1));
     }
 }
 
@@ -23,8 +23,8 @@ impl Solution {
             let t = k / f;
             k = k - t * f;
             let target = result[i + t];
-            for j in (i..(i+t)).rev() {
-                result[j+1] = result[j];
+            for j in (i..(i + t)).rev() {
+                result[j + 1] = result[j];
             }
             result[i] = target;
         }

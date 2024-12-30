@@ -1,6 +1,4 @@
-fn main() {
-
-}
+fn main() {}
 
 struct Solution;
 
@@ -28,7 +26,7 @@ impl Solution2 {
         let mut final_prices = prices.clone();
         let mut stack = vec![];
         for i in 0..final_prices.len() {
-            while !stack.is_empty() && prices[stack[stack.len()-1]] >= prices[i] {
+            while !stack.is_empty() && prices[stack[stack.len() - 1]] >= prices[i] {
                 let p = stack.pop().unwrap();
                 final_prices[p] -= prices[i];
             }

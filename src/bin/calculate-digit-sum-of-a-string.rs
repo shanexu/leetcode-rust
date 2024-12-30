@@ -12,13 +12,15 @@ impl Solution {
 
         while bs.len() > k {
             for chunk in bs.chunks(k) {
-                let mut s = chunk.iter().map(|d| (d - b'0') as i32 ).sum::<i32>();
+                let mut s = chunk.iter().map(|d| (d - b'0') as i32).sum::<i32>();
                 let mut count = 0;
                 loop {
                     count += 1;
                     tmp.push((s % 10) as u8 + b'0');
                     s /= 10;
-                    if s == 0 { break; }
+                    if s == 0 {
+                        break;
+                    }
                 }
                 let start_idx = tmp.len() - count;
                 let slice = &mut tmp[start_idx..];

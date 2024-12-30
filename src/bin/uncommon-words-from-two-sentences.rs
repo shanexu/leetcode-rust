@@ -17,7 +17,8 @@ impl Solution {
             *words_count.entry(word).or_insert(0) += 1;
         }
 
-        let uncommon_words: Vec<String> = words_count.iter()
+        let uncommon_words: Vec<String> = words_count
+            .iter()
             .filter_map(|(&word, &count)| {
                 if count == 1 {
                     Some(word.to_string())

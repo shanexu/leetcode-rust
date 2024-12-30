@@ -36,7 +36,7 @@ impl Solution {
                 freq[idx] -= 1;
             }
             if freq[idx] == 0 {
-                continue
+                continue;
             }
             if rr == 0 {
                 if !freq_stack.is_empty() {

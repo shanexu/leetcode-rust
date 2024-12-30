@@ -1,6 +1,4 @@
-fn main() {
-
-}
+fn main() {}
 
 struct Solution;
 
@@ -36,7 +34,10 @@ impl Solution {
             for j in 1..account.len() {
                 let email = &account[j];
                 let root = find(i, &mut parent);
-                merged_accounts.entry(root).or_insert_with(BTreeSet::new).insert(email);
+                merged_accounts
+                    .entry(root)
+                    .or_insert_with(BTreeSet::new)
+                    .insert(email);
             }
         }
 

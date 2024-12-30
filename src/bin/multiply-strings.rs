@@ -21,7 +21,7 @@ impl Solution {
         let pos = out.iter().position(|&x| x != b'0').unwrap_or(out.len());
         let bs = &out[pos..];
         if bs.len() == 0 {
-            return String::from("0")
+            return String::from("0");
         }
         String::from_utf8_lossy(bs).to_string()
     }

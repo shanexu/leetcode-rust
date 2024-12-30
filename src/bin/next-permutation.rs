@@ -1,5 +1,5 @@
 fn main() {
-    let mut vec = vec![2,2,1,1];
+    let mut vec = vec![2, 2, 1, 1];
     Solution::next_permutation(&mut vec);
     println!("{:?}", vec);
 }

@@ -1,16 +1,16 @@
 use leetcode_rust::tree_node::TreeNode;
-fn main() {
-
-}
+fn main() {}
 
 struct Solution;
 
-use std::rc::Rc;
 use std::cell::RefCell;
 use std::mem;
+use std::rc::Rc;
 
 impl Solution {
-    pub fn reverse_odd_levels(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
+    pub fn reverse_odd_levels(
+        root: Option<Rc<RefCell<TreeNode>>>,
+    ) -> Option<Rc<RefCell<TreeNode>>> {
         if root.is_none() {
             return root;
         }
@@ -27,9 +27,9 @@ impl Solution {
                 next_stack.push(node.borrow().right.clone().unwrap());
             }
             if odd {
-                for i in 0..next_stack.len()/2 {
+                for i in 0..next_stack.len() / 2 {
                     let vl = &mut next_stack[i].borrow_mut().val;
-                    let vr = &mut next_stack[next_stack.len()-1-i].borrow_mut().val;
+                    let vr = &mut next_stack[next_stack.len() - 1 - i].borrow_mut().val;
                     mem::swap(vl, vr);
                 }
             }

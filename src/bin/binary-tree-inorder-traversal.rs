@@ -1,5 +1,4 @@
-fn main() {
-}
+fn main() {}
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {

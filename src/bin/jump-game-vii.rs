@@ -7,8 +7,8 @@ fn main() {
 
 struct Solution;
 
-use std::collections::VecDeque;
 use std::collections::HashSet;
+use std::collections::VecDeque;
 
 impl Solution {
     pub fn can_reach(s: String, min_jump: i32, max_jump: i32) -> bool {
@@ -31,7 +31,7 @@ impl Solution {
                     }
                     let left = idx + min_jump;
                     let right = min(n - 1, idx + max_jump);
-                    for i in max(edge+1, left)..=right {
+                    for i in max(edge + 1, left)..=right {
                         if bs[i] == b'0' && !visited.contains(&i) {
                             visited.insert(i);
                             queue.push_back(i);

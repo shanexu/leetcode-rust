@@ -1,6 +1,12 @@
 fn main() {
-    println!("{}", Solution::find_length_of_shortest_subarray(vec![1, 2, 3, 10, 4, 2, 3, 5]));
-    println!("{}", Solution::find_length_of_shortest_subarray(vec![3, 2, 1]));
+    println!(
+        "{}",
+        Solution::find_length_of_shortest_subarray(vec![1, 2, 3, 10, 4, 2, 3, 5])
+    );
+    println!(
+        "{}",
+        Solution::find_length_of_shortest_subarray(vec![3, 2, 1])
+    );
 }
 
 struct Solution;

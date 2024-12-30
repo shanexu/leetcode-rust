@@ -20,7 +20,10 @@ struct StockSpanner {
  */
 impl StockSpanner {
     fn new() -> Self {
-        Self { stack: vec![], size: 0 }
+        Self {
+            stack: vec![],
+            size: 0,
+        }
     }
 
     fn next(&mut self, price: i32) -> i32 {

@@ -10,7 +10,7 @@ impl Solution {
         let low = low as usize;
         let zero = zero as usize;
         let one = one as usize;
-        let mut memo = vec![0;high+1];
+        let mut memo = vec![0; high + 1];
         if zero <= high {
             memo[zero] += 1;
         }
@@ -19,12 +19,12 @@ impl Solution {
         }
         for i in 0..=high {
             if i + zero <= high {
-                memo[i+zero] += memo[i];
-                memo[i+zero] %= MOD
+                memo[i + zero] += memo[i];
+                memo[i + zero] %= MOD
             }
             if i + one <= high {
-                memo[i+one] += memo[i];
-                memo[i+one] %= MOD
+                memo[i + one] += memo[i];
+                memo[i + one] %= MOD
             }
         }
         let mut ans: i64 = 0;

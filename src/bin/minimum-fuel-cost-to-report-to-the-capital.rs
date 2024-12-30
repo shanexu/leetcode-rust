@@ -22,14 +22,14 @@ impl Solution {
             return 0;
         }
         let n = roads.len() + 1;
-        let mut road_map: Vec<Vec<i32>> = vec![vec![];n];
+        let mut road_map: Vec<Vec<i32>> = vec![vec![]; n];
         for road in roads {
             let c1 = road[0];
             let c2 = road[1];
             road_map[c1 as usize].push(c2);
             road_map[c2 as usize].push(c1);
         }
-        let mut stack1:Vec<i32> = vec![];
+        let mut stack1: Vec<i32> = vec![];
         let mut stack2: Vec<i32> = vec![];
 
         let mut parents = vec![-1; n];
@@ -58,10 +58,10 @@ impl Solution {
             }
             cost += i as i64;
             let parent_city = parents[c as usize];
-            let parent_cost  = &mut costs[parent_city as usize];
+            let parent_cost = &mut costs[parent_city as usize];
             let parent_num = &mut nums[parent_city as usize];
-            *parent_cost+=cost;
-            *parent_num+=num;
+            *parent_cost += cost;
+            *parent_num += num;
         }
         costs[0]
     }

@@ -1,6 +1,4 @@
-fn main() {
-
-}
+fn main() {}
 
 /// 完全和 beautiful-towers-i 一样的代码
 struct Solution;

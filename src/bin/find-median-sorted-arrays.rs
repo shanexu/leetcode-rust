@@ -119,8 +119,8 @@ fn find_median_sorted_arrays_main(
             nums1_begin = nums1_mid_idx;
         } else {
             nums1_length = nums1_length - (nums1_mid_idx - nums1_begin);
-			nums2_length = nums2_length - (nums1_mid_idx - nums1_begin);
-			nums2_begin = nums2_begin + (nums1_mid_idx - nums1_begin);
+            nums2_length = nums2_length - (nums1_mid_idx - nums1_begin);
+            nums2_begin = nums2_begin + (nums1_mid_idx - nums1_begin);
         }
     }
 }

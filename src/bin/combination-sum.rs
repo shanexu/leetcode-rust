@@ -25,7 +25,7 @@ fn solve(results: &mut Vec<Vec<i32>>, current: Vec<i32>, candidates: &[i32], tar
         if c > target {
             continue;
         }
-        if target >= 2*c || target == c {
+        if target >= 2 * c || target == c {
             let (_, cs) = candidates.split_at(i);
             let mut new_current = current.clone();
             new_current.push(c);

@@ -15,7 +15,11 @@ fn main() {
             vec![16, 4],
             vec![17, 5],
             vec![18, 1]
-        ]).iter().map(|x| format!("{:.5}", x)).collect::<Vec<String>>().join(", "),
+        ])
+        .iter()
+        .map(|x| format!("{:.5}", x))
+        .collect::<Vec<String>>()
+        .join(", "),
         "2.75000, 0.50000, 1.50000, 0.66667, 0.25000, -1.00000"
     );
 }
@@ -30,7 +34,7 @@ impl Solution {
         for i in (0..n).rev() {
             while stack.len() > 0 {
                 let car0 = &cars[i];
-                let i1 = stack[stack.len()-1];
+                let i1 = stack[stack.len() - 1];
                 let car1 = &cars[i1];
                 if car0[1] > car1[1] {
                     let t01 = (car1[0] - car0[0]) as f64 / (car0[1] - car1[1]) as f64;

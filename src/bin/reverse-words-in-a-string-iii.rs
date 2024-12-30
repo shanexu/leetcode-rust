@@ -1,5 +1,8 @@
 fn main() {
-    println!("{}", Solution::reverse_words("Let's take LeetCode contest".to_string()));
+    println!(
+        "{}",
+        Solution::reverse_words("Let's take LeetCode contest".to_string())
+    );
 }
 
 struct Solution;

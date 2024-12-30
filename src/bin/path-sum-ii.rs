@@ -1,6 +1,6 @@
 // Definition for a binary tree node.
 
-use std::cell::{RefCell, Ref};
+use std::cell::{Ref, RefCell};
 use std::rc::Rc;
 
 fn main() {}
@@ -39,7 +39,13 @@ impl Solution {
     }
 }
 
-fn visit(node: Ref<TreeNode>, path: &mut Vec<i32>, results: &mut Vec<Vec<i32>>, sum: i32, target_sum: i32) {
+fn visit(
+    node: Ref<TreeNode>,
+    path: &mut Vec<i32>,
+    results: &mut Vec<Vec<i32>>,
+    sum: i32,
+    target_sum: i32,
+) {
     path.push(node.val);
     let sum = sum + node.val;
     if sum == target_sum && node.left.is_none() && node.right.is_none() {

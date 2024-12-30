@@ -9,7 +9,7 @@ struct Solution {}
 impl Solution {
     pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
         if nums.len() == 0 {
-            return 0
+            return 0;
         }
         let mut p = nums[0];
         let mut idx: usize = 0;
@@ -17,13 +17,13 @@ impl Solution {
             let x = nums[i];
             if p != x {
                 p = x;
-                idx+=1;
+                idx += 1;
                 if idx != i {
                     nums[idx] = x;
                 }
             }
         }
-        (idx+1) as i32
+        (idx + 1) as i32
     }
 }
 

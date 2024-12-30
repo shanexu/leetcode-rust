@@ -11,8 +11,12 @@ impl Solution {
         match nums.binary_search(&target) {
             Err(_) => vec![-1, -1],
             Ok(_) => {
-                let l = nums.binary_search_by(|&p| (p*2).cmp(&(target*2-1))).unwrap_err();
-                let r = nums.binary_search_by(|&p| (p*2).cmp(&(target*2+1))).unwrap_err();
+                let l = nums
+                    .binary_search_by(|&p| (p * 2).cmp(&(target * 2 - 1)))
+                    .unwrap_err();
+                let r = nums
+                    .binary_search_by(|&p| (p * 2).cmp(&(target * 2 + 1)))
+                    .unwrap_err();
                 vec![l as i32, (r - 1) as i32]
             }
         }

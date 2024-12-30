@@ -13,7 +13,7 @@ impl Solution {
         let mut sign: i32 = 1;
         let mut numerator = 0;
         let mut denominator = 0;
-        let mut ans : Fraction = Fraction::new(0 ,1);
+        let mut ans: Fraction = Fraction::new(0, 1);
         if bs[0] == b'-' {
             denominator = 1;
         } else if bs[0] == b'+' {
@@ -58,7 +58,7 @@ impl Solution {
 #[derive(Debug, Eq, PartialEq)]
 enum ParseState {
     ReadNumerator,
-    ReadDenominator
+    ReadDenominator,
 }
 
 #[derive(Debug, Eq, PartialEq)]

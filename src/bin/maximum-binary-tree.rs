@@ -1,6 +1,5 @@
 use leetcode_rust::tree_node::TreeNode;
-fn main() {
-}
+fn main() {}
 
 struct Solution;
 

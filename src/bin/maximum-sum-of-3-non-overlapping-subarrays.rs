@@ -1,7 +1,7 @@
 fn main() {
     println!(
         "{:?}",
-        Solution::max_sum_of_three_subarrays(vec![4,5,10,6,11,17,4,11,1,3], 1)
+        Solution::max_sum_of_three_subarrays(vec![4, 5, 10, 6, 11, 17, 4, 11, 1, 3], 1)
     );
 }
 

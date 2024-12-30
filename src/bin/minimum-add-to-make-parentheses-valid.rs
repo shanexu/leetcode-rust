@@ -1,5 +1,8 @@
 fn main() {
-    println!("{}", Solution::min_add_to_make_valid("))((()()".to_string()));
+    println!(
+        "{}",
+        Solution::min_add_to_make_valid("))((()()".to_string())
+    );
 }
 
 struct Solution;

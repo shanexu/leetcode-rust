@@ -1,8 +1,6 @@
 use leetcode_rust::tree_node::TreeNode;
 
-fn main() {
-
-}
+fn main() {}
 
 struct Solution;
 
@@ -24,8 +22,8 @@ struct Solution;
 //     }
 //   }
 // }
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 impl Solution {
     pub fn largest_values(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
         let mut ans = vec![];

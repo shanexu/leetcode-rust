@@ -1,7 +1,5 @@
 use leetcode_rust::tree_node::TreeNode;
-fn main() {
-
-}
+fn main() {}
 
 struct Solution;
 
@@ -23,8 +21,8 @@ struct Solution;
 //     }
 //   }
 // }
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 impl Solution {
     pub fn range_sum_bst(root: Option<Rc<RefCell<TreeNode>>>, low: i32, high: i32) -> i32 {
         fn helper(node: Rc<RefCell<TreeNode>>, low: i32, high: i32) -> i32 {

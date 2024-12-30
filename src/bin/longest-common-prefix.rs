@@ -1,6 +1,20 @@
 fn main() {
-    println!("{:?}", Solution::longest_common_prefix(vec![String::from("flower"), String::from("flow"), String::from("flight")]));
-    println!("{:?}", Solution::longest_common_prefix(vec![String::from("dog"), String::from("racecar"), String::from("car")]))
+    println!(
+        "{:?}",
+        Solution::longest_common_prefix(vec![
+            String::from("flower"),
+            String::from("flow"),
+            String::from("flight")
+        ])
+    );
+    println!(
+        "{:?}",
+        Solution::longest_common_prefix(vec![
+            String::from("dog"),
+            String::from("racecar"),
+            String::from("car")
+        ])
+    )
 }
 
 struct Solution {}
@@ -18,7 +32,10 @@ impl Solution {
         let tail = &strs[1..];
         for i in 0..head.len() {
             let c = head.chars().nth(i).unwrap();
-            if tail.into_iter().all(|s| s.chars().nth(i).filter(|&x| c == x).is_some()) {
+            if tail
+                .into_iter()
+                .all(|s| s.chars().nth(i).filter(|&x| c == x).is_some())
+            {
                 prefix_vec.push(c as u8);
             } else {
                 break;
