@@ -5,6 +5,9 @@ fn main() {
     );
 }
 
+/// 一开始丧心病狂地给人家方法签名都改了 ```pub fn backspace_compare(mut s: String, mut t: String)```
+/// 用原来的空间就不算有空间开销了。后来想到其实可以直接反向比较，从字符串结尾比较，问题就解决了。这题目应该加个
+/// 限制条件，不允许修改原始字符串。
 struct Solution;
 
 impl Solution {
@@ -21,7 +24,7 @@ impl Solution {
             if s_b != t_b {
                 return false;
             }
-            if s_b == t_b && s_b == 0 {
+            if s_b == 0 && t_b == 0 {
                 break;
             }
         }
