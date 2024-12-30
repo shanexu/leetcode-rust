@@ -1,4 +1,15 @@
-fn main() {}
+fn main() {
+    println!(
+        "{}",
+        Solution::largest_triangle_area(vec![
+            vec![0, 0],
+            vec![0, 1],
+            vec![1, 0],
+            vec![0, 2],
+            vec![2, 0]
+        ])
+    );
+}
 
 struct Solution;
 
@@ -7,8 +18,8 @@ impl Solution {
         let n = points.len();
         let mut ans = 0.0;
         for i in 0..n {
-            for j in i+1..n {
-                for k in j+1..n {
+            for j in i + 1..n {
+                for k in j + 1..n {
                     let a = triangle_area(&points[i], &points[j], &points[k]);
                     if a > ans {
                         ans = a;
