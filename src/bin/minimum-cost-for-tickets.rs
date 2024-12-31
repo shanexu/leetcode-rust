@@ -19,27 +19,32 @@ impl Solution {
         let mut ans = vec![0; range];
         ans[0] = c1.min(c7).min(c30);
         for i in 1..days.len() {
+            let current_day = days[i] as usize;
+            let current_day_idx = current_day - start_day;
+
             let prev_day = days[i - 1] as usize;
             let prev_day_idx = prev_day - start_day;
             let prev_day_cost = ans[prev_day_idx];
-            let current_day = days[i] as usize;
-            let current_day_idx = current_day - start_day;
             for j in (prev_day_idx + 1)..current_day_idx {
                 ans[j] = prev_day_cost;
             }
+
             let mut current_day_cost = ans[current_day_idx - 1] + c1;
+
             if current_day_idx < 7 {
                 current_day_cost = current_day_cost.min(c7);
             }
             for t in current_day_idx.checked_sub(7).unwrap_or(0)..current_day_idx {
                 current_day_cost = current_day_cost.min(ans[t] + c7);
             }
+
             if current_day_idx < 30 {
                 current_day_cost = current_day_cost.min(c30);
             }
             for t in current_day_idx.checked_sub(30).unwrap_or(0)..current_day_idx {
                 current_day_cost = current_day_cost.min(ans[t] + c30);
             }
+
             ans[current_day_idx] = current_day_cost;
         }
         ans[ans.len() - 1]
