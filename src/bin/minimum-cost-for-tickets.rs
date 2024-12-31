@@ -1,8 +1,5 @@
 fn main() {
-    println!(
-        "{}",
-        Solution::mincost_tickets(vec![364], vec![3, 3, 1])
-    );
+    println!("{}", Solution::mincost_tickets(vec![364], vec![3, 3, 1]));
     // println!(
     //     "{}",
     //     Solution::mincost_tickets(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 30, 31], vec![2, 7, 15])
@@ -34,13 +31,13 @@ impl Solution {
             if current_day_idx < 7 {
                 current_day_cost = current_day_cost.min(c7);
             }
-            for t in (if current_day_idx <  7 { 0 } else { current_day_idx - 7 })..current_day_idx {
+            for t in current_day_idx.checked_sub(7).unwrap_or(0)..current_day_idx {
                 current_day_cost = current_day_cost.min(ans[t] + c7);
             }
             if current_day_idx < 30 {
                 current_day_cost = current_day_cost.min(c30);
             }
-            for t in (if current_day_idx < 30 { 0 } else { current_day_idx - 30 })..current_day_idx {
+            for t in current_day_idx.checked_sub(30).unwrap_or(0)..current_day_idx {
                 current_day_cost = current_day_cost.min(ans[t] + c30);
             }
             ans[current_day_idx] = current_day_cost;
