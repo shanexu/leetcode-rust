@@ -21,7 +21,7 @@ impl Solution {
                 }
             }
             memo[i] = 0;
-            return false;
+            false
         }
         let mut memo = vec![-1; s.len()];
         helper(0, &s, &word_dict, &mut memo)
