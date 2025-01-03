@@ -48,3 +48,25 @@ fn largest_square(heights: &Vec<i32>, stack: &mut Vec<usize>) -> i32 {
 
     res
 }
+
+struct Solution2;
+
+impl Solution2 {
+    pub fn maximal_square(matrix: Vec<Vec<char>>) -> i32 {
+        let n = matrix.len();
+        let m = matrix[0].len();
+        let mut dp = vec![vec![0; m + 1]; n + 1];
+        let mut ans = 0;
+        for i in (0..n).rev() {
+            for j in (0..m).rev() {
+                if matrix[i][j] == '0' {
+                    dp[i][j] = 0;
+                    continue;
+                }
+                dp[i][j] = 1 + dp[i][j + 1].min(dp[i + 1][j]).min(dp[i + 1][j + 1]);
+                ans = ans.max(dp[i][j]);
+            }
+        }
+        ans * ans
+    }
+}
