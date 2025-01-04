@@ -74,7 +74,8 @@ fn infix_to_rpn(input: &str) -> String {
 }
 
 fn main() {
-    let input = "-20 - (30 + 42) * (-22) / 55";
+    // let input = "-20 - (30 + 42) * (-22) / 55";
+    let input = "2-1 + 2";
     let rpn = infix_to_rpn(input);
     println!("Infix expression: {}", input);
     println!("RPN expression: {}", rpn);
