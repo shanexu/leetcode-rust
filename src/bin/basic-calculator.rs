@@ -37,13 +37,13 @@ impl Solution {
                             apply_op(top, &mut operands)
                         }
                     }
-                } else if is_operator(b) {
+                } else {
                     if is_last_char_open && b == b'-' {
                         b = b'~';
                     }
                     is_last_char_open = false;
                     while let Some(&top) = operators.last() {
-                        if is_operator(top) && precedence(top) >= precedence(b) {
+                        if top != b'(' && precedence(top) >= precedence(b) {
                             apply_op(operators.pop().unwrap(), &mut operands);
                         } else {
                             break;
