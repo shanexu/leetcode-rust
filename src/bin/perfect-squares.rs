@@ -14,7 +14,7 @@ impl Solution {
                 return memo[n];
             }
             let root = (n as f64).sqrt() as usize;
-            let mut ans = i32::max_value();
+            let mut ans = i32::MAX;
             for i in (1..=root).rev() {
                 ans = ans.min(helper(n - i * i, memo));
             }
@@ -24,5 +24,25 @@ impl Solution {
         }
         let n = n as usize;
         helper(n as usize, &mut vec![-1; n + 1])
+    }
+}
+
+struct Solution2;
+
+impl Solution2 {
+    pub fn num_squares(n: i32) -> i32 {
+        let n = n as usize;
+        let mut dp: Vec<i32> = vec![0; n + 1];
+        dp[0] = 0;
+        dp[1] = 1;
+        for i in 2..=n {
+            dp[i] = i as i32;
+            let mut x = 1;
+            while x * x <= i {
+                dp[i] = dp[i].min(dp[i - x * x] + 1);
+                x += 1;
+            }
+        }
+        dp[n]
     }
 }
