@@ -46,3 +46,67 @@ impl Solution2 {
         dp[n]
     }
 }
+
+struct Solution3;
+
+impl Solution3 {
+    pub fn num_squares(n: i32) -> i32 {
+        let n = n as usize;
+        let mut arr = vec![];
+        for i in 1.. {
+            let s = i * i;
+            if s > n {
+                break;
+            }
+            arr.push(s);
+        }
+        let mut dp: Vec<i32> = vec![0; n + 1];
+        for i in 1..=n {
+            dp[i] = i as i32;
+        }
+        for i in 1..=n {
+            for j in 0..arr.len() {
+                if i >= arr[j] {
+                    dp[i] = dp[i].min(dp[i - arr[j]] + 1);
+                }
+            }
+        }
+        dp[n]
+    }
+}
+
+/// https://en.wikipedia.org/wiki/Lagrange%27s_four-square_theorem
+struct Solution4;
+
+impl Solution4 {
+    pub fn num_squares(n: i32) -> i32 {
+        fn is_square(n: i32) -> bool {
+            let r = (n as f64).sqrt() as i32;
+            r * r == n
+        }
+
+        if is_square(n) {
+            return 1;
+        }
+
+        for i in 1.. {
+            let s = i * i;
+            if s > n {
+                break;
+            }
+            if is_square(n - s) {
+                return 2;
+            }
+        }
+
+        let mut n = n;
+        while n > 0 && n % 4 == 0 {
+            n /= 4;
+        }
+        if n % 8 == 7 {
+            return 4;
+        }
+
+        3
+    }
+}
