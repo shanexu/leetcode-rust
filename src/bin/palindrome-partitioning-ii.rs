@@ -1,34 +1,15 @@
 fn main() {
-    println!(
-        "{}",
-        Solution::min_cut("ababababababababababababcbabababababababababababa".to_string())
-    );
     // println!(
     //     "{}",
-    //     Solution::min_cut("ccbc".to_string())
+    //     Solution::min_cut("ababababababababababababcbabababababababababababa".to_string())
     // );
+    println!("{}", Solution::min_cut("cbcc".to_string()));
 }
 
 struct Solution;
 
 impl Solution {
     pub fn min_cut(s: String) -> i32 {
-        fn dfs(start: usize, dp: &Vec<Vec<bool>>, memo: &mut Vec<i32>) -> i32 {
-            if start == dp.len() {
-                return 0;
-            }
-            if memo[start] != -1 {
-                return memo[start];
-            }
-            let mut ans = i32::MAX;
-            for i in start..dp.len() {
-                if dp[start][i] {
-                    ans = ans.min(dfs(i + 1, dp, memo) + 1);
-                }
-            }
-            memo[start] = ans;
-            ans
-        }
         let s = s.as_bytes();
         let n = s.len();
         let mut dp = vec![vec![true; n]; n];
@@ -37,6 +18,15 @@ impl Solution {
                 dp[i][j] = s[i] == s[j] && dp[i + 1][j - 1];
             }
         }
-        dfs(0, &dp, &mut vec![-1; n]) - 1
+        let mut ans = vec![i32::MAX; n];
+        for i in 0..n {
+            let prev = if i == 0 { 0 } else { ans[i - 1] };
+            for j in i..n {
+                if dp[i][j] {
+                    ans[j] = ans[j].min(prev + 1);
+                }
+            }
+        }
+        ans[n - 1] - 1
     }
 }
