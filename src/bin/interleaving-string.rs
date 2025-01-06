@@ -1,11 +1,7 @@
 fn main() {
     println!(
         "{}",
-        Solution::is_interleave(
-            "aabcc".to_string(),
-            "dbbca".to_string(),
-            "aadbbcbcac".to_string()
-        )
+        Solution::is_interleave("a".to_string(), "ab".to_string(), "aba".to_string())
     );
 }
 
@@ -25,7 +21,7 @@ impl Solution {
             if s1.len() == i1 && s2.len() == i2 && s3.len() == i3 {
                 return 1;
             }
-            let idx = s2.len() * i1 + i2 + s1.len() * s2.len() * i3;
+            let idx = (s2.len() + 1) * i1 + i2;
             if memo[idx] != -1 {
                 return memo[idx];
             }
@@ -69,7 +65,7 @@ impl Solution {
             0,
             0,
             0,
-            &mut vec![-1; (s1.len() + 1) * (s2.len() + 1) * (s3.len() + 1)],
+            &mut vec![-1; (s1.len() + 1) * (s2.len() + 1)],
         ) == 1
     }
 }
