@@ -36,9 +36,9 @@ impl Solution {
             if let Some(&v) = memo.get(&(s1, s2)) {
                 return v;
             }
-            let mut counter1 = vec![0; 26];
-            let mut counter1r = vec![0; 26];
-            let mut counter2 = vec![0; 26];
+            let mut counter1 = vec![0i8; 26];
+            let mut counter1r = vec![0i8; 26];
+            let mut counter2 = vec![0i8; 26];
             let n = s1.len();
             for i in 0..(n - 1) {
                 let b1 = s1[i];
