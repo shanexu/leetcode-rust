@@ -1,8 +1,8 @@
 fn main() {
-    // println!(
-    //     "{}",
-    //     Solution::min_cut("ababababababababababababcbabababababababababababa".to_string())
-    // );
+    println!(
+        "{}",
+        Solution::min_cut("ababababababababababababcbabababababababababababa".to_string())
+    );
     println!("{}", Solution::min_cut("cbcc".to_string()));
 }
 
