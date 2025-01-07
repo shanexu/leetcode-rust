@@ -31,3 +31,28 @@ impl Solution {
         true
     }
 }
+
+struct Solution2;
+
+impl Solution2 {
+    pub fn lemonade_change(bills: Vec<i32>) -> bool {
+        let mut n5 = 0;
+        let mut n10 = 0;
+        for b in bills {
+            match (b, n5, n10) {
+                (5, _, _) => n5 += 1,
+                (10, 1.., _) => {
+                    n10 += 1;
+                    n5 -= 1;
+                }
+                (20, 1.., 1..) => {
+                    n10 -= 1;
+                    n5 -= 1;
+                }
+                (20, 3.., 0) => n5 -= 3,
+                _ => return false,
+            }
+        }
+        true
+    }
+}
