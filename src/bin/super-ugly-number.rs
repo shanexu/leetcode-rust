@@ -17,18 +17,28 @@ impl Solution {
         for &p in primes.iter() {
             heap.push(Reverse((p as i64 * ans[0], p, 0)));
         }
-        let Reverse((mut value, mut prime, mut idx)) = heap.pop().unwrap();
         for _ in 1..n {
-            let last_value = value;
-            ans.push(last_value);
-            heap.push(Reverse((prime as i64 * ans[idx + 1], prime, idx + 1)));
-            while !heap.is_empty() {
-                let Reverse(t) = heap.pop().unwrap();
-                (value, prime, idx) = t;
-                if value != last_value {
+            let last_value;
+            {
+                let mut peek = heap.peek_mut().unwrap();
+                last_value = peek.0 .0;
+                ans.push(last_value);
+                *peek = Reverse((
+                    peek.0 .1 as i64 * ans[peek.0 .2 + 1],
+                    peek.0 .1,
+                    peek.0 .2 + 1,
+                ));
+            }
+            loop {
+                let mut peek = heap.peek_mut().unwrap();
+                if peek.0 .0 != last_value {
                     break;
                 }
-                heap.push(Reverse((prime as i64 * ans[idx + 1], prime, idx + 1)));
+                *peek = Reverse((
+                    peek.0 .1 as i64 * ans[peek.0 .2 + 1],
+                    peek.0 .1,
+                    peek.0 .2 + 1,
+                ));
             }
         }
         ans[n - 1] as i32
