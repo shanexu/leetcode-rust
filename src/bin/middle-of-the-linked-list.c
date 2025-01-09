@@ -11,17 +11,11 @@
  */
 struct ListNode *middleNode(struct ListNode *head) {
   int size = 0;
-  struct ListNode *curr = head;
-  while (curr != NULL) {
-    curr = curr->next;
-    size++;
+  struct ListNode *slow = head;
+  struct ListNode *fast = head;
+  while (fast != NULL && fast->next != NULL) {
+    slow = slow->next;
+    fast = fast->next->next;
   }
-  size /= 2;
-  int i = 0;
-  curr = head;
-  while (i < size) {
-    curr = curr->next;
-    i++;
-  }
-  return curr;
+  return slow;
 }
