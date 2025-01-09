@@ -29,17 +29,15 @@ bool isPalindrome(struct ListNode *head) {
     curr = next;
     i++;
   }
-  struct ListNode *left = prev;
-  struct ListNode *right = curr;
   if ((size & 1) == 1) {
-    right = right->next;
+    curr = curr->next;
   }
-  while (left != NULL) {
-    if (left->val != right->val) {
+  while (prev != NULL) {
+    if (prev->val != curr->val) {
       return false;
     }
-    left = left->next;
-    right = right->next;
+    prev = prev->next;
+    curr = curr->next;
   }
   return true;
 }
