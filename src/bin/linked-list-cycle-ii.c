@@ -11,6 +11,7 @@
  */
 struct ListNode *detectCycle(struct ListNode *head) {
   struct ListNode *fast = head;
+  struct ListNode *middle = head;
   struct ListNode *slow = head;
   if (head == NULL) {
     return NULL;
@@ -24,8 +25,21 @@ struct ListNode *detectCycle(struct ListNode *head) {
     if (fast == NULL) {
       return NULL;
     }
+    fast = fast->next;
+    if (fast == NULL) {
+      return NULL;
+    }
+    middle = middle->next->next;
     slow = slow->next;
     if (fast == slow) {
+      break;
+    }
+    if (fast == middle) {
+      slow = middle;
+      break;
+    }
+    if (middle == slow) {
+      fast = middle;
       break;
     }
   }
