@@ -1,5 +1,4 @@
 #include "list_node.h"
-#include <cstddef>
 #include <stdbool.h>
 #include <stdlib.h>
 
