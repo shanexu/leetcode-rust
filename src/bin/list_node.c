@@ -5,16 +5,21 @@
 void print_list(struct ListNode *head) {
   struct ListNode *node = head;
   while (node != NULL) {
-    printf("%d\n", node->val);
+    printf("%d ", node->val);
     node = node->next;
   }
+  printf("\n");
 }
 
 struct ListNode *create_list(int n) {
+  return create_list_from_to(0, n - 1);
+}
+
+struct ListNode *create_list_from_to(int from, int to) {
   struct ListNode *head = NULL;
   struct ListNode *current = NULL;
 
-  for (int i = 0; i < n; i++) {
+  for (int i = from; i <= to; i++) {
     struct ListNode *newNode =
         (struct ListNode *)malloc(sizeof(struct ListNode));
     newNode->val = i;
