@@ -10,7 +10,6 @@
  * };
  */
 struct ListNode *middleNode(struct ListNode *head) {
-  int size = 0;
   struct ListNode *slow = head;
   struct ListNode *fast = head;
   while (fast != NULL && fast->next != NULL) {
