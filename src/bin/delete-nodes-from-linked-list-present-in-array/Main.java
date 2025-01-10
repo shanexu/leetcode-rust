@@ -7,14 +7,11 @@ class Solution {
             set.set(n);
         }
         ListNode dummy = new ListNode(0, head);
-        ListNode prev = dummy;
-        ListNode curr = head;
-        while (curr != null) {
-            if (set.get(curr.val)) {
-                prev.next = curr.next;
-                curr = prev.next;
+        ListNode curr = dummy;
+        while (curr.next != null) {
+            if (set.get(curr.next.val)) {
+                curr.next = curr.next.next;
             } else {
-                prev = curr;
                 curr = curr.next;
             }
         }
