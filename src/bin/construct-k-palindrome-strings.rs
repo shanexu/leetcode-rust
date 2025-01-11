@@ -14,13 +14,8 @@ impl Solution {
         let mut p = 0; // 奇数
         let mut q = 0; // 偶数
         for f in freq {
-            if f == 0 {
-                continue;
-            }
-            if f & 1 == 1 {
-                p += 1;
-            }
-            q += f / 2;
+            p += f & 1;
+            q += f >> 1;
         }
         k >= p && k <= p + 2 * q
     }
