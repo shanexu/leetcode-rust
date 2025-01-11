@@ -12,46 +12,29 @@ impl Solution {
         let mut m1 = None;
         let mut m2 = None;
         let mut m3 = None;
+        let mut tmp: Option<i32>;
         for num in nums {
-            match (m1, m2, m3) {
-                (None, _, _) => {
-                    m1 = Some(num);
-                }
-                (Some(v1), None, None) => {
-                    if num > v1 {
-                        m1 = Some(num);
-                        m2 = Some(v1);
-                    } else if num < v1 {
-                        m2 = Some(num);
-                    }
-                }
-                (Some(v1), Some(v2), None) => {
-                    if num > v1 {
-                        m1 = Some(num);
-                        m2 = Some(v1);
-                        m3 = Some(v2);
-                    } else if num < v1 && num > v2 {
-                        m2 = Some(num);
-                        m3 = Some(v2);
-                    } else if num < v2 {
-                        m3 = Some(num);
-                    }
-                }
-                (Some(v1), Some(v2), Some(v3)) => {
-                    if num > v1 {
-                        m1 = Some(num);
-                        m2 = Some(v1);
-                        m3 = Some(v2);
-                    } else if num < v1 && num > v2 {
-                        m2 = Some(num);
-                        m3 = Some(v2);
-                    } else if num < v2 && num > v3 {
-                        m3 = Some(num);
-                    }
-                }
-                _ => unreachable!(),
-            }
+            (m1, tmp) = compare(m1, Some(num));
+            (m2, tmp) = compare(m2, tmp);
+            (m3, _) = compare(m3, tmp);
         }
         m3.unwrap_or(m1.unwrap())
+    }
+}
+
+#[inline(always)]
+fn compare(u: Option<i32>, v: Option<i32>) -> (Option<i32>, Option<i32>) {
+    match (u, v) {
+        (_, None) => (u, None),
+        (None, _) => (v, None),
+        (Some(x), Some(y)) => {
+            if x > y {
+                (u, v)
+            } else if x < y {
+                (v, u)
+            } else {
+                (u, None)
+            }
+        }
     }
 }
