@@ -10,8 +10,8 @@ impl Solution {
         let s1: i32 = alice_sizes.iter().sum();
         let s2: i32 = bob_sizes.iter().sum();
         let d = (s2 - s1) / 2;
-        let set1 = alice_sizes.iter().cloned().collect::<HashSet<_>>();
-        let set2 = bob_sizes.iter().cloned().collect::<HashSet<_>>();
+        let set1: HashSet<i32> = alice_sizes.into_iter().collect();
+        let set2: HashSet<i32> = bob_sizes.into_iter().collect();
         let mut ans = vec![0; 2];
         for &a in set1.iter() {
             let b = a + d;
