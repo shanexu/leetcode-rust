@@ -1,39 +1,42 @@
 fn main() {
-    println!("{}", Solution::min_remove_to_make_valid("lee(t(c)o)de)".to_string()));
+    println!(
+        "{}",
+        Solution::min_remove_to_make_valid("lee(t(c)o)de)".to_string())
+    );
 }
 
 struct Solution;
 
 impl Solution {
-    pub fn min_remove_to_make_valid(s: String) -> String {
-        let s = s.as_bytes();
-        let mut t = vec![];
-        let mut close = 0;
-        for &b in s.iter().rev() {
+    pub fn min_remove_to_make_valid(mut s: String) -> String {
+        let s = unsafe { s.as_bytes_mut() };
+        let n = s.len();
+        let mut count = 0;
+        for i in (0..n).rev() {
+            let b = s[i];
             if b == b')' {
-                close += 1;
-                t.push(b);
+                count += 1;
             } else if b == b'(' {
-                if close > 0 {
-                    close -= 1;
-                    t.push(b);
+                if count > 0 {
+                    count -= 1;
+                } else {
+                    s[i] = 0;
                 }
-            } else {
-                t.push(b);
             }
         }
-        let mut ans = vec![];
-        let mut open = 0;
-        for &b in t.iter().rev() {
+        let mut ans = Vec::with_capacity(n);
+        count = 0;
+        for i in 0..n {
+            let b = s[i];
             if b == b'(' {
-                open += 1;
+                count += 1;
                 ans.push(b);
             } else if b == b')' {
-                if open > 0 {
-                    open -= 1;
+                if count > 0 {
+                    count -= 1;
                     ans.push(b);
                 }
-            } else {
+            } else if b != 0 {
                 ans.push(b);
             }
         }
