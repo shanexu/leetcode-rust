@@ -37,7 +37,7 @@ impl Solution {
                 }
             }
         }
-        let mut ans: Vec<String> = Vec::new();
+        let mut ans: Vec<String> = Vec::with_capacity(k);
         while let Some((_, w)) = heap.pop() {
             ans.push(w.clone());
         }
