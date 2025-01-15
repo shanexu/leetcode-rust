@@ -6,3 +6,12 @@ pub fn bit_count(mut var0: u32) -> u32 {
     var0 += var0 >> 16;
     var0 & 63
 }
+
+fn gcd(mut a: i32, mut b: i32) -> i32 {
+    while b != 0 {
+        let temp = b;
+        b = a % b;
+        a = temp;
+    }
+    a.abs()
+}
