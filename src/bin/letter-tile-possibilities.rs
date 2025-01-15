@@ -7,7 +7,6 @@ fn main() {
 
 struct Solution;
 
-use std::collections::HashMap;
 impl Solution {
     pub fn num_tile_possibilities(tiles: String) -> i32 {
         fn helper(
@@ -15,13 +14,13 @@ impl Solution {
             j: usize,
             freq: &Vec<usize>,
             remain: &Vec<usize>,
-            memo: &mut HashMap<(usize, usize), i32>,
+            memo: &mut Vec<Vec<i32>>,
         ) -> i32 {
             if i == 0 {
                 return 1;
             }
-            if let Some(&v) = memo.get(&(i, j)) {
-                return v;
+            if memo[j][i] != 0 {
+                return memo[j][i];
             }
             let mut ans = 0;
             for k in i.checked_sub(remain[j + 1]).unwrap_or(0)..=freq[j].min(i) {
@@ -29,7 +28,7 @@ impl Solution {
                     / factorial(k)
                     / factorial(i - k);
             }
-            memo.insert((i, j), ans);
+            memo[j][i] = ans;
             ans
         }
         let tiles = tiles.as_bytes();
@@ -41,11 +40,11 @@ impl Solution {
             .iter()
             .filter_map(|&x| if x != 0 { Some(x) } else { None })
             .collect();
-        let mut remain = vec![0; freq.len()+1];
+        let mut remain = vec![0; freq.len() + 1];
         for i in (0..freq.len()).rev() {
             remain[i] = remain[i + 1] + freq[i];
         }
-        let mut memo = HashMap::new();
+        let mut memo = vec![vec![0; tiles.len() + 1]; freq.len() + 1];
         let mut ans = 0;
         for i in (1..=tiles.len()).rev() {
             ans += helper(i, 0, &freq, &remain, &mut memo);
