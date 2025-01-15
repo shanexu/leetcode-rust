@@ -1,5 +1,5 @@
 fn main() {
-    let mut vec: Vec<i32> = vec![1,2,3,4,5,6,7];
+    let mut vec: Vec<i32> = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     Solution::rotate(&mut vec, 2);
     println!("{:?}", vec);
 }
