@@ -18,10 +18,9 @@ impl Solution {
         let mut ans = n + 1;
 
         while win_end < n {
-            if win_sum < target {
-                win_sum += nums[win_end];
-                win_end += 1;
-            }
+            win_sum += nums[win_end];
+            win_end += 1;
+
             while win_begin < win_end && win_sum >= target {
                 ans = ans.min(win_end - win_begin);
                 win_sum -= nums[win_begin];
