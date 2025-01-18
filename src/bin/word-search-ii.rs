@@ -27,16 +27,19 @@ impl Solution {
             }
         }
         let mut trie = Trie::new();
-        words.into_iter().for_each(|word| {
+        'out: for word in words {
             let mut board_freq = board_freq.clone();
-            for &b in word.as_bytes() {
+            let bs = word.as_bytes();
+            for &b in bs {
                 if board_freq[b as usize - 'a' as usize] == 0 {
-                    return;
+                    continue 'out;
                 }
                 board_freq[b as usize - 'a' as usize] -= 1;
             }
-            trie.insert(word);
-        });
+            let reverse = board_freq[bs[0] as usize - 'a' as usize]
+                > board_freq[bs[bs.len() - 1] as usize - 'a' as usize];
+            trie.insert(word, reverse);
+        }
         let mut found_words = vec![];
         for i in 0..rows {
             for j in 0..cols {
@@ -111,19 +114,25 @@ impl Trie {
     }
 
     #[inline(always)]
-    fn insert(&mut self, word: String) {
+    fn insert(&mut self, word: String, reverse: bool) {
         let mut node = self;
-
-        for &character in word.as_bytes() {
-            let character_index = (character - b'a') as usize;
-
-            if node.children[character_index].is_none() {
-                node.children[character_index] = Some(Box::new(Trie::new()));
+        if reverse {
+            for &ch in word.as_bytes().iter().rev() {
+                let ch_idx = (ch - b'a') as usize;
+                if node.children[ch_idx].is_none() {
+                    node.children[ch_idx] = Some(Box::new(Trie::new()));
+                }
+                node = node.children[ch_idx].as_deref_mut().unwrap();
             }
-
-            node = node.children[character_index].as_deref_mut().unwrap();
+        } else {
+            for &ch in word.as_bytes() {
+                let ch_idx = (ch - b'a') as usize;
+                if node.children[ch_idx].is_none() {
+                    node.children[ch_idx] = Some(Box::new(Trie::new()));
+                }
+                node = node.children[ch_idx].as_deref_mut().unwrap();
+            }
         }
-
         node.word = Some(word);
     }
 }
