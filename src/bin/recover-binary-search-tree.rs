@@ -33,57 +33,42 @@ struct Solution;
 //     }
 //   }
 // }
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 impl Solution {
     pub fn recover_tree(root: &mut Option<Rc<RefCell<TreeNode>>>) {
         fn visit(
             root: &Option<Rc<RefCell<TreeNode>>>,
-            values: &mut Vec<i32>,
-            targets: &mut Vec<i32>,
+            values: &mut Vec<Rc<RefCell<TreeNode>>>,
+            targets: &mut Vec<Rc<RefCell<TreeNode>>>,
         ) {
             if let Some(n) = root {
-                let n = n.borrow();
-                visit(&n.left, values, targets);
+                visit(&n.borrow().left, values, targets);
                 if values.len() < 2 {
-                    values.push(n.val);
+                    values.push(n.clone());
                 } else {
-                    values[0] = values[1];
-                    values[1] = n.val;
+                    values[0] = values[1].clone();
+                    values[1] = n.clone();
                 }
                 if values.len() == 2 {
-                    if values[0] > values[1] {
+                    if values[0].borrow().val > values[1].borrow().val {
                         if targets.len() == 0 {
-                            targets.push(values[0]);
-                            targets.push(values[1]);
+                            targets.push(values[0].clone());
+                            targets.push(values[1].clone());
                         } else {
-                            targets[1] = values[1];
+                            targets[1] = values[1].clone();
                             return;
                         }
                     }
                 }
-                visit(&n.right, values, targets);
-            }
-        }
-        fn recover(root: &mut Option<Rc<RefCell<TreeNode>>>, targets: &Vec<i32>, count: &mut usize) {
-            if *count == 2 {
-                return;
-            }
-            if let Some(n) = root {
-                let mut n = n.borrow_mut();
-                recover(&mut n.left, targets, count);
-                if *count == 0 && n.val == targets[0] {
-                    n.val = targets[1];
-                    *count += 1;
-                } else if *count == 1 && n.val == targets[1] {
-                    n.val = targets[0];
-                    *count += 1;
-                }
-                recover(&mut n.right, targets, count);
+                visit(&n.borrow().right, values, targets);
             }
         }
         let mut targets = vec![];
         visit(root, &mut vec![], &mut targets);
-        recover(root, &targets, &mut 0);
+        std::mem::swap(
+            &mut targets[0].borrow_mut().val,
+            &mut targets[1].borrow_mut().val,
+        );
     }
 }
