@@ -19,9 +19,10 @@ impl Solution {
             if freq[i] == 0 {
                 continue;
             }
+            let c = freq[i];
             freq[i] -= 1;
             for j in i..=100 {
-                let mut c = freq[i] + 1;
+                let mut c = c;
                 if freq[j] == 0 {
                     continue;
                 }
