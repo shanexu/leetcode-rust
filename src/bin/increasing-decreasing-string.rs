@@ -12,7 +12,7 @@ impl Solution {
         }
         let mut ans = Vec::with_capacity(n);
         let mut rev = false;
-        while ans.len() < n {
+        'out: while ans.len() < n {
             if rev {
                 for i in (0..26).rev() {
                     if freq[i] == 0 {
@@ -20,6 +20,9 @@ impl Solution {
                     }
                     freq[i] -= 1;
                     ans.push(i as u8 + b'a');
+                    if ans.len() == n {
+                        break 'out;
+                    }
                 }
             } else {
                 for i in 0..26 {
@@ -28,6 +31,9 @@ impl Solution {
                     }
                     freq[i] -= 1;
                     ans.push(i as u8 + b'a');
+                    if ans.len() == n {
+                        break 'out;
+                    }
                 }
             }
             rev = !rev;
