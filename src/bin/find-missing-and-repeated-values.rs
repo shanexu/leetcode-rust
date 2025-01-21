@@ -15,8 +15,17 @@ fn main() {
             vec![7, 8, 9]
         ])
     );
+    println!(
+        "{:?}",
+        Solution3::find_missing_and_repeated_values(vec![
+            vec![1, 2, 2],
+            vec![4, 5, 6],
+            vec![7, 8, 9]
+        ])
+    );
 }
 
+/// 空间复杂度 O(n2)
 struct Solution;
 
 impl Solution {
@@ -90,6 +99,38 @@ impl Solution2 {
             }
         }
         ans[1] = std_sum;
+        ans
+    }
+}
+
+/// 空间复杂度 O(1)
+struct Solution3;
+
+impl Solution3 {
+    pub fn find_missing_and_repeated_values(mut grid: Vec<Vec<i32>>) -> Vec<i32> {
+        let n = grid.len();
+        let mut ans = vec![0; 2];
+        for i in 0..n {
+            for j in 0..n {
+                let v = grid[i][j].abs() as usize;
+                let x = (v - 1) / n;
+                let y = (v - 1) % n;
+                let u = grid[x][y];
+                if u < 0 {
+                    ans[0] = (x * n + y + 1) as i32
+                } else {
+                    grid[x][y] = -u;
+                }
+            }
+        }
+        'out: for i in 0..n {
+            for j in 0..n {
+                if grid[i][j] > 0 {
+                    ans[1] = (i * n + j + 1) as i32;
+                    break 'out;
+                }
+            }
+        }
         ans
     }
 }
