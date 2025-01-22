@@ -1,4 +1,9 @@
-fn main() {}
+fn main() {
+    println!(
+        "{:?}",
+        Solution::highest_peak(vec![vec![0, 0, 1], vec![1, 0, 0], vec![0, 0, 0]])
+    );
+}
 
 struct Solution;
 
