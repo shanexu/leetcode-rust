@@ -7,35 +7,33 @@ impl Solution {
         let m = grid.len();
         let n = grid[0].len();
         let mut visited = vec![vec![false; n]; m];
-        let mut rows = vec![-1; m];
-        let mut cols = vec![-1; n];
+        let mut rows = vec![UNDEFINED; m];
+        let mut cols = vec![UNDEFINED; n];
         let mut ans = 0;
         for i in 0..m {
             for j in 0..n {
                 if grid[i][j] == 1 {
-                    if rows[i] != -1 {
-                        if !visited[i][rows[i] as usize] {
+                    if rows[i] != UNDEFINED {
+                        if !visited[i][rows[i]] {
                             ans += 1;
-                            visited[i][rows[i] as usize] = true;
+                            visited[i][rows[i]] = true;
                         }
-                        if !visited[i][j] {
-                            ans += 1;
-                            visited[i][j] = true;
-                        }
+                        ans += 1;
+                        visited[i][j] = true;
                     } else {
-                        rows[i] = j as i32;
+                        rows[i] = j;
                     }
-                    if cols[j] != -1 {
-                        if !visited[cols[j] as usize][j] {
+                    if cols[j] != UNDEFINED {
+                        if !visited[cols[j]][j] {
                             ans += 1;
-                            visited[cols[j] as usize][j] = true;
+                            visited[cols[j]][j] = true;
                         }
                         if !visited[i][j] {
                             ans += 1;
                             visited[i][j] = true;
                         }
                     } else {
-                        cols[j] = i as i32;
+                        cols[j] = i;
                     }
                 }
             }
@@ -43,3 +41,5 @@ impl Solution {
         ans
     }
 }
+
+const UNDEFINED: usize = 1000;
