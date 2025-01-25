@@ -14,7 +14,7 @@ impl Solution {
             nums.into_iter().enumerate().map(|(i, x)| (x, i)).collect();
         nums.sort();
         let mut ans = vec![0; n];
-        let mut prev = 0;
+        let mut prev = nums[0].0;
         let mut ns = vec![];
         let mut is = vec![];
         for (num, i) in nums {
