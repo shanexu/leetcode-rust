@@ -15,24 +15,23 @@ impl Solution {
         nums.sort();
         let mut ans = vec![0; n];
         let mut prev = nums[0].0;
-        let mut ns = vec![];
         let mut is = vec![];
-        for (num, i) in nums {
+        for (j, &(num, i)) in nums.iter().enumerate() {
             if num - prev > limit {
                 is.sort();
+                let offset = j - is.len();
                 for k in 0..is.len() {
-                    ans[is[k]] = ns[k];
+                    ans[is[k]] = nums[offset + k].0;
                 }
-                ns.clear();
                 is.clear()
             }
             is.push(i);
-            ns.push(num);
             prev = num;
         }
         is.sort();
+        let offset = nums.len() - is.len();
         for k in 0..is.len() {
-            ans[is[k]] = ns[k];
+            ans[is[k]] = nums[offset + k].0;
         }
         ans
     }
