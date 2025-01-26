@@ -9,6 +9,7 @@ struct Solution;
 use std::collections::VecDeque;
 impl Solution {
     pub fn maximum_invitations(favorite: Vec<i32>) -> i32 {
+        #[inline(always)]
         fn find_max_cycle(favorite: &Vec<i32>) -> i32 {
             let n = favorite.len();
             let mut visited = vec![false; n];
@@ -34,6 +35,7 @@ impl Solution {
             }
             max_cycle as i32
         }
+        #[inline(always)]
         fn topological_sort(favorite: &Vec<i32>) -> i32 {
             let n = favorite.len();
             let mut in_degree = vec![0; n];
