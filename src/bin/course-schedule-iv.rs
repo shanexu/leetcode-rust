@@ -30,28 +30,30 @@ impl Solution {
     ) -> Vec<bool> {
         let n = num_courses as usize;
         let mut edges: Vec<Vec<usize>> = vec![vec![]; n];
+        let mut in_degrees: Vec<usize> = vec![0; n];
         let mut ans = Vec::with_capacity(queries.len());
         for p in prerequisites {
-            edges[p[0] as usize].push(p[1] as usize);
+            let from = p[0] as usize;
+            let to = p[1] as usize;
+            edges[from].push(to);
+            in_degrees[to] += 1;
         }
-        let mut visited = vec![false; n];
         let mut queue = VecDeque::new();
         let mut reachable = vec![vec![false; n]; n];
         for i in 0..n {
-            visited.fill(false);
-            queue.push_back(vec![i]);
-            while let Some(u) = queue.pop_front() {
-                if visited[u[u.len() - 1]] {
-                    continue;
+            if in_degrees[i] == 0 {
+                queue.push_back(i);
+            }
+        }
+        while let Some(u) = queue.pop_front() {
+            for &v in edges[u].iter() {
+                reachable[u][v] = true;
+                for k in 0..n {
+                    reachable[k][v] |= reachable[k][u]
                 }
-                visited[u[u.len() - 1]] = true;
-                for &v in &edges[u[u.len() - 1]] {
-                    for &k in u.iter() {
-                        reachable[k][v] = true;
-                    }
-                    let mut u = u.clone();
-                    u.push(v);
-                    queue.push_back(u);
+                in_degrees[v] -= 1;
+                if in_degrees[v] == 0 {
+                    queue.push_back(v);
                 }
             }
         }
