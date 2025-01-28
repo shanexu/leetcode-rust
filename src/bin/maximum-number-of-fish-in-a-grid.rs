@@ -6,8 +6,7 @@ struct Solution;
 
 use std::collections::VecDeque;
 impl Solution {
-    pub fn find_max_fish(grid: Vec<Vec<i32>>) -> i32 {
-        let mut grid = grid;
+    pub fn find_max_fish(mut grid: Vec<Vec<i32>>) -> i32 {
         let mut ans = 0;
         let rows = grid.len();
         let cols = grid[0].len();
