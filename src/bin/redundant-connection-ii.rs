@@ -1,20 +1,24 @@
 fn main() {
-    // println!(
-    //     "{:?}",
-    //     Solution::find_redundant_directed_connection(vec![
-    //         vec![4, 2],
-    //         vec![1, 5],
-    //         vec![5, 2],
-    //         vec![5, 3],
-    //         vec![2, 4]
-    //     ])
-    // );
+    println!(
+        "{:?}",
+        Solution::find_redundant_directed_connection(vec![
+            vec![4, 2],
+            vec![1, 5],
+            vec![5, 2],
+            vec![5, 3],
+            vec![2, 4]
+        ])
+    );
     println!(
         "{:?}",
         Solution::find_redundant_directed_connection(vec![vec![1, 2], vec![1, 3], vec![2, 3]])
     );
 }
 
+/// 有几种情况：
+/// 1. 有入度为2的节点，有环：环中指向该节点的边
+/// 2. 有入度为2的节点，无环：任意指向该节点的边
+/// 3. 无入度为2的节点，有环：环中任意边
 struct Solution;
 
 impl Solution {
