@@ -9,6 +9,16 @@ fn main() {
             vec![1, 5]
         ])
     );
+    println!(
+        "{:?}",
+        Solution2::find_redundant_connection(vec![
+            vec![1, 2],
+            vec![2, 3],
+            vec![3, 4],
+            vec![1, 4],
+            vec![1, 5]
+        ])
+    );
 }
 
 struct Solution;
@@ -64,6 +74,32 @@ impl Solution {
                     }
                 }
             }
+        }
+        vec![0, 0]
+    }
+}
+
+struct Solution2;
+
+impl Solution2 {
+    pub fn find_redundant_connection(edges: Vec<Vec<i32>>) -> Vec<i32> {
+        let n = edges.len();
+        let mut parent: Vec<usize> = (0..=n).into_iter().collect();
+        fn find(node: usize, parent: &mut Vec<usize>) -> usize {
+            if node != parent[node] {
+                parent[node] = find(parent[node], parent)
+            }
+            parent[node]
+        }
+        for edge in edges {
+            let n1 = edge[0] as usize;
+            let n2 = edge[1] as usize;
+            let p1 = find(n1, &mut parent);
+            let p2 = find(n2, &mut parent);
+            if p1 == p2 {
+                return edge;
+            }
+            parent[p1] = p2;
         }
         vec![0, 0]
     }
