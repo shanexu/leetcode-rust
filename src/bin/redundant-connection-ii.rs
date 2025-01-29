@@ -40,11 +40,10 @@ impl Solution {
             }
         }
         let mut visited = vec![false; n + 1];
-        let mut rec_stack = vec![false; n + 1];
-        let mut visited_nodes = vec![];
         for i in 1..=n {
             if !visited[n] {
-                if let Some(cycle) = dfs(i, &adj, &mut visited, &mut rec_stack, &mut visited_nodes)
+                if let Some(cycle) =
+                    dfs(i, &adj, &mut visited, &mut vec![false; n + 1], &mut vec![])
                 {
                     for edge in edges.iter().rev() {
                         let n1 = edge[0] as usize;
