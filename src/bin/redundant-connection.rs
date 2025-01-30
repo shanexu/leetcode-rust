@@ -46,7 +46,7 @@ impl Solution {
             visited_nodes.push(v);
             for &u in adj[v].iter() {
                 if !visited[u] {
-                    let result = dfs(u, &adj, visited, visited_nodes);
+                    let result = dfs(u, adj, visited, visited_nodes);
                     if result.is_some() {
                         return result;
                     }
