@@ -1,4 +1,6 @@
-fn main() {}
+fn main() {
+    println!("{:?}", Solution::majority_element(vec![3, 2, 3]));
+}
 
 struct Solution;
 
