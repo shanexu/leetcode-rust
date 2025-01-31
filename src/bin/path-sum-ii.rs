@@ -1,30 +1,18 @@
-// Definition for a binary tree node.
+use leetcode_rust::tree_node::TreeNode;
 
-use std::cell::{Ref, RefCell};
-use std::rc::Rc;
-
-fn main() {}
-
-#[derive(Debug, PartialEq, Eq)]
-pub struct TreeNode {
-    pub val: i32,
-    pub left: Option<Rc<RefCell<TreeNode>>>,
-    pub right: Option<Rc<RefCell<TreeNode>>>,
-}
-
-impl TreeNode {
-    #[inline]
-    pub fn new(val: i32) -> Self {
-        TreeNode {
-            val,
-            left: None,
-            right: None,
-        }
+fn main() {
+    let root = TreeNode::from_string("5,4,8,11,null,13,4,7,2,null,null,5,1");
+    let target_sum = 22;
+    let results = Solution::path_sum(root, target_sum);
+    for result in results {
+        println!("{:?}", result);
     }
 }
 
 struct Solution {}
 
+use std::cell::{Ref, RefCell};
+use std::rc::Rc;
 impl Solution {
     pub fn path_sum(root: Option<Rc<RefCell<TreeNode>>>, target_sum: i32) -> Vec<Vec<i32>> {
         match root {

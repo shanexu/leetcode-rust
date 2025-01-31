@@ -1,4 +1,7 @@
-fn main() {}
+fn main() {
+    println!("{:?}", Solution::final_prices(vec![8, 4, 6, 2, 3]));
+    println!("{:?}", Solution2::final_prices(vec![8, 4, 6, 2, 3]));
+}
 
 struct Solution;
 

@@ -1,21 +1,13 @@
-fn main() {}
+use leetcode_rust::tree_node::TreeNode;
 
-#[derive(Debug, PartialEq, Eq)]
-pub struct TreeNode {
-    pub val: i32,
-    pub left: Option<Rc<RefCell<TreeNode>>>,
-    pub right: Option<Rc<RefCell<TreeNode>>>,
-}
+fn main() {
+    let root = TreeNode::from_vec(vec![1, 2, 3, 4, 5, 6, 7]);
+    let result = Solution::preorder_traversal(root);
+    println!("{:?}", result);
 
-impl TreeNode {
-    #[inline]
-    pub fn new(val: i32) -> Self {
-        TreeNode {
-            val,
-            left: None,
-            right: None,
-        }
-    }
+    let root = TreeNode::from_vec(vec![1, 2, 3, 4, 5, 6, 7]);
+    let result = Solution2::preorder_traversal(root);
+    println!("{:?}", result);
 }
 
 struct Solution;

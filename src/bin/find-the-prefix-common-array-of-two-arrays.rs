@@ -1,4 +1,9 @@
-fn main() {}
+fn main() {
+    println!(
+        "{:?}",
+        Solution::find_the_prefix_common_array(vec![1, 3, 2, 4], vec![3, 1, 2, 4])
+    );
+}
 
 struct Solution;
 

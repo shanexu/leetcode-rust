@@ -1,4 +1,26 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::are_almost_equal("bank".to_string(), "kanb".to_string()), true);
+    assert_eq!(Solution::are_almost_equal("attack".to_string(), "defend".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("kelb".to_string(), "kelb".to_string()), true);
+    assert_eq!(Solution::are_almost_equal("abcd".to_string(), "dcba".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("aa".to_string(), "bb".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "ba".to_string()), true);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "ab".to_string()), true);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "ac".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "ca".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "cb".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "bc".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "cd".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "dc".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "cd".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "dc".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "cd".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "dc".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "cd".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "dc".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "cd".to_string()), false);
+    assert_eq!(Solution::are_almost_equal("ab".to_string(), "dc".to_string()), false);
+}
 
 struct Solution;
 

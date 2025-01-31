@@ -1,4 +1,16 @@
-fn main() {}
+fn main() {
+    println!(
+        "{:?}",
+        Solution::eventual_safe_nodes(vec![
+            vec![1, 2],
+            vec![2, 3],
+            vec![5],
+            vec![0],
+            vec![5],
+            vec![]
+        ])
+    );
+}
 
 struct Solution;
 

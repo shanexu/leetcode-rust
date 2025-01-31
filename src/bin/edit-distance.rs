@@ -1,4 +1,9 @@
-fn main() {}
+fn main() {
+    println!(
+        "{}",
+        Solution::min_distance("horse".to_string(), "ros".to_string())
+    );
+}
 
 struct Solution;
 

@@ -1,9 +1,11 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::minimize_xor(14, 4));
+}
 
 struct Solution;
 
 impl Solution {
-    pub fn minimize_xor(mut num1: i32, mut num2: i32) -> i32 {
+    pub fn minimize_xor(mut num1: i32, num2: i32) -> i32 {
         let mut count1 = bit_count(num1);
         let count2 = bit_count(num2);
         while count1 > count2 {

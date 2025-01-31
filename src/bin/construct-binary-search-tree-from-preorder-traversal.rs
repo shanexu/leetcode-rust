@@ -1,4 +1,8 @@
-fn main() {}
+fn main() {
+    let preorder = vec![8, 5, 1, 7, 10, 12];
+    let root = Solution::bst_from_preorder(preorder);
+    println!("{:?}", root);
+}
 
 use leetcode_rust::tree_node::TreeNode;
 

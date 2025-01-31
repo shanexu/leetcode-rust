@@ -1,4 +1,6 @@
-fn main() {}
+fn main() {
+    println!("{:?}", Solution::single_number(vec![1, 2, 1, 3, 2, 5]));
+}
 
 struct Solution;
 

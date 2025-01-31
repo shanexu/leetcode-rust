@@ -82,35 +82,6 @@ where
 }
 
 #[inline]
-fn binary_heap_insert<T, F>(xs: &mut Vec<T>, x: T, great_than: F)
-where
-    F: Fn(&T, &T) -> bool,
-{
-    xs.push(x);
-    let mut i = xs.len() - 1;
-    while i != 0 && great_than(&xs[binary_heap_parent(i)], &xs[i]) {
-        xs.swap(i, binary_heap_parent(i));
-        i = binary_heap_parent(i);
-    }
-}
-
-#[inline]
-fn binary_heap_pop<T, F>(xs: &mut Vec<T>, less_than: F) -> Option<T>
-where
-    F: Fn(&T, &T) -> bool,
-    T: Clone,
-{
-    let heap_size = xs.len();
-    if heap_size == 1 {
-        return xs.pop();
-    }
-    xs.swap(0, heap_size - 1);
-    let root = xs.pop();
-    binary_heap_heapify(0, xs, less_than);
-    root
-}
-
-#[inline]
 fn binary_heap_heapify<T, F>(mut i: usize, xs: &mut Vec<T>, less_than: F)
 where
     F: Fn(&T, &T) -> bool,

@@ -3,6 +3,10 @@ fn main() {
         "{}",
         Solution::is_interleave("a".to_string(), "ab".to_string(), "aba".to_string())
     );
+    println!(
+        "{}",
+        Solution2::is_interleave("a".to_string(), "ab".to_string(), "aba".to_string())
+    );
 }
 
 struct Solution;

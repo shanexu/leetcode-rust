@@ -1,4 +1,6 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::num_sub("0110111".to_string()));
+}
 
 struct Solution;
 

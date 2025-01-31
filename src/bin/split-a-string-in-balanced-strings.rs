@@ -1,4 +1,9 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::balanced_string_split("RLRRLLRLRL".to_string()), 4);
+    assert_eq!(Solution::balanced_string_split("RLLLLRRRLR".to_string()), 3);
+    assert_eq!(Solution::balanced_string_split("LLLLRRRR".to_string()), 1);
+    assert_eq!(Solution::balanced_string_split("RLRRRLLRLL".to_string()), 2);
+}
 
 struct Solution;
 
