@@ -57,6 +57,7 @@ impl Solution {
                 if grid[i][j] == 0 {
                     let mut dx = 0;
                     let mut dy = 1;
+                    let mut s = 1;
                     for _ in 0..4 {
                         let new_i = i as i32 + dx;
                         let new_j = j as i32 + dy;
@@ -65,12 +66,9 @@ impl Solution {
                             let g = visited[new_i as usize][new_j as usize];
                             if !gs.contains(&g) {
                                 gs.push(g);
+                                s += groups[g];
                             }
                         }
-                    }
-                    let mut s = 1;
-                    for &g in gs.iter() {
-                        s += groups[g];
                     }
                     ans = ans.max(s);
                     gs.clear();
