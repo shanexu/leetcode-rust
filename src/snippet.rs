@@ -15,3 +15,16 @@ pub fn gcd(mut a: i32, mut b: i32) -> i32 {
     }
     a.abs()
 }
+
+pub fn four_directions() -> Vec<(i32, i32)> {
+    let mut x = 0;
+    let mut y = 1;
+    let mut directions = Vec::with_capacity(4);
+    for _ in 0..4 {
+        directions.push((x, y));
+        (x, y) = (y, -x);
+    }
+    directions
+}
+
+pub const DIRECTIONS: &[i32] = &[-1, 0, 1, 0, -1];
