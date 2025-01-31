@@ -1,4 +1,25 @@
-fn main() {}
+fn main() {
+    assert_eq!(
+        Solution::word_break(
+            "catsanddog".to_string(),
+            vec!["cat".to_string(), "cats".to_string(), "and".to_string(), "sand".to_string(), "dog".to_string()]
+        ),
+        vec!["cat sand dog", "cats and dog"]
+    );
+    assert_eq!(
+        Solution::word_break(
+            "pineapplepenapple".to_string(),
+            vec![
+                "apple".to_string(),
+                "pen".to_string(),
+                "applepen".to_string(),
+                "pine".to_string(),
+                "pineapple".to_string()
+            ]
+        ),
+        vec!["pine apple pen apple", "pine applepen apple", "pineapple pen apple"]
+    );
+}
 
 struct Solution;
 
@@ -24,7 +45,6 @@ impl Solution {
             }
         }
         let mut ans: Vec<String> = vec![];
-        let mut parts: Vec<String> = vec![];
         helper(0, &s, &word_dict, &mut vec![], &mut ans);
         ans
     }
