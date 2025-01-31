@@ -7,8 +7,8 @@ struct Solution;
 use std::collections::VecDeque;
 impl Solution {
     pub fn largest_island(grid: Vec<Vec<i32>>) -> i32 {
-        let mut ans = 0;
         let n = grid.len();
+        let mut ans = 0;
         let mut visited: Vec<Vec<usize>> = vec![vec![0; n]; n];
         let mut groups: Vec<i32> = vec![0];
         let mut queue = VecDeque::new();
@@ -17,13 +17,14 @@ impl Solution {
                 if visited[i][j] == 0 && grid[i][j] == 1 {
                     groups.push(0);
                     let g = groups.len() - 1;
+                    let mut c = 0;
                     queue.push_back((i, j));
                     while let Some((p, q)) = queue.pop_front() {
                         if visited[p][q] != 0 {
                             continue;
                         }
                         visited[p][q] = g;
-                        groups[g] += 1;
+                        c += 1;
                         let mut dx = 0;
                         let mut dy = 1;
                         for _ in 0..4 {
@@ -39,11 +40,12 @@ impl Solution {
                             }
                         }
                     }
-                    ans = ans.max(groups[g]);
+                    ans = ans.max(c);
+                    groups[g] = c;
                 }
             }
         }
-        if ans == (n as i32) * (n as i32) {
+        if ans == (n * n) as i32 {
             return ans;
         }
         if ans == 0 {
