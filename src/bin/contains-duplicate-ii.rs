@@ -1,4 +1,9 @@
-fn main() {}
+fn main() {
+    println!(
+        "{}",
+        Solution::contains_nearby_duplicate(vec![1, 2, 3, 1], 3)
+    );
+}
 
 struct Solution;
 
