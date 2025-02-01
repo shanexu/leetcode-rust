@@ -215,6 +215,7 @@ fn main() {
 
 struct Solution;
 
+use std::collections::VecDeque;
 impl Solution {
     pub fn possible_bipartition(n: i32, dislikes: Vec<Vec<i32>>) -> bool {
         let n = n as usize;
@@ -225,26 +226,25 @@ impl Solution {
             graph[a].push(b);
             graph[b].push(a);
         }
-        let mut colors = vec![0; n + 1];
+        let mut colors: Vec<u8> = vec![0; n + 1];
+        let mut queue: VecDeque<(usize, u8)> = VecDeque::new();
         for i in 1..=n {
-            if colors[i] == 0 && !dfs(i, &graph, &mut colors, 1) {
-                return false;
+            if colors[i] == 0 {
+                queue.push_back((i, 1));
+                while let Some((u, c)) = queue.pop_front() {
+                    if colors[u] == c {
+                        continue;
+                    }
+                    if colors[u] == 3 - c {
+                        return false;
+                    }
+                    colors[u] = c;
+                    for &v in graph[u].iter() {
+                        queue.push_back((v, 3 - c));
+                    }
+                }
             }
         }
         true
     }
-}
-
-fn dfs(u: usize, graph: &Vec<Vec<usize>>, colors: &mut Vec<u8>, color: u8) -> bool {
-    colors[u] = color;
-    for &v in graph[u].iter() {
-        if colors[v] == 0 {
-            if !dfs(v, graph, colors, 3 - color) {
-                return false;
-            }
-        } else if colors[v] == color {
-            return false;
-        }
-    }
-    true
 }
