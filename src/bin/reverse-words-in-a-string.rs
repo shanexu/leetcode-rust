@@ -1,4 +1,9 @@
-fn main() {}
+fn main() {
+    println!(
+        "{}",
+        Solution::reverse_words(String::from("  horse  world"))
+    )
+}
 
 struct Solution;
 
