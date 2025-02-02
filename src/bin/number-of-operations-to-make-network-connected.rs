@@ -25,18 +25,21 @@ impl Solution {
             let p2 = find(n2, &mut parent);
             parent[p1] = p2;
         }
+        let mut ans = -1;
         let mut roots: Vec<i32> = vec![0; n];
         for i in 0..n {
-            roots[find(i, &mut parent)] = 1;
+            let p = find(i, &mut parent);
+            ans += roots[p] ^ 1;
+            roots[p] = 1;
         }
-        roots.iter().sum::<i32>() - 1
+        ans
     }
 }
 
 #[inline]
-fn find(i: usize, parent: &mut Vec<usize>) -> usize {
-    if i != parent[i] {
-        parent[i] = find(parent[i], parent)
+fn find(node: usize, parent: &mut Vec<usize>) -> usize {
+    if node != parent[node] {
+        parent[node] = find(parent[node], parent)
     }
-    parent[i]
+    parent[node]
 }
