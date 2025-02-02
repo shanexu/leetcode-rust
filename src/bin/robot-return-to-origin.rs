@@ -1,4 +1,7 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::judge_circle("UD".to_string()), true);
+    assert_eq!(Solution::judge_circle("LL".to_string()), false);
+}
 
 struct Solution;
 

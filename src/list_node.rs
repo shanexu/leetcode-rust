@@ -31,3 +31,12 @@ pub fn vec_to_list(nums: Vec<i32>) -> Option<Box<ListNode>> {
 
     head
 }
+
+pub fn print_linked_list(head: Option<Box<ListNode>>) {
+    let mut current = &head;
+    while let Some(node) = current {
+        print!("{} -> ", node.val);
+        current = &node.next;
+    }
+    println!("None");
+}
