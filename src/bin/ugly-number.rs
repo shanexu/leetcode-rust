@@ -1,4 +1,11 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::is_ugly(6), true);
+    assert_eq!(Solution::is_ugly(8), true);
+    assert_eq!(Solution::is_ugly(14), false);
+    assert_eq!(Solution::is_ugly(1), true);
+    assert_eq!(Solution::is_ugly(0), false);
+    assert_eq!(Solution::is_ugly(-6), false);
+}
 
 struct Solution;
 

@@ -1,4 +1,6 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::max_repeating("ababc".to_string(), "ab".to_string()));
+}
 
 struct Solution;
 

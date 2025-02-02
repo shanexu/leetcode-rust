@@ -13,6 +13,10 @@ fn main() {
     // );
     println!(
         "{}",
+        Solution::num_distinct("ddd".to_string(), "dd".to_string())
+    );
+    println!(
+        "{}",
         Solution2::num_distinct("ddd".to_string(), "dd".to_string())
     );
 }
