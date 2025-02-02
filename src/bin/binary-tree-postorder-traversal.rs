@@ -1,5 +1,11 @@
 use leetcode_rust::tree_node::TreeNode;
-fn main() {}
+
+fn main() {
+    let root = TreeNode::from_string("1,null,2,3");
+    println!("{:?}", Solution::postorder_traversal(root));
+    let root = TreeNode::from_string("1,null,2,3");
+    println!("{:?}", Solution2::postorder_traversal(root));
+}
 
 struct Solution;
 
@@ -27,7 +33,6 @@ impl Solution {
 
 struct Solution2;
 
-use std::collections::VecDeque;
 impl Solution2 {
     pub fn postorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
         let mut values = vec![];
