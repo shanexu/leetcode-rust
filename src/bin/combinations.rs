@@ -30,7 +30,7 @@ struct Solution2;
 
 impl Solution2 {
     pub fn combine(n: i32, k: i32) -> Vec<Vec<i32>> {
-        fn helper(comb: &mut Vec<i32>, ans: &mut Vec<Vec<i32>>, n:i32, k: i32) {
+        fn helper(comb: &mut Vec<i32>, ans: &mut Vec<Vec<i32>>, n: i32, k: i32) {
             if comb.len() == k as usize {
                 ans.push(comb.clone());
                 return;

@@ -40,11 +40,7 @@ impl Solution {
         while n >= f {
             let q = (n - f) / (f * 10);
             let r = (n - f) - (q * f * 10);
-            let t = q * f + (if r >= f {
-                f
-            } else {
-                r + 1
-            });
+            let t = q * f + (if r >= f { f } else { r + 1 });
             ans += t;
             f *= 10;
         }

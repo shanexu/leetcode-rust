@@ -1,7 +1,5 @@
 use leetcode_rust::list_node::ListNode;
-fn main() {
-
-}
+fn main() {}
 
 struct Solution;
 

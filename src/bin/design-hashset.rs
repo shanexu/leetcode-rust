@@ -10,15 +10,15 @@ struct MyHashSet {
     bit_map: Vec<u64>,
 }
 
-
 /**
  * `&self` means the method takes an immutable reference.
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MyHashSet {
-
     fn new() -> Self {
-        Self { bit_map: new_bit_map(1000001) }
+        Self {
+            bit_map: new_bit_map(1000001),
+        }
     }
 
     fn add(&mut self, key: i32) {
@@ -51,7 +51,6 @@ fn get_bit(n: usize, bit_map: &mut Vec<u64>) -> bool {
     let k = n & 63;
     ((bit_map[i] >> k) & 1) != 0
 }
-
 
 #[inline]
 fn set_bit(n: usize, bit_map: &mut Vec<u64>) {

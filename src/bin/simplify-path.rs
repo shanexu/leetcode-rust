@@ -19,10 +19,7 @@ fn main() {
     //     "{}",
     //     Solution::simplify_path("//hello/...///world/".to_string())
     // );
-    println!(
-        "{}",
-        Solution::simplify_path("/..".to_string())
-    );
+    println!("{}", Solution::simplify_path("/..".to_string()));
 }
 
 struct Solution;

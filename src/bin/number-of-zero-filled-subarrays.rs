@@ -1,8 +1,5 @@
 fn main() {
-    println!(
-        "{}",
-        Solution::zero_filled_subarray(vec![0, 0, 0, 2, 0, 0])
-    );
+    println!("{}", Solution::zero_filled_subarray(vec![0, 0, 0, 2, 0, 0]));
 }
 
 struct Solution;

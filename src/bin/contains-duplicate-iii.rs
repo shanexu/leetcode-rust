@@ -5,10 +5,14 @@ struct Solution;
 use std::collections::BTreeMap;
 use std::ops::Bound::Included;
 impl Solution {
-    pub fn contains_nearby_almost_duplicate(nums: Vec<i32>, index_diff: i32, value_diff: i32) -> bool {
+    pub fn contains_nearby_almost_duplicate(
+        nums: Vec<i32>,
+        index_diff: i32,
+        value_diff: i32,
+    ) -> bool {
         let mut tree_map: BTreeMap<i32, i32> = BTreeMap::new();
         let index_diff = index_diff as usize;
-        for (i, &num ) in nums.iter().enumerate() {
+        for (i, &num) in nums.iter().enumerate() {
             for _ in tree_map.range((Included(num - value_diff), Included(num + value_diff))) {
                 return true;
             }

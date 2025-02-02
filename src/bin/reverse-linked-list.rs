@@ -1,7 +1,7 @@
-use leetcode_rust::list_node::{ListNode, vec_to_list, print_linked_list};
+use leetcode_rust::list_node::{print_linked_list, vec_to_list, ListNode};
 
 fn main() {
-    let node = vec_to_list(vec![1,2,3,4,5]);
+    let node = vec_to_list(vec![1, 2, 3, 4, 5]);
     let node = Solution::reverse_list(node);
     print_linked_list(node);
 }

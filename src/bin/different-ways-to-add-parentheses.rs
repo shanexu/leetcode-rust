@@ -1,5 +1,8 @@
 fn main() {
-        println!("{:?}", Solution::diff_ways_to_compute("2*3-4*5".to_string()));
+    println!(
+        "{:?}",
+        Solution::diff_ways_to_compute("2*3-4*5".to_string())
+    );
 }
 
 struct Solution;

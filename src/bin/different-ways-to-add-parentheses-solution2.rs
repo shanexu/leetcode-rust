@@ -7,21 +7,21 @@ fn main() {
 
 struct Solution;
 
-use std::collections::HashMap;
 use crate::Exp::{Operand, Operator};
 use crate::Op::{Add, Minus, Multiply};
+use std::collections::HashMap;
 impl Solution {
     pub fn diff_ways_to_compute(expression: String) -> Vec<i32> {
         fn helper(
             exps: &[Exp],
-            pair@(i, j): (usize, usize),
+            pair @ (i, j): (usize, usize),
             memo: &mut HashMap<(usize, usize), Vec<i32>>,
         ) -> Vec<i32> {
             if i + 1 == j {
                 let exp = exps[i];
                 return match exp {
                     Operand(number) => vec![number],
-                    _ => vec![]
+                    _ => vec![],
                 };
             }
             if let Some(res) = memo.get(&pair) {
@@ -33,10 +33,10 @@ impl Solution {
                 match exp {
                     Operator(op) => {
                         let res_pre = helper(exps, (i, k), memo);
-                        let res_post = helper(exps, (k+1, j), memo);
+                        let res_post = helper(exps, (k + 1, j), memo);
                         for p in 0..res_pre.len() {
                             for q in 0..res_post.len() {
-                                res.push(op.apply(res_pre[p], res_post[q])) ;
+                                res.push(op.apply(res_pre[p], res_post[q]));
                             }
                         }
                     }

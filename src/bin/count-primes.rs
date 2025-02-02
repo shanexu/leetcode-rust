@@ -1,5 +1,5 @@
 fn main() {
-    println!("{}", Solution::count_primes(2)) ;
+    println!("{}", Solution::count_primes(2));
 }
 
 struct Solution;
@@ -9,9 +9,9 @@ impl Solution {
         let n = n as usize;
         let mut primes = vec![true; n];
         let mut p = 2;
-        while p*p < n {
+        while p * p < n {
             if primes[p] {
-                for i in (p*p..n).step_by(p) {
+                for i in (p * p..n).step_by(p) {
                     primes[i] = false;
                 }
             }

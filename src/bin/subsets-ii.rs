@@ -21,7 +21,6 @@ impl Solution {
                     let r = i % f;
                     s.extend(vec![c as i32 - 10; r]);
                     i /= f;
-
                 }
                 c += 1;
             }

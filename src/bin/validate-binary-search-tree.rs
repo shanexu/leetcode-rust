@@ -3,8 +3,8 @@ fn main() {}
 
 struct Solution;
 
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 impl Solution {
     pub fn is_valid_bst(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
         fn helper(root: Rc<RefCell<TreeNode>>, nums: &mut Vec<i32>) -> bool {

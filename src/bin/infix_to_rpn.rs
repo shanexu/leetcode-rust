@@ -42,7 +42,7 @@ fn infix_to_rpn(input: &str) -> String {
                         output.push(' ');
                     }
                 }
-            }  else if is_operator(c) {
+            } else if is_operator(c) {
                 if is_last_char_open && c == '-' {
                     c = '~';
                 }

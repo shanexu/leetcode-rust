@@ -14,14 +14,38 @@ fn main() {
     assert_eq!(Solution::count_binary_substrings("000000".to_string()), 0);
     assert_eq!(Solution::count_binary_substrings("0000000".to_string()), 0);
     assert_eq!(Solution::count_binary_substrings("00000000".to_string()), 0);
-    assert_eq!(Solution::count_binary_substrings("000000000".to_string()), 0);
-    assert_eq!(Solution::count_binary_substrings("0000000000".to_string()), 0);
-    assert_eq!(Solution::count_binary_substrings("00000000000".to_string()), 0);
-    assert_eq!(Solution::count_binary_substrings("000000000000".to_string()), 0);
-    assert_eq!(Solution::count_binary_substrings("0000000000000".to_string()), 0);
-    assert_eq!(Solution::count_binary_substrings("00000000000000".to_string()), 0);
-    assert_eq!(Solution::count_binary_substrings("000000000000000".to_string()), 0);
-    assert_eq!(Solution::count_binary_substrings("0000000000000000".to_string()), 0);
+    assert_eq!(
+        Solution::count_binary_substrings("000000000".to_string()),
+        0
+    );
+    assert_eq!(
+        Solution::count_binary_substrings("0000000000".to_string()),
+        0
+    );
+    assert_eq!(
+        Solution::count_binary_substrings("00000000000".to_string()),
+        0
+    );
+    assert_eq!(
+        Solution::count_binary_substrings("000000000000".to_string()),
+        0
+    );
+    assert_eq!(
+        Solution::count_binary_substrings("0000000000000".to_string()),
+        0
+    );
+    assert_eq!(
+        Solution::count_binary_substrings("00000000000000".to_string()),
+        0
+    );
+    assert_eq!(
+        Solution::count_binary_substrings("000000000000000".to_string()),
+        0
+    );
+    assert_eq!(
+        Solution::count_binary_substrings("0000000000000000".to_string()),
+        0
+    );
 }
 
 struct Solution;

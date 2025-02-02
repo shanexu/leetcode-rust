@@ -1,6 +1,4 @@
-fn main() {
-
-}
+fn main() {}
 
 struct Solution;
 
@@ -24,6 +22,6 @@ impl Solution {
                 ans[i][j] = min + grid[i][j];
             }
         }
-        ans[n-1][m-1]
+        ans[n - 1][m - 1]
     }
 }

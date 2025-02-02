@@ -1,5 +1,5 @@
 fn main() {
-    println!("{}", Solution::largest_number(vec![432,43243]));
+    println!("{}", Solution::largest_number(vec![432, 43243]));
 }
 
 struct Solution;
@@ -13,8 +13,16 @@ impl Solution {
             let right = right.as_bytes();
             let n = left.len() + right.len();
             for i in 0..n {
-                let l = if i < right.len() { right[i] } else { left[i - right.len()] };
-                let r = if i < left.len() { left[i] } else { right[i - left.len()] };
+                let l = if i < right.len() {
+                    right[i]
+                } else {
+                    left[i - right.len()]
+                };
+                let r = if i < left.len() {
+                    left[i]
+                } else {
+                    right[i - left.len()]
+                };
                 match l.cmp(&r) {
                     Equal => (),
                     non_eq => return non_eq,

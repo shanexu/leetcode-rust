@@ -2,7 +2,13 @@ fn main() {
     assert_eq!(
         Solution::word_break(
             "catsanddog".to_string(),
-            vec!["cat".to_string(), "cats".to_string(), "and".to_string(), "sand".to_string(), "dog".to_string()]
+            vec![
+                "cat".to_string(),
+                "cats".to_string(),
+                "and".to_string(),
+                "sand".to_string(),
+                "dog".to_string()
+            ]
         ),
         vec!["cat sand dog", "cats and dog"]
     );
@@ -17,7 +23,11 @@ fn main() {
                 "pineapple".to_string()
             ]
         ),
-        vec!["pine apple pen apple", "pine applepen apple", "pineapple pen apple"]
+        vec![
+            "pine apple pen apple",
+            "pine applepen apple",
+            "pineapple pen apple"
+        ]
     );
 }
 

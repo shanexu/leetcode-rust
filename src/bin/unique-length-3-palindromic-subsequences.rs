@@ -1,8 +1,20 @@
 fn main() {
-    assert_eq!(Solution::count_palindromic_subsequence("aabca".to_string()), 3);
-    assert_eq!(Solution::count_palindromic_subsequence("adc".to_string()), 0);
-    assert_eq!(Solution::count_palindromic_subsequence("bbcbaba".to_string()), 4);
-    assert_eq!(Solution::count_palindromic_subsequence("cdcdcdcd".to_string()), 4);
+    assert_eq!(
+        Solution::count_palindromic_subsequence("aabca".to_string()),
+        3
+    );
+    assert_eq!(
+        Solution::count_palindromic_subsequence("adc".to_string()),
+        0
+    );
+    assert_eq!(
+        Solution::count_palindromic_subsequence("bbcbaba".to_string()),
+        4
+    );
+    assert_eq!(
+        Solution::count_palindromic_subsequence("cdcdcdcd".to_string()),
+        4
+    );
 }
 
 struct Solution;

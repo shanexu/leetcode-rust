@@ -9,7 +9,12 @@ fn main() {
     println!(
         "{:?}",
         Solution::get_longest_subsequence(
-            vec!["a".to_string(), "b".to_string(), "c".to_string(), "d".to_string()],
+            vec![
+                "a".to_string(),
+                "b".to_string(),
+                "c".to_string(),
+                "d".to_string()
+            ],
             vec![1, 0, 1, 1]
         )
     );

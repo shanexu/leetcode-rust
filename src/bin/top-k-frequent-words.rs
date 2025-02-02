@@ -9,7 +9,20 @@ fn main() {
     h.push(b);
     println!("{:?}", h.peek());
 
-    println!("{:?}", Solution::top_k_frequent(vec!["i".to_string(),"love".to_string(),"leetcode".to_string(),"i".to_string(),"love".to_string(),"coding".to_string()], 3));
+    println!(
+        "{:?}",
+        Solution::top_k_frequent(
+            vec![
+                "i".to_string(),
+                "love".to_string(),
+                "leetcode".to_string(),
+                "i".to_string(),
+                "love".to_string(),
+                "coding".to_string()
+            ],
+            3
+        )
+    );
 }
 
 struct Solution;
