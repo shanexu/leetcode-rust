@@ -1,7 +1,8 @@
 fn main() {
-    let high: i32 = 7;
-    let low: i32 = 3;
-    println!("{}", (high | low) & 1);
+    assert_eq!(Solution::count_odds(3, 7), 3);
+    assert_eq!(Solution::count_odds(8, 10), 1);
+    assert_eq!(Solution::count_odds(8, 10), 1);
+    assert_eq!(Solution::count_odds(21, 22), 1);
 }
 
 struct Solution;

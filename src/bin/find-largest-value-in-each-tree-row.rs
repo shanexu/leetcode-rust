@@ -1,6 +1,11 @@
 use leetcode_rust::tree_node::TreeNode;
 
-fn main() {}
+fn main() {
+    println!(
+        "{:?}",
+        Solution::largest_values(TreeNode::from_string("1,3,2,5,3,null,9"))
+    );
+}
 
 struct Solution;
 

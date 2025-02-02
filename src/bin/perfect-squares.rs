@@ -1,5 +1,8 @@
 fn main() {
     println!("{}", Solution::num_squares(999));
+    println!("{}", Solution2::num_squares(999));
+    println!("{}", Solution3::num_squares(999));
+    println!("{}", Solution4::num_squares(999));
 }
 
 struct Solution;

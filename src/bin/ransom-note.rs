@@ -1,4 +1,17 @@
-fn main() {}
+fn main() {
+    assert_eq!(
+        Solution::can_construct("a".to_string(), "b".to_string()),
+        false
+    );
+    assert_eq!(
+        Solution::can_construct("aa".to_string(), "ab".to_string()),
+        false
+    );
+    assert_eq!(
+        Solution::can_construct("aa".to_string(), "aab".to_string()),
+        true
+    );
+}
 
 struct Solution;
 

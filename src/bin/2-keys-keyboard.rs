@@ -4,6 +4,11 @@ fn main() {
         memo[i as usize] = Solution::min_steps(i);
     }
     println!("{:?}", memo);
+    let mut memo = vec![0; 1001];
+    for i in 1..=1000 {
+        memo[i as usize] = Solution2::min_steps(i);
+    }
+    println!("{:?}", memo);
 }
 
 struct Solution;

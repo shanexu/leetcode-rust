@@ -1,7 +1,30 @@
-fn main() {}
+use leetcode_rust::tree_node::TreeNode;
+
+fn main() {
+    println!(
+        "{}",
+        Solution::is_same_tree(
+            TreeNode::from_string("1,2,3"),
+            TreeNode::from_string("1,2,3")
+        )
+    );
+    println!(
+        "{}",
+        Solution::is_same_tree(
+            TreeNode::from_string("1,2"),
+            TreeNode::from_string("1,null,2")
+        )
+    );
+    println!(
+        "{}",
+        Solution::is_same_tree(
+            TreeNode::from_string("1,2,1"),
+            TreeNode::from_string("1,1,2")
+        )
+    );
+}
 
 struct Solution;
-use leetcode_rust::tree_node::TreeNode;
 use std::cell::RefCell;
 use std::rc::Rc;
 

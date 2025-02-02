@@ -1,6 +1,10 @@
-use leetcode_rust::list_node::ListNode;
+use leetcode_rust::list_node::{print_linked_list, ListNode};
 
-fn main() {}
+fn main() {
+    let node = vec_to_list(vec![5, 2, 13, 3, 8]);
+    let node = Solution::remove_nodes(node);
+    print_linked_list(node);
+}
 
 struct Solution;
 

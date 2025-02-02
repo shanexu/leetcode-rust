@@ -1,4 +1,24 @@
-fn main() {}
+fn main() {
+    assert_eq!(
+        Solution::min_cost(vec![
+            vec![1, 1, 1, 1],
+            vec![2, 2, 2, 2],
+            vec![1, 1, 1, 1],
+            vec![2, 2, 2, 2]
+        ]),
+        3
+    );
+    assert_eq!(
+        Solution::min_cost(vec![
+            vec![1, 1, 3],
+            vec![2, 2, 2],
+            vec![1, 1, 1],
+            vec![2, 2, 2]
+        ]),
+        2
+    );
+    assert_eq!(Solution::min_cost(vec![vec![1, 2], vec![4, 3]]), 1);
+}
 
 struct Solution;
 

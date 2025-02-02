@@ -1,4 +1,8 @@
-fn main() {}
+fn main() {
+    let nums = vec![2, 3, 2];
+    let ans = Solution::rob(nums);
+    println!("{}", ans);
+}
 
 struct Solution;
 

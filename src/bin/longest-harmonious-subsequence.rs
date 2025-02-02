@@ -1,5 +1,11 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::find_lhs(vec![1, 3, 2, 2, 5, 2, 3, 7]), 5);
+    assert_eq!(Solution::find_lhs(vec![1, 2, 3, 4, 5, 6, 7, 8]), 2);
+    assert_eq!(Solution::find_lhs(vec![1, 1, 2, 2, 3, 3, 4, 4]), 4);
+}
+
 struct Solution;
+
 impl Solution {
     pub fn find_lhs(nums: Vec<i32>) -> i32 {
         let mut map = std::collections::HashMap::new();

@@ -1,4 +1,8 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::first_uniq_char("leetcode".to_string()), 0);
+    assert_eq!(Solution::first_uniq_char("loveleetcode".to_string()), 2);
+    assert_eq!(Solution::first_uniq_char("aabb".to_string()), -1);
+}
 
 struct Solution;
 
