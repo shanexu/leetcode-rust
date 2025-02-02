@@ -1,4 +1,8 @@
-fn main() {}
+fn main() {
+    let grid = vec![vec![1, 0], vec![0, 1]];
+    let ret = Solution::count_servers(grid);
+    println!("ret={}", ret);
+}
 
 struct Solution;
 

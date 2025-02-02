@@ -3,6 +3,14 @@ fn main() {
         "{}",
         Solution2::continuous_subarrays(vec![65, 66, 67, 66, 66, 65, 64, 65, 65, 64])
     );
+    println!(
+        "{}",
+        SlowSolution::continuous_subarrays(vec![65, 66, 67, 66, 66, 65, 64, 65, 65, 64])
+    );
+    println!(
+        "{}",
+        Solution::continuous_subarrays(vec![65, 66, 67, 66, 66, 65, 64, 65, 65, 64])
+    );
 }
 
 struct SlowSolution;

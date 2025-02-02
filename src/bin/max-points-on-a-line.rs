@@ -1,4 +1,8 @@
-fn main() {}
+fn main() {
+    let points = vec![vec![1, 1], vec![2, 2], vec![3, 3]];
+    let result = Solution::max_points(points);
+    println!("result = {}", result);
+}
 
 struct Solution {}
 
