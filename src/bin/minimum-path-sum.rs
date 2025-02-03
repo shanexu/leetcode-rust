@@ -1,4 +1,11 @@
-fn main() {}
+use leetcode_rust::vec_vec_i32;
+
+fn main() {
+    println!(
+        "{}",
+        Solution::min_path_sum(vec_vec_i32![[1, 3, 1], [1, 5, 1], [4, 2, 1]])
+    );
+}
 
 struct Solution;
 

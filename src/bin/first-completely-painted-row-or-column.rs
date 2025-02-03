@@ -1,4 +1,14 @@
-fn main() {}
+use leetcode_rust::vec_vec_i32;
+
+fn main() {
+    println!(
+        "{}",
+        Solution::first_complete_index(
+            vec![2, 8, 7, 4, 1, 3, 5, 6, 9],
+            vec_vec_i32![[3, 2, 5], [1, 4, 6], [8, 7, 9]]
+        )
+    );
+}
 
 struct Solution;
 

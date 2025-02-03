@@ -4,6 +4,11 @@ fn main() {
         "{:?}",
         Solution::find_disappeared_numbers(vec![4, 3, 2, 7, 8, 2, 3, 1])
     );
+    println!("{:?}", Solution2::find_disappeared_numbers(vec![1, 1]));
+    println!(
+        "{:?}",
+        Solution2::find_disappeared_numbers(vec![4, 3, 2, 7, 8, 2, 3, 1])
+    );
 }
 
 struct Solution;

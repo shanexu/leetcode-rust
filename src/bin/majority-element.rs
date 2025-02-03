@@ -1,4 +1,6 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::majority_element(vec![2, 2, 1, 1, 1, 2, 2]));
+}
 
 /// Moore’s Voting Algorithm
 struct Solution;

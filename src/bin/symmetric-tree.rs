@@ -1,6 +1,11 @@
 use leetcode_rust::tree_node::TreeNode;
 
-fn main() {}
+fn main() {
+    println!(
+        "{}",
+        Solution::is_symmetric(TreeNode::from_string("1,2,2,3,4,4,3"))
+    );
+}
 
 struct Solution;
 
