@@ -1,4 +1,6 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::find_final_value(vec![1, 2, 4, 8], 512), 512);
+}
 
 struct Solution;
 
