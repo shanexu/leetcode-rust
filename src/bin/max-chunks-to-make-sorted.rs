@@ -1,4 +1,7 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::max_chunks_to_sorted(vec![4, 3, 2, 1, 0]), 1);
+    assert_eq!(Solution::max_chunks_to_sorted(vec![1, 0, 2, 3, 4]), 4);
+}
 
 struct Solution;
 

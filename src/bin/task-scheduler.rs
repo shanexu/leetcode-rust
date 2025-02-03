@@ -1,4 +1,11 @@
-fn main() {}
+use leetcode_rust::vec_char;
+
+fn main() {
+    println!(
+        "{}",
+        Solution::least_interval(vec_char!["A", "A", "A", "B", "B", "B"], 2)
+    )
+}
 
 struct Solution;
 

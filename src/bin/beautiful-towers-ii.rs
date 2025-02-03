@@ -1,4 +1,6 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::maximum_sum_of_heights(vec![5,3,4,1,1]), 13);
+}
 
 /// 完全和 beautiful-towers-i 一样的代码
 struct Solution;

@@ -1,4 +1,6 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::duplicate_numbers_xor(vec![1,2,1,3]));
+}
 
 struct Solution;
 

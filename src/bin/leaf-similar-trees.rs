@@ -1,6 +1,14 @@
 use leetcode_rust::tree_node::TreeNode;
 
-fn main() {}
+fn main() {
+    println!(
+        "{}",
+        Solution::leaf_similar(
+            TreeNode::from_string("3,5,1,6,2,9,8,null,null,7,4"),
+            TreeNode::from_string("3,5,1,6,7,4,2,null,null,null,null,null,null,9,8")
+        )
+    );
+}
 
 struct Solution;
 

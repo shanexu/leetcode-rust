@@ -1,4 +1,7 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::xor_all_nums(vec![1, 2, 3], vec![1, 2, 3]), 0);
+    assert_eq!(Solution::xor_all_nums(vec![1, 2, 3], vec![1, 2, 3, 4]), 4);
+}
 
 struct Solution;
 
