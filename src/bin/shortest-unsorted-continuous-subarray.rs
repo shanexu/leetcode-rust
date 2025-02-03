@@ -1,6 +1,7 @@
 fn main() {
     // println!("{}", Solution::find_unsorted_subarray(vec![2,6,4,8,10,9,15]));
     // println!("{}", Solution::find_unsorted_subarray(vec![2, 3, 3]));
+    println!("{}", Solution::find_unsorted_subarray(vec![1, 3, 2]));
     println!("{}", Solution2::find_unsorted_subarray(vec![1, 3, 2]));
 }
 

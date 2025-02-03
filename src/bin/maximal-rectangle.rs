@@ -1,4 +1,13 @@
-fn main() {}
+fn main() {
+    let matrix = vec![
+        vec!['1', '0', '1', '0', '0'],
+        vec!['1', '0', '1', '1', '1'],
+        vec!['1', '1', '1', '1', '1'],
+        vec!['1', '0', '0', '1', '0'],
+    ];
+    let res = Solution::maximal_rectangle(matrix);
+    println!("res = {}", res);
+}
 
 struct Solution;
 

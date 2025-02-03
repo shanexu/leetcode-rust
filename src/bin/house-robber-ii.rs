@@ -1,4 +1,12 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::rob(vec![2, 3, 2]), 3);
+    assert_eq!(Solution::rob(vec![1, 2, 3, 1]), 4);
+    assert_eq!(Solution::rob(vec![0]), 0);
+    assert_eq!(Solution::rob(vec![1]), 1);
+    assert_eq!(Solution::rob(vec![1, 2]), 2);
+    assert_eq!(Solution::rob(vec![1, 2, 3]), 3);
+    assert_eq!(Solution::rob(vec![1, 2, 3, 4]), 6);
+}
 
 struct Solution;
 

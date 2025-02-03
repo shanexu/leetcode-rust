@@ -1,4 +1,12 @@
-fn main() {}
+fn main() {
+    println!(
+        "{:?}",
+        Solution::uncommon_from_sentences(
+            "this apple is sweet".to_string(),
+            "this apple is sour".to_string()
+        )
+    );
+}
 
 struct Solution;
 
