@@ -1,5 +1,6 @@
 fn main() {
-    println!("{:?}", Solution2::combine(6, 3))
+    println!("{:?}", Solution::combine(6, 3));
+    println!("{:?}", Solution2::combine(6, 3));
 }
 
 struct Solution;

@@ -1,4 +1,29 @@
-fn main() {}
+fn main() {
+    assert_eq!(
+        Solution::smallest_subsequence("cdadabcc".to_string()),
+        "adbc".to_string()
+    );
+    assert_eq!(
+        Solution::smallest_subsequence("abcd".to_string()),
+        "abcd".to_string()
+    );
+    assert_eq!(
+        Solution::smallest_subsequence("ecbacba".to_string()),
+        "eacb".to_string()
+    );
+    assert_eq!(
+        Solution::smallest_subsequence("leetcode".to_string()),
+        "letcod".to_string()
+    );
+    assert_eq!(
+        Solution::smallest_subsequence("bcabc".to_string()),
+        "abc".to_string()
+    );
+    assert_eq!(
+        Solution::smallest_subsequence("cbacdcbc".to_string()),
+        "acdb".to_string()
+    );
+}
 
 struct Solution;
 

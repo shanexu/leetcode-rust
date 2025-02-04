@@ -1,5 +1,6 @@
 fn main() {
-    println!("{}", Solution::missing_number(vec![3, 0, 1]))
+    println!("{}", Solution::missing_number(vec![3, 0, 1]));
+    println!("{}", Solution2::missing_number(vec![3, 0, 1]));
 }
 
 struct Solution;

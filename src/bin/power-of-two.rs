@@ -1,4 +1,8 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::is_power_of_two(1));
+    println!("{}", Solution::is_power_of_two(16));
+    println!("{}", Solution::is_power_of_two(3));
+}
 
 struct Solution;
 

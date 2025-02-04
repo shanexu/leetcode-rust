@@ -1,4 +1,6 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::smallest_range_i(vec![1, 3, 6], 3));
+}
 
 struct Solution;
 

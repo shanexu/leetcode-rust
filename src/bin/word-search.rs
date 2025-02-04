@@ -1,4 +1,40 @@
-fn main() {}
+fn main() {
+    let board = vec![
+        vec!['A', 'B', 'C', 'E'],
+        vec!['S', 'F', 'C', 'S'],
+        vec!['A', 'D', 'E', 'E'],
+    ];
+    let word = "ABCCED".to_string();
+    assert_eq!(Solution::exist(board.clone(), word.clone()), true);
+    let word = "SEE".to_string();
+    assert_eq!(Solution::exist(board.clone(), word.clone()), true);
+    let word = "ABCB".to_string();
+    assert_eq!(Solution::exist(board.clone(), word.clone()), false);
+    let board = vec![vec!['a']];
+    let word = "a".to_string();
+    assert_eq!(Solution::exist(board.clone(), word.clone()), true);
+    let board = vec![vec!['a', 'b']];
+    let word = "ba".to_string();
+    assert_eq!(Solution::exist(board.clone(), word.clone()), true);
+    let board = vec![vec!['a', 'b'], vec!['c', 'd']];
+    let word = "abcd".to_string();
+    assert_eq!(Solution::exist(board.clone(), word.clone()), false);
+    let board = vec![vec!['a', 'b'], vec!['c', 'd']];
+    let word = "dcba".to_string();
+    assert_eq!(Solution::exist(board.clone(), word.clone()), false);
+    let board = vec![vec!['a', 'b'], vec!['c', 'd']];
+    let word = "abdc".to_string();
+    assert_eq!(Solution::exist(board.clone(), word.clone()), true);
+    let board = vec![vec!['a', 'b'], vec!['c', 'd']];
+    let word = "abcd".to_string();
+    assert_eq!(Solution::exist(board.clone(), word.clone()), false);
+    let board = vec![vec!['a', 'b'], vec!['c', 'd']];
+    let word = "abdc".to_string();
+    assert_eq!(Solution::exist(board.clone(), word.clone()), true);
+    let board = vec![vec!['a', 'b'], vec!['c', 'd']];
+    let word = "abcd".to_string();
+    assert_eq!(Solution::exist(board.clone(), word.clone()), false);
+}
 
 struct Solution;
 

@@ -1,4 +1,11 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::single_number(vec![2, 2, 3, 2]), 3);
+    assert_eq!(Solution::single_number(vec![0, 1, 0, 1, 0, 1, 99]), 99);
+    assert_eq!(Solution::single_number(vec![30000, 500, 100, 30000, 100, 30000, 100]), 500);
+    assert_eq!(Solution::single_number(vec![1, 1, 1, 2]), 2);
+    assert_eq!(Solution::single_number(vec![1, 1, 1, 2, 2, 2, 3]), 3);
+    assert_eq!(Solution::single_number(vec![1, 1, 1, 2, 2, 2, 3, 3, 3, 4]), 4);
+}
 
 /// 参考 https://algo.monster/liteproblems/137
 struct Solution;

@@ -1,6 +1,17 @@
 fn main() {
-    let v = vec![1, 3, 5, 7, 9, 11];
-    println!("{:?}", v.binary_search(&2));
+    assert_eq!(Solution::length_of_lis(vec![10, 9, 2, 5, 3, 7, 101, 18]), 4);
+    assert_eq!(Solution2::length_of_lis(vec![10, 9, 2, 5, 3, 7, 101, 18]), 4);
+    assert_eq!(Solution::length_of_lis(vec![0, 1, 0, 3, 2, 3]), 4);
+    assert_eq!(Solution2::length_of_lis(vec![0, 1, 0, 3, 2, 3]), 4);
+    assert_eq!(Solution::length_of_lis(vec![7, 7, 7, 7, 7, 7, 7]), 1);
+    assert_eq!(Solution2::length_of_lis(vec![7, 7, 7, 7, 7, 7, 7]), 1);
+    assert_eq!(Solution::length_of_lis(vec![4, 10, 4, 3, 8, 9]), 3);
+    assert_eq!(Solution2::length_of_lis(vec![4, 10, 4, 3, 8, 9]), 3);
+    assert_eq!(Solution::length_of_lis(vec![2, 2]), 1);
+    assert_eq!(Solution2::length_of_lis(vec![2, 2]), 1);
+    assert_eq!(Solution::length_of_lis(vec![1, 3, 6, 7, 9, 4, 10, 5, 6]), 6);
+    assert_eq!(Solution2::length_of_lis(vec![1, 3, 6, 7, 9, 4, 10, 5, 6]), 6);
+    assert_eq!(Solution::length_of_lis(vec![1, 3, 6, 7, 9, 4, 10, 5, 6]), 6);
 }
 
 /// https://www.geeksforgeeks.org/longest-monotonically-increasing-subsequence-size-n-log-n/
@@ -31,7 +42,7 @@ struct Solution2;
 impl Solution2 {
     pub fn length_of_lis(nums: Vec<i32>) -> i32 {
         let mut dp = vec![1; nums.len()];
-        let mut n = nums.len();
+        let n = nums.len();
         for i in 1..n {
             for j in 0..i {
                 if nums[i] > nums[j] {

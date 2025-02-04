@@ -1,4 +1,10 @@
-fn main() {}
+fn main() {
+    println!("{:?}", Solution::intersect(vec![1, 2, 2, 1], vec![2, 2]));
+    println!(
+        "{:?}",
+        Solution::intersect(vec![4, 9, 5], vec![9, 4, 9, 8, 4]),
+    );
+}
 
 struct Solution;
 

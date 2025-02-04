@@ -33,15 +33,6 @@ impl Solution {
     }
 }
 
-/// ```
-/// | 0, -1 | x | dx | = | -dy |
-/// | 1,  0 |   | dy |   |  dx |
-///
-#[inline]
-fn dxy(dx: i32, dy: i32) -> (i32, i32) {
-    (-dy, dx)
-}
-
 fn print_matrix(matrix: Vec<Vec<i32>>) {
     for row in matrix {
         for k in row {

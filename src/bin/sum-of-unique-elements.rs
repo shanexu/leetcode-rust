@@ -1,4 +1,8 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::sum_of_unique(vec![1, 2, 3, 2]));
+    println!("{}", Solution::sum_of_unique(vec![1, 1, 1, 1, 1]));
+    println!("{}", Solution::sum_of_unique(vec![1, 2, 3, 4, 5]));
+}
 
 struct Solution;
 

@@ -1,4 +1,64 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::is_power_of_three(27), true);
+    assert_eq!(Solution::is_power_of_three(0), false);
+    assert_eq!(Solution::is_power_of_three(9), true);
+    assert_eq!(Solution::is_power_of_three(45), false);
+    assert_eq!(Solution::is_power_of_three(1), true);
+    assert_eq!(Solution::is_power_of_three(3), true);
+    assert_eq!(Solution::is_power_of_three(243), true);
+    assert_eq!(Solution::is_power_of_three(19683), true);
+    assert_eq!(Solution::is_power_of_three(1162261467), true);
+    assert_eq!(Solution::is_power_of_three(1162261468), false);
+    assert_eq!(Solution::is_power_of_three(1162261466), false);
+    assert_eq!(Solution::is_power_of_three(1162261465), false);
+    assert_eq!(Solution::is_power_of_three(1162261464), false);
+    assert_eq!(Solution::is_power_of_three(1162261463), false);
+    assert_eq!(Solution::is_power_of_three(1162261462), false);
+    assert_eq!(Solution::is_power_of_three(1162261461), false);
+    assert_eq!(Solution::is_power_of_three(1162261460), false);
+    assert_eq!(Solution::is_power_of_three(1162261459), false);
+    assert_eq!(Solution::is_power_of_three(1162261458), false);
+    assert_eq!(Solution::is_power_of_three(1162261457), false);
+    assert_eq!(Solution::is_power_of_three(1162261456), false);
+    assert_eq!(Solution::is_power_of_three(1162261455), false);
+    assert_eq!(Solution::is_power_of_three(1162261454), false);
+    assert_eq!(Solution::is_power_of_three(1162261453), false);
+    assert_eq!(Solution::is_power_of_three(1162261452), false);
+    assert_eq!(Solution::is_power_of_three(1162261451), false);
+    assert_eq!(Solution::is_power_of_three(1162261450), false);
+    assert_eq!(Solution::is_power_of_three(1162261449), false);
+    assert_eq!(Solution::is_power_of_three(1162261448), false);
+
+    assert_eq!(Solution2::is_power_of_three(27), true);
+    assert_eq!(Solution2::is_power_of_three(0), false);
+    assert_eq!(Solution2::is_power_of_three(9), true);
+    assert_eq!(Solution2::is_power_of_three(45), false);
+    assert_eq!(Solution2::is_power_of_three(1), true);
+    assert_eq!(Solution2::is_power_of_three(3), true);
+    assert_eq!(Solution2::is_power_of_three(243), true);
+    assert_eq!(Solution2::is_power_of_three(19683), true);
+    assert_eq!(Solution2::is_power_of_three(1162261467), true);
+    assert_eq!(Solution2::is_power_of_three(1162261468), false);
+    assert_eq!(Solution2::is_power_of_three(1162261466), false);
+    assert_eq!(Solution2::is_power_of_three(1162261465), false);
+    assert_eq!(Solution2::is_power_of_three(1162261464), false);
+    assert_eq!(Solution2::is_power_of_three(1162261463), false);
+    assert_eq!(Solution2::is_power_of_three(1162261462), false);
+    assert_eq!(Solution2::is_power_of_three(1162261461), false);
+    assert_eq!(Solution2::is_power_of_three(1162261460), false);
+    assert_eq!(Solution2::is_power_of_three(1162261459), false);
+    assert_eq!(Solution2::is_power_of_three(1162261458), false);
+    assert_eq!(Solution2::is_power_of_three(1162261457), false);
+    assert_eq!(Solution2::is_power_of_three(1162261456), false);
+    assert_eq!(Solution2::is_power_of_three(1162261455), false);
+    assert_eq!(Solution2::is_power_of_three(1162261454), false);
+    assert_eq!(Solution2::is_power_of_three(1162261453), false);
+    assert_eq!(Solution2::is_power_of_three(1162261452), false);
+    assert_eq!(Solution2::is_power_of_three(1162261451), false);
+    assert_eq!(Solution2::is_power_of_three(1162261450), false);
+    assert_eq!(Solution2::is_power_of_three(1162261449), false);
+    assert_eq!(Solution2::is_power_of_three(1162261448), false);
+}
 
 struct Solution;
 

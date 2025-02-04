@@ -1,4 +1,8 @@
-fn main() {}
+fn main() {
+    let mut nums = vec![2, 0, 2, 1, 1, 0];
+    Solution::sort_colors(&mut nums);
+    println!("{:?}", nums);
+}
 
 struct Solution;
 

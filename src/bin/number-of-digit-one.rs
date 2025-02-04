@@ -1,8 +1,6 @@
 fn main() {
     println!("{}", Solution::count_digit_one(824883294));
-    // for i in 0..1000 {
-    //     println!("{}: {} {}", i, Solution2::count_digit_one(i), Solution::count_digit_one(i));
-    // }
+    println!("{}", Solution2::count_digit_one(824883294));
 }
 
 /// 非常天真的想法

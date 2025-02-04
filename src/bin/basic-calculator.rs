@@ -64,11 +64,6 @@ impl Solution {
 }
 
 #[inline]
-fn is_operator(c: u8) -> bool {
-    c == b'+' || c == b'-' || c == b'*' || c == b'/' || c == b'~'
-}
-
-#[inline]
 fn precedence(op: u8) -> i32 {
     match op {
         b'+' | b'-' | b'~' => 1,

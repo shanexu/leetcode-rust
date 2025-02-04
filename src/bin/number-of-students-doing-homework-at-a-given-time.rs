@@ -1,4 +1,10 @@
-fn main() {}
+fn main() {
+    println!(
+        "{}",
+        Solution::busy_student(vec![1, 2, 3], vec![3, 2, 7], 4)
+    );
+    println!("{}", Solution::busy_student(vec![4], vec![4], 4));
+}
 
 struct Solution;
 

@@ -1,4 +1,8 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::check_powers_of_three(12));
+    println!("{}", Solution::check_powers_of_three(91));
+    println!("{}", Solution::check_powers_of_three(21));
+}
 
 struct Solution;
 

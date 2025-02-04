@@ -1,4 +1,10 @@
-fn main() {}
+fn main() {
+    println!(
+        "{}",
+        Solution::subarrays_div_by_k(vec![4, 5, 0, -2, -3, 1], 5)
+    );
+    println!("{}", Solution::subarrays_div_by_k(vec![5], 9));
+}
 
 struct Solution;
 

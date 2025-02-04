@@ -1,4 +1,7 @@
-fn main() {}
+fn main() {
+    assert_eq!(Solution::detect_capital_use("USA".to_string()), true);
+    assert_eq!(Solution::detect_capital_use("FlaG".to_string()), false);
+}
 
 struct Solution;
 

@@ -1,4 +1,7 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::max_product(vec![2, 3, -2, 4]));
+    println!("{}", Solution::max_product(vec![-2, 0, -1]));
+}
 
 struct Solution;
 
