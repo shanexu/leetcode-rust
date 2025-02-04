@@ -1,4 +1,6 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::to_lower_case("ABC".to_string()));
+}
 
 struct Solution;
 

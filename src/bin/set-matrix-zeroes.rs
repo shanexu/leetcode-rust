@@ -1,4 +1,10 @@
-fn main() {}
+use leetcode_rust::vec_vec_i32;
+
+fn main() {
+    let mut matrix = vec_vec_i32![[0, 1, 2, 0], [3, 4, 5, 2], [1, 3, 1, 5]];
+    Solution::set_zeroes(&mut matrix);
+    println!("{:?}", matrix);
+}
 
 struct Solution;
 

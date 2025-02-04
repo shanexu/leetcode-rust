@@ -1,4 +1,35 @@
-fn main() {}
+use leetcode_rust::vec_vec_char;
+
+fn main() {
+    println!(
+        "{}",
+        Solution::maximal_square(vec_vec_char![
+            ["1", "0", "1", "0", "0"],
+            ["1", "0", "1", "1", "1"],
+            ["1", "1", "1", "1", "1"],
+            ["1", "0", "0", "1", "0"]
+        ])
+    );
+    println!(
+        "{}",
+        Solution::maximal_square(vec_vec_char![["0", "1"], ["1", "0"]])
+    );
+    println!("{}", Solution::maximal_square(vec_vec_char![["0"]]));
+    println!(
+        "{}",
+        Solution2::maximal_square(vec_vec_char![
+            ["1", "0", "1", "0", "0"],
+            ["1", "0", "1", "1", "1"],
+            ["1", "1", "1", "1", "1"],
+            ["1", "0", "0", "1", "0"]
+        ])
+    );
+    println!(
+        "{}",
+        Solution2::maximal_square(vec_vec_char![["0", "1"], ["1", "0"]])
+    );
+    println!("{}", Solution2::maximal_square(vec_vec_char![["0"]]));
+}
 
 struct Solution;
 

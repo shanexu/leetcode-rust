@@ -1,4 +1,7 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::dominant_index(vec![3, 6, 1, 0]));
+    println!("{}", Solution::dominant_index(vec![1, 2, 3, 4]));
+}
 
 struct Solution;
 

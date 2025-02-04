@@ -1,4 +1,7 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::sort_string("aaaabbbbcccc".to_string()));
+    println!("{}", Solution::sort_string("rat".to_string()));
+}
 
 struct Solution;
 

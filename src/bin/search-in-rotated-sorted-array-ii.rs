@@ -1,4 +1,7 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::search(vec![2, 5, 6, 0, 0, 1, 2], 0));
+    println!("{}", Solution::search(vec![2, 5, 6, 0, 0, 1, 2], 3));
+}
 
 struct Solution;
 

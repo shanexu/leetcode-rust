@@ -1,4 +1,21 @@
-fn main() {}
+use leetcode_rust::vec_string;
+
+fn main() {
+    println!(
+        "{}",
+        Solution::eval_rpn(vec_string!["2", "1", "+", "3", "*"])
+    );
+    println!(
+        "{}",
+        Solution::eval_rpn(vec_string!["4", "13", "5", "/", "+"])
+    );
+    println!(
+        "{}",
+        Solution::eval_rpn(vec_string![
+            "10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"
+        ])
+    );
+}
 
 struct Solution;
 

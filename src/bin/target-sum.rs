@@ -1,4 +1,9 @@
 fn main() {
+    println!("{}", Solution::find_target_sum_ways(vec![1, 1, 1, 1, 1], 3));
+    println!(
+        "{}",
+        Solution2::find_target_sum_ways(vec![1, 1, 1, 1, 1], 3)
+    );
     println!(
         "{}",
         Solution3::find_target_sum_ways(vec![1, 1, 1, 1, 1], 3)

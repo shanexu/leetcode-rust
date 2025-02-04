@@ -1,4 +1,7 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::ways_to_split_array(vec![10, 4, -8, 7]));
+    println!("{}", Solution::ways_to_split_array(vec![2, 3, 1, 0]));
+}
 
 struct Solution;
 

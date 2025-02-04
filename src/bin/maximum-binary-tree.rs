@@ -1,5 +1,11 @@
 use leetcode_rust::tree_node::TreeNode;
-fn main() {}
+
+fn main() {
+    println!(
+        "{:?}",
+        Solution::construct_maximum_binary_tree(vec![3, 2, 1, 6, 0, 5])
+    );
+}
 
 struct Solution;
 
@@ -9,7 +15,7 @@ impl Solution {
     pub fn construct_maximum_binary_tree(nums: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
         let mut stack: Vec<Rc<RefCell<TreeNode>>> = vec![];
         for x in nums {
-            let mut node = Rc::new(RefCell::new(TreeNode::new(x)));
+            let node = Rc::new(RefCell::new(TreeNode::new(x)));
             while !stack.is_empty() && stack[stack.len() - 1].borrow().val < x {
                 let pop_node = stack.pop().unwrap();
                 pop_node.borrow_mut().right = node.borrow_mut().left.take();
@@ -20,7 +26,7 @@ impl Solution {
 
         let mut prev_node = stack[0].clone();
         for i in 1..stack.len() {
-            let mut node = stack[i].clone();
+            let node = stack[i].clone();
             prev_node.borrow_mut().right = Some(node.clone());
             prev_node = node;
         }

@@ -1,16 +1,17 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::max_score("011101".to_string()));
+    println!("{}", Solution::max_score("00111".to_string()));
+    println!("{}", Solution::max_score("1111".to_string()));
+}
 
 struct Solution;
 
 impl Solution {
     pub fn max_score(s: String) -> i32 {
         let s = s.as_bytes();
-        let mut zeros = 0;
         let mut ones = 0;
         for &b in s {
-            if b == b'0' {
-                zeros += 1;
-            } else {
+            if b == b'1' {
                 ones += 1;
             }
         }

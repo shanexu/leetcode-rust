@@ -1,4 +1,8 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::find_lucky(vec![2, 2, 3, 4]));
+    println!("{}", Solution::find_lucky(vec![1, 2, 2, 3, 3, 3]));
+    println!("{}", Solution::find_lucky(vec![2, 2, 2, 3, 3]));
+}
 
 struct Solution;
 

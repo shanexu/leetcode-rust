@@ -1,5 +1,14 @@
 use leetcode_rust::tree_node::TreeNode;
-fn main() {}
+fn main() {
+    println!(
+        "{}",
+        Solution::range_sum_bst(TreeNode::from_string("10,5,15,3,7,null,18"), 7, 15)
+    );
+    println!(
+        "{}",
+        Solution::range_sum_bst(TreeNode::from_string("10,5,15,3,7,13,18,1,null,6"), 6, 10)
+    );
+}
 
 struct Solution;
 

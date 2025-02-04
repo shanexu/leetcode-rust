@@ -1,6 +1,11 @@
 use leetcode_rust::tree_node::TreeNode;
 
-fn main() {}
+fn main() {
+    println!(
+        "{}",
+        Solution::min_depth(TreeNode::from_string("3,9,20,null,null,15,7"))
+    );
+}
 
 struct Solution;
 

@@ -1,4 +1,15 @@
-fn main() {}
+use leetcode_rust::vec_vec_i32;
+
+fn main() {
+    println!(
+        "{:?}",
+        Solution::matrix_reshape(vec_vec_i32![[1, 2], [3, 4]], 1, 4)
+    );
+    println!(
+        "{:?}",
+        Solution::matrix_reshape(vec_vec_i32![[1, 2], [3, 4]], 2, 4)
+    );
+}
 
 struct Solution;
 

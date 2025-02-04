@@ -1,4 +1,13 @@
-fn main() {}
+fn main() {
+    println!(
+        "{}",
+        Solution::get_hint("1807".to_string(), "7810".to_string())
+    );
+    println!(
+        "{}",
+        Solution::get_hint("1123".to_string(), "0111".to_string())
+    );
+}
 
 struct Solution;
 

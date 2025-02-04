@@ -1,9 +1,30 @@
-fn main() {}
+fn main() {
+    println!(
+        "{}",
+        Solution::trap_rain_water(vec_vec_i32![
+            [1, 4, 3, 1, 3, 2],
+            [3, 2, 1, 3, 2, 4],
+            [2, 3, 3, 2, 3, 1]
+        ])
+    );
+    println!(
+        "{}",
+        Solution::trap_rain_water(vec_vec_i32![
+            [3, 3, 3, 3, 3],
+            [3, 2, 2, 2, 3],
+            [3, 2, 1, 2, 3],
+            [3, 2, 2, 2, 3],
+            [3, 3, 3, 3, 3]
+        ])
+    );
+}
 
 struct Solution;
 
 use std::cmp::Reverse;
 use std::collections::BinaryHeap;
+
+use leetcode_rust::vec_vec_i32;
 impl Solution {
     pub fn trap_rain_water(height_map: Vec<Vec<i32>>) -> i32 {
         let rows = height_map.len();

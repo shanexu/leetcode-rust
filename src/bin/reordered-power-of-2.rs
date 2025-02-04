@@ -1,13 +1,6 @@
 fn main() {
-    let mut x = 1;
-    let mut vec = vec![];
-    while x <= 1000000000 {
-        // println!("{}", x);
-        vec.push(freq(x));
-        x *= 2;
-    }
-    vec.sort();
-    println!("{:?}", vec);
+    println!("{}", Solution::reordered_power_of2(1));
+    println!("{}", Solution::reordered_power_of2(10));
 }
 
 struct Solution;
