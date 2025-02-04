@@ -1,4 +1,8 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::frequency_sort("tree".to_string()));
+    println!("{}", Solution::frequency_sort("cccaaa".to_string()));
+    println!("{}", Solution::frequency_sort("Aabb".to_string()));
+}
 
 struct Solution;
 

@@ -1,4 +1,7 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::halves_are_alike("book".to_string()));
+    println!("{}", Solution::halves_are_alike("textbook".to_string()));
+}
 
 struct Solution;
 

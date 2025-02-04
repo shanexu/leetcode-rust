@@ -1,41 +1,12 @@
 use leetcode_rust::tree_node::TreeNode;
 
 fn main() {
-    // println!("{}", reorder(vec![4,3]));
-    // println!("{}", reorder(vec![7,6,8,5]));
-    // println!("{}", reorder(vec![9,10]));
-    let mut root = Rc::new(RefCell::new(TreeNode::new(0)));
-    root.borrow_mut().left = Some(Rc::new(RefCell::new(TreeNode::new(4))));
-    root.borrow_mut().right = Some(Rc::new(RefCell::new(TreeNode::new(3))));
-    root.borrow_mut().left.clone().unwrap().borrow_mut().left =
-        Some(Rc::new(RefCell::new(TreeNode::new(7))));
-    root.borrow_mut().left.clone().unwrap().borrow_mut().right =
-        Some(Rc::new(RefCell::new(TreeNode::new(6))));
-    root.borrow_mut().right.clone().unwrap().borrow_mut().left =
-        Some(Rc::new(RefCell::new(TreeNode::new(8))));
-    root.borrow_mut().right.clone().unwrap().borrow_mut().right =
-        Some(Rc::new(RefCell::new(TreeNode::new(5))));
-    root.borrow_mut()
-        .right
-        .clone()
-        .unwrap()
-        .borrow_mut()
-        .left
-        .clone()
-        .unwrap()
-        .borrow_mut()
-        .left = Some(Rc::new(RefCell::new(TreeNode::new(9))));
-    root.borrow_mut()
-        .right
-        .clone()
-        .unwrap()
-        .borrow_mut()
-        .right
-        .clone()
-        .unwrap()
-        .borrow_mut()
-        .left = Some(Rc::new(RefCell::new(TreeNode::new(10))));
-    println!("{}", Solution::minimum_operations(Some(root)));
+    println!(
+        "{}",
+        Solution::minimum_operations(TreeNode::from_string(
+            "1,4,3,7,6,8,5,null,null,null,null,9,null,10"
+        ))
+    );
 }
 
 struct Solution;

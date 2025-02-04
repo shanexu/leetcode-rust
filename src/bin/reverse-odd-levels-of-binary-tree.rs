@@ -1,5 +1,11 @@
 use leetcode_rust::tree_node::TreeNode;
-fn main() {}
+
+fn main() {
+    println!(
+        "{:?}",
+        Solution::reverse_odd_levels(TreeNode::from_string("0,1,2,0,0,0,0,1,1,1,1,2,2,2,2"))
+    );
+}
 
 struct Solution;
 

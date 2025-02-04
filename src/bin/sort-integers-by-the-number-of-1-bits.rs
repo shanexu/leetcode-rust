@@ -1,4 +1,13 @@
-fn main() {}
+fn main() {
+    println!(
+        "{:?}",
+        Solution::sort_by_bits(vec![0, 1, 2, 3, 4, 5, 6, 7, 8])
+    );
+    println!(
+        "{:?}",
+        Solution::sort_by_bits(vec![1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1])
+    );
+}
 
 struct Solution;
 

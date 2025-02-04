@@ -1,4 +1,8 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::max_profit(vec![7, 1, 5, 3, 6, 4]));
+    println!("{}", Solution::max_profit(vec![1, 2, 3, 4, 5]));
+    println!("{}", Solution::max_profit(vec![7, 6, 4, 3, 1]));
+}
 
 struct Solution;
 

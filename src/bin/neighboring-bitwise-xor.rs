@@ -1,4 +1,8 @@
-fn main() {}
+fn main() {
+    println!("{}", Solution::does_valid_array_exist(vec![1, 1, 0]));
+    println!("{}", Solution::does_valid_array_exist(vec![1, 1]));
+    println!("{}", Solution::does_valid_array_exist(vec![1, 0]));
+}
 
 struct Solution;
 

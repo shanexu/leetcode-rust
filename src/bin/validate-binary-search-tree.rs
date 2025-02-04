@@ -1,5 +1,12 @@
 use leetcode_rust::tree_node::TreeNode;
-fn main() {}
+
+fn main() {
+    println!("{}", Solution::is_valid_bst(TreeNode::from_string("2,1,3")));
+    println!(
+        "{}",
+        Solution::is_valid_bst(TreeNode::from_string("5,1,4,null,null,3,6"))
+    );
+}
 
 struct Solution;
 

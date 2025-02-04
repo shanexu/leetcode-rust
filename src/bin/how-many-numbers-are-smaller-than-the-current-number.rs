@@ -1,4 +1,17 @@
-fn main() {}
+fn main() {
+    println!(
+        "{:?}",
+        Solution::smaller_numbers_than_current(vec![8, 1, 2, 2, 3])
+    );
+    println!(
+        "{:?}",
+        Solution::smaller_numbers_than_current(vec![6, 5, 4, 8])
+    );
+    println!(
+        "{:?}",
+        Solution::smaller_numbers_than_current(vec![7, 7, 7, 7])
+    );
+}
 
 struct Solution;
 

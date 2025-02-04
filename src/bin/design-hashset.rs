@@ -1,9 +1,15 @@
 fn main() {
+    // ["MyHashSet","add","add","contains","contains","add","contains","remove","contains"]
+    // [[],         [1],  [2],  [1],       [3],       [2],  [2],       [2],     [2]]
     let mut set = MyHashSet::new();
     set.add(1);
     set.add(2);
-    println!("{}", set.contains(1));
-    println!("{}", set.contains(3));
+    assert!(set.contains(1));
+    assert!(!set.contains(3));
+    set.add(2);
+    assert!(set.contains(2));
+    set.remove(2);
+    assert!(!set.contains(2));
 }
 
 struct MyHashSet {

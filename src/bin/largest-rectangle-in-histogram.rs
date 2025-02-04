@@ -5,6 +5,11 @@ fn main() {
         "case1"
     );
     assert_eq!(Solution::largest_rectangle_area(vec![2, 4]), 4, "case2");
+    assert_eq!(
+        Solution0::largest_rectangle_area(vec![2, 1, 5, 6, 2, 3]),
+        10,
+        "case1"
+    );
 }
 
 // 暴力

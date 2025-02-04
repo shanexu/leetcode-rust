@@ -1,5 +1,11 @@
-use leetcode_rust::list_node::ListNode;
-fn main() {}
+use leetcode_rust::list_node::{vec_to_list, ListNode};
+
+fn main() {
+    println!(
+        "{}",
+        Solution::num_components(vec_to_list(vec![0, 1, 2, 3, 4]), vec![0, 3, 1, 4])
+    );
+}
 
 struct Solution;
 

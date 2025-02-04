@@ -1,5 +1,10 @@
 use leetcode_rust::tree_node::TreeNode;
-fn main() {}
+fn main() {
+    println!(
+        "{:?}",
+        Solution::level_order(TreeNode::from_string("3,9,20,null,null,15,7"))
+    );
+}
 
 struct Solution;
 

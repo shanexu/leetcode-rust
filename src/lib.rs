@@ -44,3 +44,20 @@ macro_rules! vec_vec_char {
             outer_vec // 返回构建的 Vec<Vec<char>>
     }};
 }
+
+#[macro_export]
+macro_rules! vec_vec_string {
+    // 这是宏的主要匹配规则
+    ( $($inner:expr),* ) => {{
+        // 使用 vectors 来存储结果
+        let mut outer_vec = Vec::new();
+
+        // 迭代每个内层数组
+        $(
+            let inner_vec: Vec<String> = $inner.iter().map(|s| s.to_string()).collect();
+            outer_vec.push(inner_vec);
+        )*
+
+            outer_vec // 返回构建的 Vec<Vec<String>>
+    }};
+}

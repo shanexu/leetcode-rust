@@ -1,6 +1,11 @@
-use leetcode_rust::list_node::ListNode;
+use leetcode_rust::list_node::{vec_to_list, ListNode};
 
-fn main() {}
+fn main() {
+    println!(
+        "{:?}",
+        Solution::next_larger_nodes(vec_to_list(vec![2, 7, 4, 3, 5]))
+    );
+}
 
 struct Solution;
 
@@ -22,7 +27,7 @@ struct Solution;
 // }
 impl Solution {
     pub fn next_larger_nodes(head: Option<Box<ListNode>>) -> Vec<i32> {
-        let mut values = to_vec(head);
+        let values = to_vec(head);
         let mut result: Vec<i32> = vec![0; values.len()];
         let mut stack: Vec<usize> = vec![];
         for (i, &v) in values.iter().enumerate() {

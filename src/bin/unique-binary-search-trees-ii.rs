@@ -1,5 +1,9 @@
 use leetcode_rust::tree_node::TreeNode;
-fn main() {}
+
+fn main() {
+    println!("{:?}", Solution::generate_trees(3));
+    println!("{:?}", Solution::generate_trees(4));
+}
 
 struct Solution;
 

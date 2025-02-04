@@ -1,6 +1,19 @@
 use leetcode_rust::tree_node::TreeNode;
 
-fn main() {}
+fn main() {
+    println!(
+        "{:?}",
+        Solution::prune_tree(TreeNode::from_string("1,null,0,0,1"))
+    );
+    println!(
+        "{:?}",
+        Solution::prune_tree(TreeNode::from_string("1,0,1,0,0,0,1"))
+    );
+    println!(
+        "{:?}",
+        Solution::prune_tree(TreeNode::from_string("1,1,0,1,1,0,1,0"))
+    );
+}
 
 struct Solution;
 
