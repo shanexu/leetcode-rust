@@ -4,19 +4,17 @@ fn main() {
 
 struct Solution;
 
-use std::collections::{BinaryHeap, HashMap};
 impl Solution {
     pub fn maximum_sum(nums: Vec<i32>) -> i32 {
-        let mut map: HashMap<i32, BinaryHeap<i32>> = HashMap::new();
+        let mut map = vec![0; 82];
+        let mut ans = -1;
         for num in nums {
-            let s = digits_sum(num);
-            map.entry(s).or_insert_with(BinaryHeap::new).push(num);
-        }
-        let mut ans = 0;
-        for (_, mut v) in map {
-            if v.len() > 1 {
-                ans = ans.max(v.pop().unwrap() + v.pop().unwrap());
+            let ds = digits_sum(num) as usize;
+            let x = map[ds];
+            if x != 0 {
+                ans = ans.max(x + num);
             }
+            map[ds] = x.max(num);
         }
         ans
     }
@@ -24,11 +22,10 @@ impl Solution {
 
 #[inline(always)]
 fn digits_sum(mut num: i32) -> i32 {
-    let mut ans = -1;
+    let mut ans = 0;
     while num > 0 {
-        let tmp = num / 10;
-        ans += num - tmp * 10;
-        num = tmp;
+        ans += num % 10;
+        num /= 10;
     }
     ans
 }
