@@ -14,7 +14,7 @@ impl Solution {
     pub fn min_operations(nums: Vec<i32>, k: i32) -> i32 {
         let mut heap = nums
             .into_iter()
-            .map(|x| Reverse(x as i32))
+            .map(|x| Reverse(x))
             .collect::<BinaryHeap<Reverse<i32>>>();
         let mut ans = 0;
         while let Some(Reverse(min)) = heap.pop() {
