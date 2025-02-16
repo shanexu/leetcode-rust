@@ -37,5 +37,5 @@ fn help(mut n: i32, target: i32) -> bool {
             return true;
         }
     }
-    return false;
+    false
 }
