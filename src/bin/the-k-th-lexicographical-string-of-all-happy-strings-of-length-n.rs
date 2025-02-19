@@ -20,6 +20,7 @@ impl Solution {
     }
 }
 
+#[inline]
 fn help(idx: usize, n: usize, k: &mut usize, path: &mut Vec<u8>) -> bool {
     if idx == n {
         *k -= 1;
@@ -30,14 +31,12 @@ fn help(idx: usize, n: usize, k: &mut usize, path: &mut Vec<u8>) -> bool {
     }
     let prev = if idx == 0 { 0 } else { path[idx - 1] };
     for b in b'a'..=b'c' {
-        if b == prev {
-            continue;
+        if b != prev {
+            path[idx] = b;
+            if help(idx + 1, n, k, path) {
+                return true;
+            }
         }
-        path[idx] = b;
-        if help(idx + 1, n, k, path) {
-            return true;
-        }
-        path[idx] = 0;
     }
     false
 }
