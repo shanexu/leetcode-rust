@@ -60,7 +60,9 @@ impl TreeNode {
                 if token == "null" {
                     Ok(-1)
                 } else {
-                    token.parse().map_err(|_| format!("Invalid number at position {}", idx + 1))
+                    token
+                        .parse::<i32>()
+                        .map_err(|_| format!("Invalid number at position {}", idx + 1))
                 }
             })
             .collect();
