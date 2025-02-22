@@ -40,5 +40,5 @@ fn help(
     let r_len = length - l_len - 1;
     root.left = help(preorder, inorder, p_pos + 1, i_pos, l_len, map);
     root.right = help(preorder, inorder, p_pos + 1 + l_len, i + 1, r_len, map);
-    return Some(Rc::new(RefCell::new(root)));
+    Some(Rc::new(RefCell::new(root)))
 }
