@@ -41,7 +41,7 @@ fn help(
         return Some(Rc::new(RefCell::new(root)));
     }
     let child_val = preorder[pre_pos + 1];
-    for i in post_pos.. {
+    for i in post_pos..(post_pos + len - 1) {
         if postorder[i] == child_val {
             let l_len = i - post_pos + 1;
             let r_len = len - l_len - 1;
