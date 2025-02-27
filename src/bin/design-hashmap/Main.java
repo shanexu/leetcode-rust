@@ -18,7 +18,8 @@ public class Main {
 }
 
 class MyHashMap {
-    private static final int CAPACITY = 10000;
+    private static final int CAPACITY = 16384;
+    private static final int MASK = CAPACITY - 1;
     private Node[] nodes;
 
     public MyHashMap() {
@@ -26,7 +27,7 @@ class MyHashMap {
     }
 
     public void put(int key, int value) {
-        int r = key % CAPACITY;
+        int r = key & MASK;
         Node curr = nodes[r];
         while (curr != null) {
             if (curr.key == key) {
@@ -43,7 +44,7 @@ class MyHashMap {
     }
 
     public int get(int key) {
-        int r = key % CAPACITY;
+        int r = key & MASK;
         Node curr = nodes[r];
         while (curr != null) {
             if (curr.key == key) {
@@ -55,7 +56,7 @@ class MyHashMap {
     }
 
     public void remove(int key) {
-        int r = key % CAPACITY;
+        int r = key & MASK;
         Node dummy = new Node(-1, -1);
         Node prev = dummy;
         Node curr = nodes[r];

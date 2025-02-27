@@ -4,7 +4,8 @@ public class Main {
 }
 
 class MyHashSet {
-    private static final int CAPACITY = 10000;
+    private static final int CAPACITY = 16384;
+    private static final int MASK = CAPACITY - 1;
     private Node[] nodes;
 
     public MyHashSet() {
@@ -12,7 +13,7 @@ class MyHashSet {
     }
 
     public void add(int key) {
-        int r = key % CAPACITY;
+        int r = key & MASK;
         Node curr = nodes[r];
         while (curr != null) {
             if (curr.key == key) {
@@ -26,7 +27,7 @@ class MyHashSet {
     }
 
     public void remove(int key) {
-        int r = key % CAPACITY;
+        int r = key & MASK;
         Node dummy = new Node(-1);
         Node prev = dummy;
         Node curr = nodes[r];
@@ -44,7 +45,7 @@ class MyHashSet {
     }
 
     public boolean contains(int key) {
-        int r = key % CAPACITY;
+        int r = key & MASK;
         Node curr = nodes[r];
         while (curr != null) {
             if (curr.key == key) {
