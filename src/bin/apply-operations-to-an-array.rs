@@ -3,6 +3,10 @@ fn main() {
         vec![1, 4, 2, 0, 0, 0],
         Solution::apply_operations(vec![1, 2, 2, 1, 1, 0])
     );
+    assert_eq!(
+        vec![1, 2, 3, 4],
+        Solution::apply_operations(vec![1, 2, 3, 4])
+    );
 }
 
 struct Solution;
