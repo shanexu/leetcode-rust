@@ -10,6 +10,7 @@ impl Solution {
         let left = left as usize;
         let right = right as usize;
         let mut primes = vec![true; right + 1];
+        primes[1] = false;
         let mut p = 2;
         while p * p <= right {
             if primes[p] {
@@ -23,19 +24,15 @@ impl Solution {
         let mut min = right - left + 1;
         for i in left..=right {
             if primes[i] {
-                if prev == 1 {
-                    prev = i
-                } else {
-                    if i - prev < min {
-                        min = i - prev;
-                        ans[0] = prev as i32;
-                        ans[1] = i as i32;
-                        if min == 2 {
-                            break;
-                        }
+                if prev != 1 && i - prev < min {
+                    min = i - prev;
+                    ans[0] = prev as i32;
+                    ans[1] = i as i32;
+                    if min == 2 {
+                        return ans;
                     }
-                    prev = i;
                 }
+                prev = i;
             }
         }
         ans
