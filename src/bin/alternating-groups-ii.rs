@@ -31,7 +31,7 @@ impl Solution {
         let mut i = 0;
         let mut j = 1;
         while i < n {
-            if colors[(i + j) % n] == colors[(i + j + n - 1) % n] {
+            if colors[(i + j) % n] == colors[(i + j - 1) % n] {
                 i += j;
                 j = 1;
             } else {
