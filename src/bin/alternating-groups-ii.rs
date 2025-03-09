@@ -31,12 +31,12 @@ impl Solution {
         let mut i = 0;
         let mut j = 1;
         while i < n {
-            if colors[(i + j) % n] == colors[(i + j - 1) % n] {
-                i += j;
-                j = 1;
+            if colors[j % n] == colors[(j - 1) % n] {
+                i = j;
+                j = i + 1;
             } else {
                 j += 1;
-                if j == k {
+                if j == i + k {
                     ans += 1;
                     i += 1;
                     j -= 1;
