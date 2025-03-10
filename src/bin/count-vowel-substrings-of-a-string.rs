@@ -1,5 +1,9 @@
 fn main() {
     assert_eq!(2, Solution::count_vowel_substrings("aeiouu".to_string()));
+    assert_eq!(
+        7,
+        Solution::count_vowel_substrings("cuaieuouac".to_string())
+    );
 }
 
 struct Solution;
