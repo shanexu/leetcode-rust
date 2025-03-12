@@ -4,6 +4,7 @@ fn main() {
     assert_eq!(4, Solution::maximum_count(vec![0, 5, 20, 66, 1314]));
     assert_eq!(4, Solution::maximum_count(vec![5, 20, 66, 1314]));
     assert_eq!(6, Solution::maximum_count(vec![-1, -2, -3, -4, -5, -6]));
+    assert_eq!(0, Solution::maximum_count(vec![0, 0]));
 }
 
 struct Solution;
