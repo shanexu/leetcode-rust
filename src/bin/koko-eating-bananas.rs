@@ -14,19 +14,19 @@ struct Solution;
 
 impl Solution {
     pub fn min_eating_speed(piles: Vec<i32>, h: i32) -> i32 {
-        let h = h as i64;
-        let mut low = 0i64;
-        let mut high = *piles.iter().max().unwrap() as i64;
-        while low < high {
+        let mut low = 0;
+        let mut high = *piles.iter().max().unwrap();
+        'out: while low < high {
             let mid = (low + high + 1) >> 1;
-            let time = piles
-                .iter()
-                .fold(0i64, |c, &p| c + (p as i64 + mid - 1) / mid);
-            if time > h {
-                low = mid;
-            } else {
-                high = mid - 1;
+            let mut count = 0;
+            for &p in piles.iter() {
+                count += (p + mid - 1) / mid;
+                if count > h {
+                    low = mid;
+                    continue 'out;
+                }
             }
+            high = mid - 1;
         }
         (low + 1) as i32
     }
