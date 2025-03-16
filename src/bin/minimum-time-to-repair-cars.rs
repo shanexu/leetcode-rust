@@ -7,9 +7,10 @@ fn main() {
 struct Solution;
 
 impl Solution {
-    pub fn repair_cars(ranks: Vec<i32>, cars: i32) -> i64 {
+    pub fn repair_cars(mut ranks: Vec<i32>, cars: i32) -> i64 {
         let cars = cars as i64;
-        let mut right = *ranks.iter().max().unwrap() as i64 * cars * cars;
+        ranks.sort_unstable();
+        let mut right = ranks[0] as i64 * cars * cars;
         let mut left: i64 = 0;
         'out: while left <= right {
             let mid = (left + right) >> 1;
