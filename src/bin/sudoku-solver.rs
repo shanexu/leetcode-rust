@@ -1,15 +1,16 @@
 fn main() {
-    let mut board = vec![
-        vec!['5', '3', '.', '.', '7', '.', '.', '.', '.'],
-        vec!['6', '.', '.', '1', '9', '5', '.', '.', '.'],
-        vec!['.', '9', '8', '.', '.', '.', '.', '6', '.'],
-        vec!['8', '.', '.', '.', '6', '.', '.', '.', '3'],
-        vec!['4', '.', '.', '8', '.', '3', '.', '.', '1'],
-        vec!['7', '.', '.', '.', '2', '.', '.', '.', '6'],
-        vec!['.', '6', '.', '.', '.', '.', '2', '8', '.'],
-        vec!['.', '.', '.', '4', '1', '9', '.', '.', '5'],
-        vec!['.', '.', '.', '.', '8', '.', '.', '7', '9'],
+    let board_strs = vec![
+        "53x x7x xxx",
+        "6xx 195 xxx",
+        "x98 xxx x6x",
+        "8xx x6x xx3",
+        "4xx 8x3 xx1",
+        "7xx x2x xx6",
+        "x6x xxx 28x",
+        "xxx 419 xx5",
+        "xxx x8x x79",
     ];
+    let mut board = board_strs_to_board(board_strs);
     Solution::solve_sudoku(&mut board);
     println!("{:?}", board);
     let x = 0x01f0u16;
@@ -121,4 +122,15 @@ fn next(x: usize, y: usize) -> (usize, usize) {
     } else {
         (x, y + 1)
     }
+}
+
+fn board_strs_to_board(strs: Vec<&str>) -> Vec<Vec<char>> {
+    strs.into_iter()
+        .map(|s| {
+            s.replace(' ', "")
+                .chars()
+                .map(|c| if c == 'x' { '.' } else { c })
+                .collect()
+        })
+        .collect()
 }
