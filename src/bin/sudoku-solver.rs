@@ -12,7 +12,9 @@ fn main() {
     ];
     let mut board = board_strs_to_board(board_strs);
     Solution::solve_sudoku(&mut board);
-    println!("{:?}", board);
+    for l in board.iter() {
+        println!("{:?}", l);
+    }
     let x = 0x01f0u16;
     println!("{}", x.count_zeros());
     println!("{:?}", MASKS);
