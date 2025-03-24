@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
+import re
 
 
 def solve_sudoku(grid):
@@ -48,12 +49,33 @@ def solve(board_str, i, j):
 	res = solve_sudoku(board_strs_to_board(board_str))
 	return res[i][j]
 
+def print_board(board):
+	for line in board:
+		print(' '.join(line))
+
 
 def main():
-	i = int(sys.argv[1])
-	j = int(sys.argv[2])
-	print(i, j, sys.argv[3:])
-	print(solve(sys.argv[3:], i, j))
+	board_strs = sys.argv[1:]
+	if len(board_strs) == 1:
+		ws = re.compile(r'\s+')
+		board_strs = ws.split(board_strs[0])
+	board = board_strs_to_board(board_strs)
+
+	q = None
+	for i in range(len(board)):
+		for j in range(len(board)):
+			if board[i][j] == '?':
+				board[i][j] = '.'
+				q = (i, j)
+				break
+		if q != None:
+			break
+	print(q)
+	print_board(board)
+	print()
+	board = solve_sudoku(board)
+	print(q, '=', board[q[0]][q[1]])
+	print_board(board)
 
 
 main()
