@@ -57,25 +57,43 @@ def print_board(board):
 
 def main():
 	board_strs = sys.argv[1:]
-	if len(board_strs) == 1:
-		ws = re.compile(r'\s+')
-		board_strs = ws.split(board_strs[0])
-	board = board_strs_to_board(board_strs)
+	board_str = ''.join(board_strs)
+	ws = re.compile(r'\s+')
+	board_str = ws.sub('', board_str)
+	board_str = board_str.replace('*', '.')
+	board_str = board_str.replace('_', '.')
+	board = None
+	if len(board_str) == 16:
+		if not bool(re.match(r'^[ostx.?]+$', board_str)):
+			print('含有非法字符')
+			exit(1)
+		else:
+			board = [board_str[i] for i in range(16)]
+			board = [board[i:i+4] for i in range(0, 16, 4)]
+	elif len(board_str) == 25:
+		if not bool(re.match(r'^[ostxf.?]+$', board_str)):
+			print('含有非法字符')
+			exit(1)
+		else:
+			board = [board_str[i] for i in range(25)]
+			board = [board[i:i+5] for i in range(0, 25, 5)]
+	else:
+		print("矩阵长度不对，既不是16也不是25")
+		exit(1)
 
-	q = None
+	print_board(board)
+	qs = []
 	for i in range(len(board)):
 		for j in range(len(board)):
 			if board[i][j] == '?':
 				board[i][j] = '.'
-				q = (i, j)
+				qs.append((i, j))
 				break
-		if q != None:
-			break
-	print(q)
-	print_board(board)
+	print(qs)
 	print()
 	board = solve_sudoku(board)
-	print(q, '=', board[q[0]][q[1]])
+	for q in qs:
+		print(q, '=', board[q[0]][q[1]])
 	print_board(board)
 
 
