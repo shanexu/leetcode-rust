@@ -41,6 +41,7 @@ def board_strs_to_board(strs):
 	for s in strs:
 		s = s.replace(" ", "")
 		s = s.replace("_", ".")
+		s = s.replace("*", ".")
 		board.append([s[i : i + 1] for i in range(len(s))])
 	return board
 

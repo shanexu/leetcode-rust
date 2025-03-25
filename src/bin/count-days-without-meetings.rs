@@ -11,7 +11,7 @@ struct Solution;
 
 impl Solution {
     pub fn count_days(days: i32, mut meetings: Vec<Vec<i32>>) -> i32 {
-        meetings.sort();
+        meetings.sort_unstable();
         meetings.push(vec![days + 1, days + 1]);
         let mut ans = 0;
         let mut start = 1;
