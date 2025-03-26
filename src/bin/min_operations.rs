@@ -34,8 +34,11 @@ impl Solution {
         let mut sm = s;
         for i in 1..mn {
             let d = nums[i] - nums[i - 1];
+            if d != 0 {
             s = s - (mn - i) as i32 * d + i as i32 * d;
             sm = sm.min(s);
+            }
+            
         }
         sm / x
     }
