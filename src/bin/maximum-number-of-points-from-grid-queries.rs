@@ -42,7 +42,7 @@ impl Solution {
             ans[indices[idx].1] += 1;
             let mut dx = 0;
             let mut dy = 1;
-            for k in 0..4 {
+            for _ in 0..4 {
                 let new_row = i as i32 + dx;
                 let new_col = j as i32 + dy;
                 (dx, dy) = (-dy, dx);
