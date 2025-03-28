@@ -17,12 +17,12 @@ impl Solution {
         let rows = grid.len();
         let cols = grid[0].len();
         let n = queries.len();
-        let mut indices: Vec<(usize, i32)> = queries
+        let mut indices: Vec<(i32, usize)> = queries
             .iter()
             .enumerate()
-            .map(|(i, &v)| (i, v))
-            .collect::<Vec<(usize, i32)>>();
-        indices.sort_by(|&i, &j| i.1.cmp(&j.1));
+            .map(|(i, &v)| (v, i))
+            .collect::<Vec<(i32, usize)>>();
+        indices.sort_unstable();
         let mut visited = vec![vec![false; cols]; rows];
         let mut heap: BinaryHeap<(Reverse<i32>, usize, usize)> = BinaryHeap::new();
         heap.push((Reverse(grid[0][0]), 0, 0));
@@ -32,17 +32,20 @@ impl Solution {
             if visited[i][j] {
                 continue;
             }
-            while idx < n && v >= indices[idx].1 {
+            while idx < n && v >= indices[idx].0 {
                 idx += 1;
             }
             if idx == n {
                 break;
             }
             visited[i][j] = true;
-            ans[indices[idx].0] += 1;
+            ans[indices[idx].1] += 1;
+            let mut dx = 0;
+            let mut dy = 1;
             for k in 0..4 {
-                let new_row = i as i32 + DIRECTIONS[k];
-                let new_col = j as i32 + DIRECTIONS[k + 1];
+                let new_row = i as i32 + dx;
+                let new_col = j as i32 + dy;
+                (dx, dy) = (-dy, dx);
                 if new_row >= 0
                     && new_row < rows as i32
                     && new_col >= 0
@@ -56,10 +59,8 @@ impl Solution {
             }
         }
         for i in 1..n {
-            ans[indices[i].0] += ans[indices[i - 1].0];
+            ans[indices[i].1] += ans[indices[i - 1].1];
         }
         ans
     }
 }
-
-const DIRECTIONS: &[i32] = &[-1, 0, 1, 0, -1];
