@@ -45,11 +45,6 @@ def board_strs_to_board(strs):
     return board
 
 
-def solve(board_str, i, j):
-    res = solve_sudoku(board_strs_to_board(board_str))
-    return res[i][j]
-
-
 def print_board(board):
     for line in board:
         print(" ".join(line))
