@@ -1,5 +1,3 @@
-
-
 fn main() {
     println!("{:?}", Solution::count_largest_group(13));
 }
